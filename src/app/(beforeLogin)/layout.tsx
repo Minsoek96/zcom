@@ -1,11 +1,20 @@
-import styles from './_component/main.module.css'
+'use client'
+import styled from 'styled-components'
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    width: 100dvw;
+    height: 100dvh;
+`
 
 const Layout = ({children, modal}: {children: React.ReactNode, modal: React.ReactNode}) => {
     return (
-        <div className={styles.container}>
+        <Container>
             {children}
             {modal}
-        </div>
+        </Container>
     )
 }
 
