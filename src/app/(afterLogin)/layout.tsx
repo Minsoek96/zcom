@@ -1,6 +1,9 @@
 "use client";
 import { styled } from "styled-components";
-import SideBar from "./_components/SideBar";
+
+import SideBar from "./_components/SideBar/SideBar";
+import SearchForm from "./_components/SearchForm";
+import MyTrand from "./_components/mytrand/MyTrand";
 
 const AfterLoginLayout = ({
   children,
@@ -10,11 +13,19 @@ const AfterLoginLayout = ({
   return (
     <Container>
       <SideWrraper>
-        <SideBar />
+        <SideSection>
+          <SideBar />
+        </SideSection>
       </SideWrraper>
-      <MainWrraper>
-        <MainSection>{children}</MainSection>
-      </MainWrraper>
+      <RightSectionWrraper>
+        <RightSectionInner>
+          <MainWrraper>{children}</MainWrraper>
+          <RightSection>
+            <SearchForm/>
+            <MyTrand/>
+          </RightSection>
+        </RightSectionInner>
+      </RightSectionWrraper>
     </Container>
   );
 };
@@ -30,19 +41,36 @@ const SideWrraper = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: column;
-  height: 100dvh;
   flex-grow: 1;
 `;
 
-const MainWrraper = styled.div`
+const SideSection = styled.section`
+  width: 275px;
+  height: 100dvh;
+`;
+
+const RightSectionWrraper = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   flex-grow: 1;
 `;
 
-const MainSection = styled.main`
+const RightSectionInner = styled.div`
+  display: flex;
+  justify-content: space-between;
+  height: 100dvh;
   width: 1050px;
-  background-color: teal;
+`;
+
+const MainWrraper = styled.main`
+  width: 600px;
+  height: 100dvh;
+`;
+
+const RightSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 350px;
   height: 100dvh;
 `;
