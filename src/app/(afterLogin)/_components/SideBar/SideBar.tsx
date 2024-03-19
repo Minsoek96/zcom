@@ -43,6 +43,7 @@ const SideBarContainer = styled.section`
 const Logo = styled.div`
   display: inline-block;
   height: 56px;
+  padding: 5px;
   margin-top: 2px;
 
   :hover {

@@ -7,9 +7,14 @@ import { menuItems } from "../../_constants/menuItems";
 const NavMenuContainer = styled.ul`
   display: flex;
   flex-direction: column;
+
+  li:last-child {
+    margin-bottom: 8px;
+  }
 `;
 
 const NavMenuList = () => {
+
   return (
     <NavMenuContainer>
       {menuItems.map((a) => (

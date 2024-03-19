@@ -29,7 +29,9 @@ const NavItemsWrapper = styled.div<{ isSelected: boolean }>`
   }
 
   svg {
-    fill: ${props => props.isSelected ? '#000;': '#68595992'};
+    fill: ${props => props.isSelected ? '#000;': 'none'};
+    stroke: #000;
+    stroke-width : 1.5px;
   }
 `;
 
@@ -41,6 +43,7 @@ type NavMenuItemProps = {
 
 const NavMenuItem = ({ path, name, Icon }: NavMenuItemProps) => {
   const pathName = usePathname();
+
   return (
     <NavItemsContainer>
       <Link href={path}>

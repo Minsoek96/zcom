@@ -26,4 +26,8 @@ const Container = styled.button.attrs({
   border: none;
   height: 54px;
   cursor: pointer;
+
+  &:hover{
+    background-color: rgb(26, 140, 216);
+  }
 `;

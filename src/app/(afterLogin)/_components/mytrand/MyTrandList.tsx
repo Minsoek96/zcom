@@ -1,5 +1,6 @@
-import key from "@/app/_utils/key";
 import styled from "styled-components";
+
+import key from "@/app/_utils/key";
 
 const trandList = [
   { title: "대한민국에서 트렌드중", content: "우리 택연" },
