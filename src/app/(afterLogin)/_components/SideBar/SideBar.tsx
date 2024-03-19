@@ -46,6 +46,10 @@ const Logo = styled.div`
   padding: 5px;
   margin-top: 2px;
 
+  img {
+    aspect-ratio: 1 / 1;
+  }
+
   :hover {
     background-color: RGB(231, 231, 232);
     border-radius: 21px;

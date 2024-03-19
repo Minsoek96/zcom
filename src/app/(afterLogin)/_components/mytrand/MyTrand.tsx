@@ -14,6 +14,8 @@ const MyTrand = () => {
 export default MyTrand;
 
 const Container = styled.div`
+  display:flex;
+  flex-direction: column;
   background-color: RGB(247, 249, 249);
   border-radius: 15px;
   padding: 12px;

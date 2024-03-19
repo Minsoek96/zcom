@@ -65,7 +65,7 @@ const RightSectionInner = styled.div`
 
 const MainWrraper = styled.main`
   width: 600px;
-  height: 100dvh;
+  height: 200dvh;
 `;
 
 const RightSection = styled.section`
