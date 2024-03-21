@@ -26,7 +26,6 @@ export default Tab;
 
 const TabContainer = styled.div`
   height: 50px;
-  border: 1px solid #eff3f4;
 `;
 
 const FixedContainer = styled.div<{ currentTab: String }>`
@@ -48,6 +47,7 @@ const FixedContainer = styled.div<{ currentTab: String }>`
     flex: 1;
     position: relative;
     padding: 15px;
+    border: 1px solid #eff3f4;
   }
 
   > div:first-child {

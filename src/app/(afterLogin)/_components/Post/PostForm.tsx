@@ -64,9 +64,15 @@ export default PostForm;
 const Container = styled.div`
   display: flex;
   margin-top: 21px;
+  border-bottom: 1px solid #eff3f4;
+  padding-bottom: 15px;
 
   a > img {
     border-radius: 9999px;
+  }
+
+  > div:first-child {
+    width: 40px;
   }
 
   > div:last-child {
