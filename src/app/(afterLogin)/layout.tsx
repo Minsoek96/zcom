@@ -60,7 +60,7 @@ const RightSectionInner = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100dvh;
-  width: 1050px;
+  width: 1000px;
 `;
 
 const MainWrraper = styled.main`

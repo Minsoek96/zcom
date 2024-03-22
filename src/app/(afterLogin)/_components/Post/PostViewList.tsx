@@ -51,14 +51,20 @@ export default PostViewList;
 const Container = styled.article`
   display: flex;
   flex-direction: column;
-  border: 1px solid #eff3f4;
-  padding-bottom: 11px;
+
+  //TODO : 아이템 추가시 스타일조정
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0,0,0,0.03);
+    transition: background-color 0.2s ease;
+  }
 `;
 
 const PostWrapper = styled.div`
   display: flex;
   padding-inline: 15px;
   padding-block: 11px;
+  border: 1px solid #eff3f4;
   width: 100%;
 
   > div:first-child {

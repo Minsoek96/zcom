@@ -56,7 +56,8 @@ const PostForm = () => {
           <ButtonIcon
             icon={<PictureIcon />}
             hoverColor={["rgba(29, 155, 240, 0.1)", ""]}
-          ></ButtonIcon>
+            isClick={true}
+          />
           <PostBtn name={"게시하기"} onClick={() => console.log("d")} />
         </Controller>
       </div>
