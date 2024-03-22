@@ -1,18 +1,9 @@
 import { styled } from "styled-components";
 
+import ButtonIcon from "@/app/_components/ui/ButtonIcon";
+
 import { CommentIcon, LikeIcon, RetweetIcon } from "../../_constants/MenuIcons";
 
-interface ButtonIconProps {
-  icon: React.ReactNode;
-  hoverColor: string[];
-}
-
-const ButtonIcon: React.FC<ButtonIconProps> = ({ icon: Icon, hoverColor }) => (
-  <Button hoverColor={hoverColor}>{Icon}</Button>
-);
-
-
-//TODO : 중복 비슷한 스타일 코드 분리 작업하기 
 const UserActionButtons: React.FC = () => {
   return (
     <Container>
@@ -39,31 +30,4 @@ const Container = styled.div`
   justify-content: space-between;
   height: 30px;
   padding-top: 12px;
-`;
-
-interface ButtonProps {
-  hoverColor: string[];
-}
-
-const Button = styled.button<ButtonProps>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background-color: #fff;
-  cursor: pointer;
-  border-radius: 9999px;
-  width: 34px;
-  height: 34px;
-
-  &:hover {
-    background-color: ${(props) => props.hoverColor[0]};
-    svg {
-      fill: ${(props) => props.hoverColor[1]};
-    }
-  }
-
-  svg {
-    fill: rgb(83, 100, 113);
-  }
 `;

@@ -1,10 +1,11 @@
-import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 
 import styled from "styled-components";
 
-import MyImage from "./MyImage";
-import ActionButtons from "./ActionButtons";
+import ImageLink from "./ImageLink";
+import ButtonIcon from "@/app/_components/ui/ButtonIcon";
+import { PictureIcon } from "../../_constants/MenuIcons";
+import PostBtn from "../SideBar/PostBtn";
 
 const PostForm = () => {
   const [text, setText] = useState("");
@@ -37,14 +38,12 @@ const PostForm = () => {
   return (
     <Container>
       <div>
-        <Link href={target.User.id}>
-          <MyImage
-            src={target.User.image}
-            alt={target.User.id}
-            width={40}
-            height={40}
-          />
-        </Link>
+        <ImageLink
+          src={target.User.image}
+          id={target.User.id}
+          width={40}
+          height={40}
+        />
       </div>
       <div>
         <StyledTextarea
@@ -53,7 +52,13 @@ const PostForm = () => {
           onChange={(e) => setText(e.target.value)}
           placeholder="무슨 일이 일어나고 있나요?"
         />
-        <ActionButtons/>
+        <Controller>
+          <ButtonIcon
+            icon={<PictureIcon />}
+            hoverColor={["rgba(29, 155, 240, 0.1)", ""]}
+          ></ButtonIcon>
+          <PostBtn name={"게시하기"} onClick={() => console.log("d")} />
+        </Controller>
       </div>
     </Container>
   );
@@ -67,16 +72,32 @@ const Container = styled.div`
   border-bottom: 1px solid #eff3f4;
   padding-bottom: 15px;
 
-  a > img {
-    border-radius: 9999px;
-  }
-
   > div:first-child {
     width: 40px;
   }
 
   > div:last-child {
     width: 100%;
+  }
+`;
+
+const Controller = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  svg {
+    fill: rgb(26, 140, 216);
+    width: 25px;
+    height: 25px;
+  }
+
+
+  button:last-child {
+    width: 94px;
+    height: 36px;
+    font-size: 15px;
+    background-color: none;
   }
 `;
 

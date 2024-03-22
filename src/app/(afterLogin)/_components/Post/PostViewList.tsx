@@ -1,15 +1,14 @@
 import React from "react";
-import { styled } from "styled-components";
-import MyImage from "./MyImage";
 
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import "dayjs/locale/ko";
+import { styled } from "styled-components";
+
 import Link from "next/link";
+
+import ImageLink from "./ImageLink";
 import UserActionButtons from "./UserActionButtons";
 
-dayjs.locale("ko");
-dayjs.extend(relativeTime);
+import formatTimeFromNow from "@/app/_utils/day";
+
 
 const PostViewList = () => {
   const target = {
@@ -18,18 +17,18 @@ const PostViewList = () => {
       nickname: "Elon Musk",
       image: "/yRsRRjGO.jpg",
     },
-    content: "비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 ",
+    content:
+      "비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 ",
     createdAt: new Date(),
     Images: [],
   };
 
-  dayjs.extend(relativeTime);
-  dayjs.locale("ko");
-
   return (
     <Container>
       <PostWrapper>
-        <div>이미지asdf</div>
+        <div>
+          <ImageLink src={"/default.png"} id={"img"} width={40} height={40} />
+        </div>
         <div>
           <UserInfoContainer>
             <Link href={`${target.User.id}`}>
@@ -37,10 +36,10 @@ const PostViewList = () => {
             </Link>{" "}
             <span>@{target.User.id}</span>
             {" · "}
-            <span>{dayjs(target.createdAt).fromNow(true)}</span>
+            <span>{formatTimeFromNow({ createdAt: target.createdAt })}</span>
           </UserInfoContainer>
           <div>{target.content}</div>
-          <UserActionButtons/>
+          <UserActionButtons />
         </div>
       </PostWrapper>
     </Container>
@@ -52,6 +51,8 @@ export default PostViewList;
 const Container = styled.article`
   display: flex;
   flex-direction: column;
+  border: 1px solid #eff3f4;
+  padding-bottom: 11px;
 `;
 
 const PostWrapper = styled.div`
@@ -61,11 +62,18 @@ const PostWrapper = styled.div`
   width: 100%;
 
   > div:first-child {
-    width: 43px;
+    width: 40px;
   }
 
   > div:last-child {
     width: 100%;
+    > div {
+      padding-inline: 12px;
+    }
+
+    > div:last-child {
+      padding-inline: 0;
+    }
   }
 `;
 

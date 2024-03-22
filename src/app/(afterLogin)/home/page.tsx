@@ -15,6 +15,8 @@ export default function Home() {
       <Tab/>
       <PostForm></PostForm>
       <PostViewList/>
+      <PostViewList/>
+      <PostViewList/>
       <div>
         <h3>{tab}</h3>
       </div>
