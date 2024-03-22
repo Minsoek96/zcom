@@ -16,20 +16,20 @@ const NavItemsContainer = styled.li`
   }
 `;
 
-const NavItemsWrapper = styled.div<{ isSelected: boolean }>`
+const NavItemsWrapper = styled.div<{ $isSelected: boolean }>`
   display: inline-flex;
   height: 50px;
   padding: 12px;
   align-items: center;
   font-size: 19px;
-  font-weight: ${props => props.isSelected ? 'bold' : 'none'};
+  font-weight: ${props => props.$isSelected ? 'bold' : 'none'};
 
   div {
     margin-inline: 20px;
   }
 
   svg {
-    fill: ${props => props.isSelected ? '#000;': 'none'};
+    fill: ${props => props.$isSelected ? '#000;': 'none'};
     stroke: #000;
     stroke-width : 1.5px;
   }
@@ -47,7 +47,7 @@ const NavMenuItem = ({ path, name, Icon }: NavMenuItemProps) => {
   return (
     <NavItemsContainer>
       <Link href={path}>
-        <NavItemsWrapper isSelected={pathName===path}>
+        <NavItemsWrapper $isSelected={pathName===path}>
           {Icon}
           <div>{name}</div>
         </NavItemsWrapper>

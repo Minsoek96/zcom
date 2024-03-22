@@ -7,8 +7,10 @@ import MyTrand from "./_components/mytrand/MyTrand";
 
 const AfterLoginLayout = ({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) => {
   return (
     <Container>
@@ -26,6 +28,7 @@ const AfterLoginLayout = ({
           </RightSection>
         </RightSectionInner>
       </RightSectionWrraper>
+      {modal}
     </Container>
   );
 };

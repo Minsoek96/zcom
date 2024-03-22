@@ -9,7 +9,7 @@ const Tab = () => {
 
   return (
     <TabContainer>
-      <FixedContainer currentTab={tab}>
+      <FixedContainer $currentTab={tab}>
         <div onClick={() => setTab("recommend")}>
           추천
           <div></div>
@@ -28,7 +28,7 @@ const TabContainer = styled.div`
   height: 50px;
 `;
 
-const FixedContainer = styled.div<{ currentTab: String }>`
+const FixedContainer = styled.div<{ $currentTab: String }>`
   height: inherit;
   width: 600px;
   vertical-align: 1px;
@@ -52,13 +52,13 @@ const FixedContainer = styled.div<{ currentTab: String }>`
 
   > div:first-child {
     font-weight: ${(props) =>
-        props.currentTab === "recommend" ? "700" : "0"};
+        props.$currentTab === "recommend" ? "700" : "0"};
 
     div {
       position: absolute;
       bottom: 0;
       background-color: ${(props) =>
-        props.currentTab === "recommend" ? "rgb(29, 155, 240)" : "none"};
+        props.$currentTab === "recommend" ? "rgb(29, 155, 240)" : "none"};
       width: 56px;
       height: 4px;
     }
@@ -66,13 +66,13 @@ const FixedContainer = styled.div<{ currentTab: String }>`
   
   > div:last-child {
     font-weight: ${(props) =>
-      props.currentTab === "recommend" ? "0" : "700"};
+      props.$currentTab === "recommend" ? "0" : "700"};
 
     div {
       position: absolute;
       bottom: 0;
       background-color: ${(props) =>
-        props.currentTab === "recommend" ? "none" : "rgb(29, 155, 240)"};
+        props.$currentTab === "recommend" ? "none" : "rgb(29, 155, 240)"};
       width: 56px;
       height: 4px;
     }

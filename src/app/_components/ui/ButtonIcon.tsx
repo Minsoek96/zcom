@@ -13,8 +13,8 @@ const ButtonIcon: React.FC<ButtonIconProps> = ({
   isClick = false,
   number = 0,
 }) => (
-  <Container hoverColor={hoverColor}>
-    <Button hoverColor={hoverColor} isClick={isClick || false}>
+  <Container $hoverColor={hoverColor}>
+    <Button $hoverColor={hoverColor} $isClick={isClick || false}>
       {Icon}
     </Button>
     <span>{number === 0 ? null : number}</span>
@@ -22,8 +22,8 @@ const ButtonIcon: React.FC<ButtonIconProps> = ({
 );
 
 interface ActionProps {
-  hoverColor: string[];
-  isClick?: boolean;
+  $hoverColor: string[];
+  $isClick?: boolean;
 }
 
 const Container = styled.div<ActionProps>`
@@ -32,7 +32,7 @@ const Container = styled.div<ActionProps>`
   justify-content: center;
   text-align: center;
   font-size: 14px;
-  color: ${(props) => props.hoverColor[1]};
+  color: ${(props) => props.$hoverColor[1]};
 `;
 
 const Button = styled.button.attrs({
@@ -47,13 +47,13 @@ const Button = styled.button.attrs({
 
   svg {
     fill: ${(props) =>
-      props.isClick ? props.hoverColor[1] : "rgb(83, 100, 113)"};
+      props.$isClick ? props.$hoverColor[1] : "rgb(83, 100, 113)"};
   }
 
   &:hover {
-    background-color: ${(props) => props.hoverColor[0]};
+    background-color: ${(props) => props.$hoverColor[0]};
     svg {
-      fill: ${(props) => props.hoverColor[1]};
+      fill: ${(props) => props.$hoverColor[1]};
     }
     transition: background-color 0.2s ease;
   }
