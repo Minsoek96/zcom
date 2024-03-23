@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 
 import styled from "styled-components";
 
 import ImageLink from "./ImageLink";
-import ButtonIcon from "@/app/_components/ui/ButtonIcon";
-import { PictureIcon } from "../../_constants/MenuIcons";
-import PostBtn from "../SideBar/PostBtn";
+import PostActionButtons from "./PostActionButtons";
+import ResizableTextarea from "./ResizableTextarea";
 
 const PostForm = () => {
   const [text, setText] = useState("");
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const target = {
     User: {
@@ -22,19 +20,6 @@ const PostForm = () => {
     Images: [],
   }; //임시
 
-  useEffect(() => {
-    const adjustHeight = () => {
-      if (!textareaRef.current) return;
-      const textarea = textareaRef.current;
-      textarea.style.height = "inherit";
-      const newHeight = Math.min(textarea.scrollHeight, 500);
-      textarea.style.height = `${newHeight}px`;
-      textarea.style.overflowY = newHeight >= 500 ? "auto" : "hidden";
-    };
-
-    adjustHeight(); // 컴포넌트 마운트 시 높이 조절
-  }, [text]);
-
   return (
     <Container>
       <div>
@@ -46,20 +31,12 @@ const PostForm = () => {
         />
       </div>
       <div>
-        <StyledTextarea
-          ref={textareaRef}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+        <ResizableTextarea
+          text={text}
+          setText={setText}
           placeholder="무슨 일이 일어나고 있나요?"
         />
-        <Controller>
-          <ButtonIcon
-            icon={<PictureIcon />}
-            hoverColor={["rgba(29, 155, 240, 0.1)", ""]}
-            isClick={true}
-          />
-          <PostBtn name={"게시하기"} onClick={() => console.log("d")} />
-        </Controller>
+        <PostActionButtons />
       </div>
     </Container>
   );
@@ -79,40 +56,5 @@ const Container = styled.div`
 
   > div:last-child {
     width: 100%;
-  }
-`;
-
-const Controller = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-
-  svg {
-    fill: rgb(26, 140, 216);
-    width: 25px;
-    height: 25px;
-  }
-
-
-  button:last-child {
-    width: 94px;
-    height: 36px;
-    font-size: 15px;
-    background-color: none;
-  }
-`;
-
-const StyledTextarea = styled.textarea`
-  width: inherit;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  resize: none;
-  max-height: 500px;
-  height: auto;
-  font-size: 19px;
-  font-family: Malgun Gothic;
-  &:focus {
-    outline: none;
   }
 `;
