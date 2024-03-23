@@ -1,17 +1,22 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { styled } from "styled-components";
 
+import PostBtn from "@/app/_components/ui/PostBtn";
 import NavMenuList from "./NavMenuList";
-import PostBtn from "./PostBtn";
 import Profile from "./Profile";
 
 import Zlogo from ".././../../../../public/zlogo.png";
 
 const SideBar = () => {
-  const handleOpenPost = () => {};
+  const router = useRouter();
+
+  const handleOpenPost = () => {
+    router.push("/compose/tweet");
+  };
 
   return (
     <SideBarContainer>
