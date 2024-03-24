@@ -64,7 +64,7 @@ const PostWrapper = styled.div`
   display: flex;
   padding-inline: 15px;
   padding-block: 11px;
-  border: 1px solid #eff3f4;
+  border-bottom: 1px solid #eff3f4;
   width: 100%;
 
   > div:first-child {

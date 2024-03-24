@@ -23,7 +23,6 @@ const AfterLoginLayout = ({
         <RightSectionInner>
           <MainWrraper>{children}</MainWrraper>
           <RightSection>
-            <SearchForm/>
             <MyTrand/>
           </RightSection>
         </RightSectionInner>
@@ -69,6 +68,7 @@ const RightSectionInner = styled.div`
 const MainWrraper = styled.main`
   width: 600px;
   height: 200dvh;
+  border: 1px solid #eff3f4;
 `;
 
 const RightSection = styled.section`

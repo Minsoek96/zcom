@@ -30,7 +30,9 @@ const MyTrandList = () => {
 
 export default MyTrandList;
 
-const Container = styled.div``;
+const Container = styled.div`
+  width: inherit;
+`;
 
 const ItemContainer = styled.div`
   cursor: pointer;
