@@ -29,8 +29,7 @@ const TabContainer = styled.div`
 `;
 
 const FixedContainer = styled.div<{ $currentTab: String }>`
-  height: inherit;
-  width: 600px;
+  width: 597px;
   vertical-align: 1px;
   display: flex;
   position: fixed;
@@ -47,12 +46,14 @@ const FixedContainer = styled.div<{ $currentTab: String }>`
     flex: 1;
     position: relative;
     padding: 15px;
-    border: 1px solid #eff3f4;
+    border-bottom: 1px solid #eff3f4;
   }
 
   > div:first-child {
+    border-right: 1px solid #eff3f4;;
     font-weight: ${(props) =>
         props.$currentTab === "recommend" ? "700" : "0"};
+    
 
     div {
       position: absolute;
