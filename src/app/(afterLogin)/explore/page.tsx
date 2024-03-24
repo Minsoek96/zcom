@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 import SearchForm from "../_components/SearchForm";
 import MyTrandList from "../_components/mytrand/MyTrandList";
 
-export default function Explore() {
+const Explore = () => {
   return (
     <Container>
       <div>
@@ -16,6 +16,8 @@ export default function Explore() {
     </Container>
   );
 }
+
+export default Explore
 
 const Container = styled.div`
   width: inherit;
