@@ -1,7 +1,8 @@
 import React from "react";
 
-import { MeIcon } from "../../_constants/MenuIcons";
 import styled from "styled-components";
+
+import { MeIcon } from "../../_constants/MenuIcons";
 
 const Profile = () => {
   return (

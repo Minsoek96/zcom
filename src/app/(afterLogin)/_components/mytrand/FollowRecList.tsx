@@ -1,15 +1,32 @@
 import { styled } from "styled-components";
 
 import ImageLink from "../Post/ImageLink";
+import { useRouter } from "next/navigation";
 
 const FollowRecList = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/@back");
+  };
+
+  const handleFollowClick = (e:React.MouseEvent) => {
+    e.stopPropagation();
+    console.log('팔로우 신청')
+  }
+
+
   return (
-    <Container>
+    <Container onClick={handleClick}>
       <div>
         <ImageLink src={"/default.PNG"} id={"logo"} width={40} height={40} />
+        <UserInfoContainer>
+          <span>baek</span>
+          <span>@back</span>
+        </UserInfoContainer>
       </div>
       <div>
-        <button type="button">팔로우</button>
+        <button type="button" onClick={handleFollowClick}>팔로우</button>
       </div>
     </Container>
   );
@@ -18,9 +35,15 @@ const FollowRecList = () => {
 export default FollowRecList;
 
 const Container = styled.div`
+  cursor: pointer;
   padding-block: 11px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+
+  > div:first-child {
+    display: flex;
+    flex: 1;
+  }
 
   > div:last-child {
     display: flex;
@@ -37,5 +60,27 @@ const Container = styled.div`
     font-weight: 700;
     height: 32px;
     border-radius: 16px;
+  }
+
+  &:hover {
+    background-color: rgba(0,0,0,0.03);
+  }
+`;
+
+const UserInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-inline: 15px;
+
+  > span:first-child {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  > span:last-child {
+    color: #536471;
+    font-size: 13px;
+    line-height: 16px;
   }
 `;

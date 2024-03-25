@@ -19,11 +19,15 @@ const Container = styled.div`
   flex-direction: column;
   border-radius: 15px;
   background-color: RGB(247, 249, 249);
+  margin-block: 15px;
+  padding-block: 11px;
+  > * {
+    padding-inline: 15px;
+  }
 
   > span {
     font-weight: 800;
     font-size: 19px;
     margin-bottom: 15px;
   }
-
 `;

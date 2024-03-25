@@ -2,8 +2,7 @@
 import { styled } from "styled-components";
 
 import SideBar from "./_components/SideBar/SideBar";
-import SearchForm from "./_components/SearchForm";
-import MyTrand from "./_components/mytrand/MyTrand";
+import RightSideSection from "./_components/rightSideSection/RightSideSection";
 
 const AfterLoginLayout = ({
   children,
@@ -23,7 +22,7 @@ const AfterLoginLayout = ({
         <RightSectionInner>
           <MainWrraper>{children}</MainWrraper>
           <RightSection>
-            <MyTrand/>
+            <RightSideSection/>
           </RightSection>
         </RightSectionInner>
       </RightSectionWrraper>

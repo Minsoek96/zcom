@@ -1,5 +1,6 @@
 "use client";
 import { styled } from "styled-components";
+
 import SearchForm from "../_components/SearchForm";
 import MyTrandList from "../_components/mytrand/MyTrandList";
 
@@ -10,7 +11,6 @@ const Explore = () => {
         <SearchForm />
       </div>
       <TrandWrapper>
-        <span>나를 위한 트렌드</span>
         <MyTrandList />
       </TrandWrapper>
     </Container>
@@ -35,8 +35,7 @@ const Container = styled.div`
 
 const TrandWrapper = styled.div`
   border-top: 1px solid #eff3f4;
-  > span {
-    font-size: 20px;
-    font-weight: 800;
+  > div {
+    background-color: white;
   }
 `;

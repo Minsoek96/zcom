@@ -18,6 +18,7 @@ const trandList = [
 const MyTrandList = () => {
   return (
     <Container>
+      <span>나를 위한 트렌드</span>
       {trandList.map((item, index) => (
         <ItemContainer key={key(item.title, index)}>
           <p>{item.title}</p>
@@ -32,6 +33,14 @@ export default MyTrandList;
 
 const Container = styled.div`
   width: inherit;
+  background-color: RGB(247, 249, 249);
+  border-radius: 15px;
+  padding-block: 11px;
+  padding-inline: 15px;
+  > span {
+    font-weight: 800;
+    font-size: 19px;
+  }
 `;
 
 const ItemContainer = styled.div`
