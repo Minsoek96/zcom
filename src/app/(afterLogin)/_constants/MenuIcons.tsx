@@ -83,13 +83,25 @@ export const LikeIcon = () => (
 );
 
 export const CloseIcon = () => (
-  <svg
-    width={18.99}
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-  >
+  <svg width={18.99} viewBox="0 0 24 24" aria-hidden="true">
     <g>
       <path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path>
+    </g>
+  </svg>
+);
+
+export const BackIcon = () => (
+  <svg width="24" viewBox="0 0 24 24" aria-hidden="true">
+    <g>
+      <path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"></path>
+    </g>
+  </svg>
+);
+
+export const PointIcon = () => (
+  <svg width="24" viewBox="0 0 24 24" aria-hidden="true">
+    <g>
+      <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
     </g>
   </svg>
 );
