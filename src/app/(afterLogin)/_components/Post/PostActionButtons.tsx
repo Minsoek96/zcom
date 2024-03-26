@@ -4,15 +4,22 @@ import ButtonIcon from '@/app/_components/ui/ButtonIcon';
 import PostBtn from '@/app/_components/ui/PostBtn';
 import { PictureIcon } from '../../_constants/MenuIcons';
 
-function PostActionButtons() {
+type PostActionButtonProps = {
+  btnText?: string
+}
+function PostActionButtons({ btnText = '게시하기' }:PostActionButtonProps) {
   return (
     <Container>
-      <ButtonIcon
-        icon={<PictureIcon />}
-        hoverColor={['rgba(29, 155, 240, 0.1)', '']}
-        isClick
-      />
-      <PostBtn name="게시하기" onClick={() => console.log('d')} />
+      <div>
+        <ButtonIcon
+          icon={<PictureIcon />}
+          hoverColor={['rgba(29, 155, 240, 0.1)', '']}
+          isClick
+        />
+      </div>
+      <div>
+        <PostBtn name={btnText} onClick={() => console.log('d')} />
+      </div>
     </Container>
   );
 }
@@ -31,7 +38,8 @@ const Container = styled.div`
   }
 
   button:last-child {
-    width: 94px;
+    width: inherit;
+    padding-inline: 15px;
     height: 36px;
     font-size: 15px;
     background-color: none;

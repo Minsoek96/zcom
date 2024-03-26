@@ -3,12 +3,11 @@
 import { useState } from 'react';
 
 import styled from 'styled-components';
+import ImageLink from '../Post/ImageLink';
+import ResizableTextarea from '../Post/ResizableTextarea';
+import PostActionButtons from '../Post/PostActionButtons';
 
-import ImageLink from './ImageLink';
-import PostActionButtons from './PostActionButtons';
-import ResizableTextarea from './ResizableTextarea';
-
-function PostForm() {
+function CommentForm() {
   const [text, setText] = useState('');
 
   const target = {
@@ -36,21 +35,22 @@ function PostForm() {
         <ResizableTextarea
           text={text}
           setText={setText}
-          placeholder="무슨 일이 일어나고 있나요?"
+          placeholder="답글 게시하기"
         />
-        <PostActionButtons />
+        <PostActionButtons btnText="답글" />
       </div>
     </Container>
   );
 }
 
-export default PostForm;
+export default CommentForm;
 
 const Container = styled.div`
   display: flex;
   margin-top: 21px;
   border-bottom: 1px solid #eff3f4;
   padding-bottom: 15px;
+  padding-inline: 15px;
 
   > div:first-child {
     width: 40px;

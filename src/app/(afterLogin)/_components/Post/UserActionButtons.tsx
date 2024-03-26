@@ -4,7 +4,7 @@ import ButtonIcon from '@/app/_components/ui/ButtonIcon';
 
 import { CommentIcon, LikeIcon, RetweetIcon } from '../../_constants/MenuIcons';
 
-const UserActionButtons: React.FC = () => {
+function UserActionButtons() {
   const commented = false;
   const reposted = true;
   const liked = true;
@@ -32,7 +32,7 @@ const UserActionButtons: React.FC = () => {
       />
     </Container>
   );
-};
+}
 
 export default UserActionButtons;
 
