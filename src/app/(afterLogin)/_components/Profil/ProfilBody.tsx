@@ -1,22 +1,28 @@
-import { styled } from "styled-components";
-import Banner from "./Banner";
-import ImageLink from "../Post/ImageLink";
-import ProfilActionBtns from "./ProfilActionBtns";
+import { styled } from 'styled-components';
+import Banner from './Banner';
+import ImageLink from '../Post/ImageLink';
+import ProfilActionBtns from './ProfilActionBtns';
 
-const ProfilBody = () => {
+function ProfilBody() {
   return (
     <Container>
       <Banner />
-      <ImageLink src={"/default.PNG"} id={"logo"} width={134} height={134} />
+      <ImageLink src="/default.PNG" id="logo" width={134} height={134} />
       <ProfilActionBtns />
       <div>
-        <span>{6}팔로우 중</span>
+        <span>
+          {6}
+          팔로우 중
+        </span>
         {' '}
-        <span>{3000}팔로워</span>
+        <span>
+          {3000}
+          팔로워
+        </span>
       </div>
     </Container>
   );
-};
+}
 
 export default ProfilBody;
 

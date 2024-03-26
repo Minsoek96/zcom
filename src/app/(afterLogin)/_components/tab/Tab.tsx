@@ -1,26 +1,27 @@
-"use client";
-import { styled } from "styled-components";
+'use client';
 
-import { useTabStore } from "@/app/_store/useTabStore";
+import { styled } from 'styled-components';
 
+import { useTabStore } from '@/app/_store/useTabStore';
 
-const Tab = () => {
+function Tab() {
   const { tab, setTab } = useTabStore();
 
   return (
     <TabContainer>
       <FixedContainer $currentTab={tab}>
-        <div onClick={() => setTab("recommend")}>
+        <div onClick={() => setTab('recommend')}>
           추천
-          <div></div>
+          <div />
         </div>
-        <div onClick={() => setTab("follow")}>
-          팔로우 중<div></div>
+        <div onClick={() => setTab('follow')}>
+          팔로우 중
+          <div />
         </div>
       </FixedContainer>
     </TabContainer>
   );
-};
+}
 
 export default Tab;
 
@@ -28,7 +29,7 @@ const TabContainer = styled.div`
   height: 50px;
 `;
 
-const FixedContainer = styled.div<{ $currentTab: String }>`
+const FixedContainer = styled.div<{ $currentTab: string }>`
   width: 597px;
   vertical-align: 1px;
   display: flex;
@@ -51,29 +52,25 @@ const FixedContainer = styled.div<{ $currentTab: String }>`
 
   > div:first-child {
     border-right: 1px solid #eff3f4;;
-    font-weight: ${(props) =>
-        props.$currentTab === "recommend" ? "700" : "0"};
+    font-weight: ${(props) => (props.$currentTab === 'recommend' ? '700' : '0')};
     
 
     div {
       position: absolute;
       bottom: 0;
-      background-color: ${(props) =>
-        props.$currentTab === "recommend" ? "rgb(29, 155, 240)" : "none"};
+      background-color: ${(props) => (props.$currentTab === 'recommend' ? 'rgb(29, 155, 240)' : 'none')};
       width: 56px;
       height: 4px;
     }
   }
   
   > div:last-child {
-    font-weight: ${(props) =>
-      props.$currentTab === "recommend" ? "0" : "700"};
+    font-weight: ${(props) => (props.$currentTab === 'recommend' ? '0' : '700')};
 
     div {
       position: absolute;
       bottom: 0;
-      background-color: ${(props) =>
-        props.$currentTab === "recommend" ? "none" : "rgb(29, 155, 240)"};
+      background-color: ${(props) => (props.$currentTab === 'recommend' ? 'none' : 'rgb(29, 155, 240)')};
       width: 56px;
       height: 4px;
     }

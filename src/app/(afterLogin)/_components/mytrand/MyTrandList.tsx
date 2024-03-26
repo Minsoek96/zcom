@@ -1,21 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import key from "@/app/_utils/key";
+import key from '@/app/_utils/key';
 
 const trandList = [
-  { title: "대한민국에서 트렌드중", content: "우리 택연" },
-  { title: "뮤직 - 실시간 트렌드", content: "승관 버논" },
-  { title: "대한민국에서 트렌드중", content: "벌써 일본" },
-  { title: "대한민국에서 트렌드중", content: "해군 관악대" },
-  { title: "대한민국에서 트렌드중", content: "우리 택연" },
-  { title: "뮤직 - 실시간 트렌드", content: "승관 버논" },
-  { title: "대한민국에서 트렌드중", content: "벌써 일본" },
-  { title: "대한민국에서 트렌드중", content: "해군 관악대" },
-  { title: "대한민국에서 트렌드중", content: "우리 택연" },
-  { title: "뮤직 - 실시간 트렌드", content: "승관 버논" },
+  { title: '대한민국에서 트렌드중', content: '우리 택연' },
+  { title: '뮤직 - 실시간 트렌드', content: '승관 버논' },
+  { title: '대한민국에서 트렌드중', content: '벌써 일본' },
+  { title: '대한민국에서 트렌드중', content: '해군 관악대' },
+  { title: '대한민국에서 트렌드중', content: '우리 택연' },
+  { title: '뮤직 - 실시간 트렌드', content: '승관 버논' },
+  { title: '대한민국에서 트렌드중', content: '벌써 일본' },
+  { title: '대한민국에서 트렌드중', content: '해군 관악대' },
+  { title: '대한민국에서 트렌드중', content: '우리 택연' },
+  { title: '뮤직 - 실시간 트렌드', content: '승관 버논' },
 ];
 
-const MyTrandList = () => {
+function MyTrandList() {
   return (
     <Container>
       <span>나를 위한 트렌드</span>
@@ -27,7 +27,7 @@ const MyTrandList = () => {
       ))}
     </Container>
   );
-};
+}
 
 export default MyTrandList;
 

@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 type ImageType = {
   id: string;
@@ -7,7 +7,9 @@ type ImageType = {
   width: number;
   height: number;
 };
-const ImageLink = ({ src, id, width, height }: ImageType) => {
+function ImageLink({
+  src, id, width, height,
+}: ImageType) {
   if (!src) {
     return null;
   }
@@ -19,10 +21,10 @@ const ImageLink = ({ src, id, width, height }: ImageType) => {
         alt={id}
         width={width}
         height={height}
-        style={{ borderRadius: "9999px" }}
+        style={{ borderRadius: '9999px' }}
       />
     </Link>
   );
-};
+}
 
 export default ImageLink;

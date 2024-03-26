@@ -1,7 +1,7 @@
-import { styled } from "styled-components";
-import { MessageIcon, PointIcon } from "../../_constants/MenuIcons";
+import { styled } from 'styled-components';
+import { MessageIcon, PointIcon } from '../../_constants/MenuIcons';
 
-const ProfilActionBtns = () => {
+function ProfilActionBtns() {
   return (
     <Container>
       <div>
@@ -10,10 +10,10 @@ const ProfilActionBtns = () => {
       <div>
         <MessageIcon />
       </div>
-      <FollowButton type={"button"}>팔로우</FollowButton>
+      <FollowButton type="button">팔로우</FollowButton>
     </Container>
   );
-};
+}
 export default ProfilActionBtns;
 
 const Container = styled.div`
@@ -38,7 +38,7 @@ const Container = styled.div`
   }
 `;
 
-const FollowButton = styled.button.attrs({ type: "button" })`
+const FollowButton = styled.button.attrs({ type: 'button' })`
   cursor: pointer;
   border: 1px solid rgba(15, 20, 25, 0.1);
   background-color: white;

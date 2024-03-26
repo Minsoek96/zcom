@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { usePathname } from "next/navigation";
+import { usePathname } from 'next/navigation';
 
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 const NavItemsContainer = styled.li`
   list-style: none;
@@ -22,14 +22,14 @@ const NavItemsWrapper = styled.div<{ $isSelected: boolean }>`
   padding: 12px;
   align-items: center;
   font-size: 19px;
-  font-weight: ${props => props.$isSelected ? 'bold' : 'none'};
+  font-weight: ${(props) => (props.$isSelected ? 'bold' : 'none')};
 
   div {
     margin-inline: 20px;
   }
 
   svg {
-    fill: ${props => props.$isSelected ? '#000;': 'none'};
+    fill: ${(props) => (props.$isSelected ? '#000;' : 'none')};
     stroke: #000;
     stroke-width : 1.5px;
   }
@@ -41,19 +41,19 @@ type NavMenuItemProps = {
   Icon: React.ReactNode;
 };
 
-const NavMenuItem = ({ path, name, Icon }: NavMenuItemProps) => {
+function NavMenuItem({ path, name, Icon }: NavMenuItemProps) {
   const pathName = usePathname();
 
   return (
     <NavItemsContainer>
       <Link href={path}>
-        <NavItemsWrapper $isSelected={pathName===path}>
+        <NavItemsWrapper $isSelected={pathName === path}>
           {Icon}
           <div>{name}</div>
         </NavItemsWrapper>
       </Link>
     </NavItemsContainer>
   );
-};
+}
 
 export default NavMenuItem;

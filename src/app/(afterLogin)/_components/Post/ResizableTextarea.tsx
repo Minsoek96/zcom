@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 type ResizableTextareaProps = {
   text: string;
@@ -8,21 +8,21 @@ type ResizableTextareaProps = {
   placeholder: string;
 };
 
-const ResizableTextarea = ({
+function ResizableTextarea({
   text,
   setText,
   placeholder,
-}: ResizableTextareaProps) => {
+}: ResizableTextareaProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     const adjustHeight = () => {
       if (!textareaRef.current) return;
       const textarea = textareaRef.current;
-      textarea.style.height = "inherit";
+      textarea.style.height = 'inherit';
       const newHeight = Math.min(textarea.scrollHeight, 500);
       textarea.style.height = `${newHeight}px`;
-      textarea.style.overflowY = newHeight >= 500 ? "auto" : "hidden";
+      textarea.style.overflowY = newHeight >= 500 ? 'auto' : 'hidden';
     };
 
     adjustHeight();
@@ -36,7 +36,7 @@ const ResizableTextarea = ({
       placeholder={placeholder}
     />
   );
-};
+}
 
 const StyledTextarea = styled.textarea`
   width: inherit;

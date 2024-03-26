@@ -1,33 +1,38 @@
-"use client";
-import { useState } from "react";
+'use client';
 
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
 
-import { styled } from "styled-components";
+import { useRouter } from 'next/navigation';
 
-import ImageLink from "@/app/(afterLogin)/_components/Post/ImageLink";
-import ResizableTextarea from "@/app/(afterLogin)/_components/Post/ResizableTextarea";
-import PostActionButtons from "@/app/(afterLogin)/_components/Post/PostActionButtons";
-import { CloseIcon } from "@/app/(afterLogin)/_constants/MenuIcons";
+import { styled } from 'styled-components';
 
-const Tweet = () => {
-  const router = useRouter()
+import ImageLink from '@/app/(afterLogin)/_components/Post/ImageLink';
+import ResizableTextarea from '@/app/(afterLogin)/_components/Post/ResizableTextarea';
+import PostActionButtons from '@/app/(afterLogin)/_components/Post/PostActionButtons';
+import { CloseIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
+
+function Tweet() {
+  const router = useRouter();
   const [text, setText] = useState('');
   const target = {
     User: {
-      id: "elonmusk",
-      nickname: "Elon Musk",
-      image: "/yRsRRjGO.jpg",
+      id: 'elonmusk',
+      nickname: 'Elon Musk',
+      image: '/yRsRRjGO.jpg',
     },
-    content: "클론코딩 라이브로 하니 너무 힘들어요 ㅠㅠ",
+    content: '클론코딩 라이브로 하니 너무 힘들어요 ㅠㅠ',
     createdAt: new Date(),
     Images: [],
-  }; //임시
+  }; // 임시
+
+  const handleBack = () => {
+    router.back();
+  };
 
   return (
     <Container>
       <ModalContainer>
-        <div onClick={() => {router.back()}}><CloseIcon/></div>
+        <div onClick={handleBack}><CloseIcon /></div>
         <div>
           <ImageLink
             src={target.User.image}
@@ -35,17 +40,17 @@ const Tweet = () => {
             width={40}
             height={40}
           />
-        <ResizableTextarea
-          text={text}
-          setText={setText}
-          placeholder="무슨 일이 일어나고 있나요?"
-        />
+          <ResizableTextarea
+            text={text}
+            setText={setText}
+            placeholder="무슨 일이 일어나고 있나요?"
+          />
         </div>
-        <PostActionButtons/>
+        <PostActionButtons />
       </ModalContainer>
     </Container>
   );
-};
+}
 
 export default Tweet;
 

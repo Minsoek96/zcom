@@ -1,5 +1,3 @@
-const key = (value: string, index: number) => {
-  return `${value}-${index}`;
-};
+const key = (value: string, index: number) => `${value}-${index}`;
 
 export default key;

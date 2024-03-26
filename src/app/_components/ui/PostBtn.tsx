@@ -1,20 +1,18 @@
-import React from "react";
-
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 type PostBtn = {
   name: string;
   onClick: () => void;
 };
 
-const PostBtn = ({ name, onClick }: PostBtn) => {
+function PostBtn({ name, onClick }: PostBtn) {
   return <Container onClick={onClick}>{name}</Container>;
-};
+}
 
 export default PostBtn;
 
 const Container = styled.button.attrs({
-  type: "button",
+  type: 'button',
 })`
   width: 233px;
   text-align: center;

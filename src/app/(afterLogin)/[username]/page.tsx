@@ -1,10 +1,11 @@
-"use client";
-import Header from "@/app/_components/ui/Header";
-import { usePathname } from "next/navigation";
-import { styled } from "styled-components";
-import ProfilBody from "../_components/Profil/ProfilBody";
+'use client';
 
-const Profil = () => {
+import Header from '@/app/_components/ui/Header';
+import { usePathname } from 'next/navigation';
+import { styled } from 'styled-components';
+import ProfilBody from '../_components/Profil/ProfilBody';
+
+function Profil() {
   const name = usePathname();
   return (
     <Container>
@@ -12,7 +13,7 @@ const Profil = () => {
       <ProfilBody />
     </Container>
   );
-};
+}
 
 export default Profil;
 

@@ -1,16 +1,17 @@
-"use client";
-import { styled } from "styled-components";
+'use client';
 
-import SideBar from "./_components/SideBar/SideBar";
-import RightSideSection from "./_components/rightSideSection/RightSideSection";
+import { styled } from 'styled-components';
 
-const AfterLoginLayout = ({
+import SideBar from './_components/SideBar/SideBar';
+import RightSideSection from './_components/rightSideSection/RightSideSection';
+
+function AfterLoginLayout({
   children,
   modal,
 }: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
-}>) => {
+}>) {
   return (
     <Container>
       <SideWrraper>
@@ -22,14 +23,14 @@ const AfterLoginLayout = ({
         <RightSectionInner>
           <MainWrraper>{children}</MainWrraper>
           <RightSection>
-            <RightSideSection/>
+            <RightSideSection />
           </RightSection>
         </RightSectionInner>
       </RightSectionWrraper>
       {modal}
     </Container>
   );
-};
+}
 
 export default AfterLoginLayout;
 

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 interface ButtonIconProps {
   icon: React.ReactNode;
@@ -7,19 +7,21 @@ interface ButtonIconProps {
   number?: number;
 }
 
-const ButtonIcon: React.FC<ButtonIconProps> = ({
+export default function ButtonIcon({
   icon: Icon,
   hoverColor,
   isClick = false,
   number = 0,
-}) => (
-  <Container $hoverColor={hoverColor}>
-    <Button $hoverColor={hoverColor} $isClick={isClick || false}>
-      {Icon}
-    </Button>
-    <span>{number === 0 ? null : number}</span>
-  </Container>
-);
+}:ButtonIconProps) {
+  return (
+    <Container $hoverColor={hoverColor}>
+      <Button $hoverColor={hoverColor} $isClick={isClick || false}>
+        {Icon}
+      </Button>
+      <span>{number === 0 ? null : number}</span>
+    </Container>
+  );
+}
 
 interface ActionProps {
   $hoverColor: string[];
@@ -36,7 +38,7 @@ const Container = styled.div<ActionProps>`
 `;
 
 const Button = styled.button.attrs({
-  type: "button",
+  type: 'button',
 })<ActionProps>`
   cursor: pointer;
   width: 34px;
@@ -46,8 +48,7 @@ const Button = styled.button.attrs({
   background-color: inherit;
 
   svg {
-    fill: ${(props) =>
-      props.$isClick ? props.$hoverColor[1] : "rgb(83, 100, 113)"};
+    fill: ${(props) => (props.$isClick ? props.$hoverColor[1] : 'rgb(83, 100, 113)')};
   }
 
   &:hover {
@@ -58,5 +59,3 @@ const Button = styled.button.attrs({
     transition: background-color 0.2s ease;
   }
 `;
-
-export default ButtonIcon;

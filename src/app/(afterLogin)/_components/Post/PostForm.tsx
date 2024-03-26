@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import { useState } from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import ImageLink from "./ImageLink";
-import PostActionButtons from "./PostActionButtons";
-import ResizableTextarea from "./ResizableTextarea";
+import ImageLink from './ImageLink';
+import PostActionButtons from './PostActionButtons';
+import ResizableTextarea from './ResizableTextarea';
 
-const PostForm = () => {
-  const [text, setText] = useState("");
+function PostForm() {
+  const [text, setText] = useState('');
 
   const target = {
     User: {
-      id: "elonmusk",
-      nickname: "Elon Musk",
-      image: "/yRsRRjGO.jpg",
+      id: 'elonmusk',
+      nickname: 'Elon Musk',
+      image: '/yRsRRjGO.jpg',
     },
-    content: "클론코딩 라이브로 하니 너무 힘들어요 ㅠㅠ",
+    content: '클론코딩 라이브로 하니 너무 힘들어요 ㅠㅠ',
     createdAt: new Date(),
     Images: [],
-  }; //임시
+  }; // 임시
 
   return (
     <Container>
@@ -40,7 +40,7 @@ const PostForm = () => {
       </div>
     </Container>
   );
-};
+}
 
 export default PostForm;
 

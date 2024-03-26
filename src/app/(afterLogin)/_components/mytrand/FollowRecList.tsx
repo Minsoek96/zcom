@@ -1,25 +1,24 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
-import ImageLink from "../Post/ImageLink";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
+import ImageLink from '../Post/ImageLink';
 
-const FollowRecList = () => {
+function FollowRecList() {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/@back");
+    router.push('/@back');
   };
 
   const handleFollowClick = (e:React.MouseEvent) => {
     e.stopPropagation();
-    console.log('팔로우 신청')
-  }
-
+    console.log('팔로우 신청');
+  };
 
   return (
     <Container onClick={handleClick}>
       <div>
-        <ImageLink src={"/default.PNG"} id={"logo"} width={40} height={40} />
+        <ImageLink src="/default.PNG" id="logo" width={40} height={40} />
         <UserInfoContainer>
           <span>baek</span>
           <span>@back</span>
@@ -30,7 +29,7 @@ const FollowRecList = () => {
       </div>
     </Container>
   );
-};
+}
 
 export default FollowRecList;
 

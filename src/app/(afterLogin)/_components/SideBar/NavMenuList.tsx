@@ -1,8 +1,8 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
-import NavMenuItem from "./NavMenuItem";
+import NavMenuItem from './NavMenuItem';
 
-import { menuItems } from "../../_constants/menuItems";
+import { menuItems } from '../../_constants/menuItems';
 
 const NavMenuContainer = styled.ul`
   display: flex;
@@ -13,19 +13,19 @@ const NavMenuContainer = styled.ul`
   }
 `;
 
-const NavMenuList = () => {
-
+function NavMenuList() {
   return (
     <NavMenuContainer>
       {menuItems.map((a) => (
         <NavMenuItem
-         key={a.name} 
-         path={a.path} 
-         name={a.name}
-         Icon={a.svg} />
+          key={a.name}
+          path={a.path}
+          name={a.name}
+          Icon={a.svg}
+        />
       ))}
     </NavMenuContainer>
   );
-};
+}
 
 export default NavMenuList;

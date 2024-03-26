@@ -1,5 +1,6 @@
-'use client'
-import styled from 'styled-components'
+'use client';
+
+import styled from 'styled-components';
 
 const Container = styled.div`
     display: flex;
@@ -7,15 +8,15 @@ const Container = styled.div`
     background-color: #fff;
     width: 100dvw;
     height: 100dvh;
-`
+`;
 
-const Layout = ({children, modal}: {children: React.ReactNode, modal: React.ReactNode}) => {
-    return (
-        <Container>
-            {children}
-            {modal}
-        </Container>
-    )
+function Layout({ children, modal }: {children: React.ReactNode, modal: React.ReactNode}) {
+  return (
+    <Container>
+      {children}
+      {modal}
+    </Container>
+  );
 }
 
-export default Layout
+export default Layout;

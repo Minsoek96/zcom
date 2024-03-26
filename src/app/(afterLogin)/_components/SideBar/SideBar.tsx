@@ -1,21 +1,22 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+'use client';
 
-import { styled } from "styled-components";
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
-import PostBtn from "@/app/_components/ui/PostBtn";
-import NavMenuList from "./NavMenuList";
-import Profile from "./Profile";
+import { styled } from 'styled-components';
 
-import Zlogo from ".././../../../../public/zlogo.png";
+import PostBtn from '@/app/_components/ui/PostBtn';
+import NavMenuList from './NavMenuList';
+import Profile from './Profile';
 
-const SideBar = () => {
+import Zlogo from '../../../../../public/zlogo.png';
+
+function SideBar() {
   const router = useRouter();
 
   const handleOpenPost = () => {
-    router.push("/compose/tweet");
+    router.push('/compose/tweet');
   };
 
   return (
@@ -27,12 +28,12 @@ const SideBar = () => {
           </Logo>
         </Link>
         <NavMenuList />
-        <PostBtn onClick={handleOpenPost} name={"게시하기"} />
+        <PostBtn onClick={handleOpenPost} name="게시하기" />
       </div>
       <Profile />
     </SideBarContainer>
   );
-};
+}
 
 export default SideBar;
 

@@ -1,20 +1,21 @@
-"use client";
+'use client';
 
-import { BackIcon } from "@/app/(afterLogin)/_constants/MenuIcons";
-import { useRouter } from "next/navigation";
-import React from "react";
-import { styled } from "styled-components";
+import { useRouter } from 'next/navigation';
+
+import { styled } from 'styled-components';
+
+import { BackIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 
 type HeaderProps = {
   mainText: string;
 };
 
-const Header = ({ mainText }: HeaderProps) => {
-    const  router = useRouter();
+function Header({ mainText }: HeaderProps) {
+  const router = useRouter();
 
-    const handleBackClick = () => {
-        router.back();
-    }
+  const handleBackClick = () => {
+    router.back();
+  };
 
   return (
     <Container>
@@ -28,7 +29,7 @@ const Header = ({ mainText }: HeaderProps) => {
       </div>
     </Container>
   );
-};
+}
 
 export default Header;
 

@@ -1,24 +1,28 @@
-import { HomeIcon, MeIcon, MessageIcon, SearchIcon } from "./MenuIcons";
+import {
+  HomeIcon, MeIcon, MessageIcon, SearchIcon,
+} from './MenuIcons';
 
 export const menuItems = [
   {
-    path: "/home",
+    path: '/home',
     svg: <HomeIcon />,
-    name: "홈",
+    name: '홈',
   },
   {
-    path: "/explore",
+    path: '/explore',
     svg: <SearchIcon />,
-    name: "탐색하기",
+    name: '탐색하기',
   },
   {
-    path: "/messages",
+    path: '/messages',
     svg: <MessageIcon />,
-    name: "쪽지",
+    name: '쪽지',
   },
   {
-    path: "/me?.id",
+    path: '/me?.id',
     svg: <MeIcon />,
-    name: "프로필",
+    name: '프로필',
   },
 ];
+
+export const empty = {};

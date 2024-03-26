@@ -1,23 +1,21 @@
-import React from "react";
+import styled from 'styled-components';
 
-import styled from "styled-components";
+import { MeIcon } from '../../_constants/MenuIcons';
 
-import { MeIcon } from "../../_constants/MenuIcons";
-
-const Profile = () => {
+function Profile() {
   return (
     <Container>
       <div>
         <MeIcon />
         <div>
-            <div>t</div>
-            <div>@test555</div>
+          <div>t</div>
+          <div>@test555</div>
         </div>
       </div>
       <div>...</div>
     </Container>
   );
-};
+}
 
 export default Profile;
 

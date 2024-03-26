@@ -1,24 +1,20 @@
-import React from "react";
+import { styled } from 'styled-components';
 
-import { styled } from "styled-components";
+import Link from 'next/link';
 
-import Link from "next/link";
+import formatTimeFromNow from '@/app/_utils/day';
+import ImageLink from './ImageLink';
+import UserActionButtons from './UserActionButtons';
 
-import ImageLink from "./ImageLink";
-import UserActionButtons from "./UserActionButtons";
-
-import formatTimeFromNow from "@/app/_utils/day";
-
-
-const PostViewList = () => {
+function PostViewList() {
   const target = {
     User: {
-      id: "elonmusk",
-      nickname: "Elon Musk",
-      image: "/yRsRRjGO.jpg",
+      id: 'elonmusk',
+      nickname: 'Elon Musk',
+      image: '/yRsRRjGO.jpg',
     },
     content:
-      "비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 ",
+      '비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 비트코인 떡상 ',
     createdAt: new Date(),
     Images: [],
   };
@@ -27,15 +23,19 @@ const PostViewList = () => {
     <Container>
       <PostWrapper>
         <div>
-          <ImageLink src={"/default.png"} id={"img"} width={40} height={40} />
+          <ImageLink src="/default.png" id="img" width={40} height={40} />
         </div>
         <div>
           <UserInfoContainer>
             <Link href={`${target.User.id}`}>
               <span>{target.User.nickname}</span>
-            </Link>{" "}
-            <span>@{target.User.id}</span>
-            {" · "}
+            </Link>
+            {' '}
+            <span>
+              @
+              {target.User.id}
+            </span>
+            {' · '}
             <span>{formatTimeFromNow({ createdAt: target.createdAt })}</span>
           </UserInfoContainer>
           <div>{target.content}</div>
@@ -44,7 +44,7 @@ const PostViewList = () => {
       </PostWrapper>
     </Container>
   );
-};
+}
 
 export default PostViewList;
 

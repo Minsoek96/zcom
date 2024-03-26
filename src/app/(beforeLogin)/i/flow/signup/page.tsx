@@ -1,9 +1,9 @@
-import SignupModal from "@/app/(beforeLogin)/_component/SignupModal"
+import SignupModal from '@/app/(beforeLogin)/_component/SignupModal';
 
-const Signup = () => {
+function Signup() {
   return (
-    <SignupModal/>
-  )
+    <SignupModal />
+  );
 }
 
-export default Signup
+export default Signup;

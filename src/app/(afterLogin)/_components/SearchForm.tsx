@@ -1,17 +1,17 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
-import { SearchIcon } from "../_constants/MenuIcons";
+import { SearchIcon } from '../_constants/MenuIcons';
 
-const SearchForm = () => {
+function SearchForm() {
   return (
     <SearchContainer>
       <SearchFormWrapper>
         <SearchIcon />
-        <input type="search" placeholder={"검색"}></input>
+        <input type="search" placeholder="검색" />
       </SearchFormWrapper>
     </SearchContainer>
   );
-};
+}
 export default SearchForm;
 
 const SearchContainer = styled.div`

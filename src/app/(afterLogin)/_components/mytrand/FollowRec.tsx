@@ -1,7 +1,7 @@
-import { styled } from "styled-components";
-import FollowRecList from "./FollowRecList";
+import { styled } from 'styled-components';
+import FollowRecList from './FollowRecList';
 
-const FollowRec = () => {
+function FollowRec() {
   return (
     <Container>
       <span>팔로우 추천</span>
@@ -10,7 +10,7 @@ const FollowRec = () => {
       <FollowRecList />
     </Container>
   );
-};
+}
 
 export default FollowRec;
 

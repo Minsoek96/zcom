@@ -1,10 +1,11 @@
-"use client";
-import { styled } from "styled-components";
+'use client';
 
-import SearchForm from "../_components/SearchForm";
-import MyTrandList from "../_components/mytrand/MyTrandList";
+import { styled } from 'styled-components';
 
-const Explore = () => {
+import SearchForm from '../_components/SearchForm';
+import MyTrandList from '../_components/mytrand/MyTrandList';
+
+function Explore() {
   return (
     <Container>
       <div>
@@ -17,7 +18,7 @@ const Explore = () => {
   );
 }
 
-export default Explore
+export default Explore;
 
 const Container = styled.div`
   width: inherit;

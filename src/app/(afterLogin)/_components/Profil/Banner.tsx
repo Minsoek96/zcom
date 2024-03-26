@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const Banner = () => {
-  return <Container></Container>;
-};
+function Banner() {
+  return <Container />;
+}
 
 export default Banner;
 

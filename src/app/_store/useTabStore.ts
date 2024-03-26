@@ -1,6 +1,6 @@
-import create from "zustand";
+import create from 'zustand';
 
-type TabType = "recommend" | "follow";
+type TabType = 'recommend' | 'follow';
 
 type State = {
   tab: TabType;
@@ -11,6 +11,8 @@ type Action = {
 };
 
 export const useTabStore = create<State & Action>((set) => ({
-  tab: "recommend",
+  tab: 'recommend',
   setTab: (value: TabType) => set(() => ({ tab: value })),
 }));
+
+export const empty = {};

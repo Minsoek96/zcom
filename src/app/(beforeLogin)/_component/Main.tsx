@@ -1,13 +1,12 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import Image from "next/image";
+import Image from 'next/image';
 
-import styles from "./main.module.css";
+import styles from './main.module.css';
 
-import zLogo from "../../../../public/zlogo.png";
+import zLogo from '../../../../public/zlogo.png';
 
-
-const Main = ()  => {
+function Main() {
   return (
     <>
       <div className={styles.left}>
@@ -21,7 +20,7 @@ const Main = ()  => {
         <Link href="/login" className={styles.login}>로그인</Link>
       </div>
     </>
-  )
+  );
 }
 
-export default Main
+export default Main;

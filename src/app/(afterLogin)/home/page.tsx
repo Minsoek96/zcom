@@ -1,22 +1,22 @@
-"use client";
-import styled from "styled-components";
+'use client';
 
-import Tab from "../_components/tab/Tab";
-import PostForm from "../_components/Post/PostForm";
-import PostViewList from "../_components/Post/PostViewList";
+import styled from 'styled-components';
 
-import { useTabStore } from "@/app/_store/useTabStore";
+import { useTabStore } from '@/app/_store/useTabStore';
+import Tab from '../_components/tab/Tab';
+import PostForm from '../_components/Post/PostForm';
+import PostViewList from '../_components/Post/PostViewList';
 
 export default function Home() {
-  const {tab} = useTabStore();
+  const { tab } = useTabStore();
 
   return (
     <Container>
-      <Tab/>
-      <PostForm></PostForm>
-      <PostViewList/>
-      <PostViewList/>
-      <PostViewList/>
+      <Tab />
+      <PostForm />
+      <PostViewList />
+      <PostViewList />
+      <PostViewList />
       <div>
         <h3>{tab}</h3>
       </div>
