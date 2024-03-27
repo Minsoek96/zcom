@@ -5,6 +5,7 @@ import { styled } from 'styled-components';
 import Link from 'next/link';
 
 import formatTimeFromNow from '@/app/_utils/day';
+
 import ImageLink from './ImageLink';
 import UserActionButtons from './UserActionButtons';
 
