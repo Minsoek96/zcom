@@ -1,73 +1,59 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-import { ChangeEventHandler, FormEventHandler, useState } from 'react';
+import BackButton from './BackButton';
 
-import { useRouter } from 'next/navigation';
-
-import { CloseIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 import style from './signup.module.css';
 
 function SignupModal() {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [image, setImage] = useState('');
-  const [imageFile, setImageFile] = useState<File>();
+  // eslint-disable-next-line consistent-return
+  const submit = async (formData: FormData) => {
+    'use server';
 
-  const router = useRouter();
-  const onClickClose = () => {
-    router.back();
-    // TODO: 뒤로가기가 /home이 아니면 /home으로 보내기
-  };
+    if (!formData.get('name')) {
+      return { message: 'no_name' };
+    }
+    if (!formData.get('id')) {
+      return { message: 'no_id' };
+    }
+    if (!formData.get('password')) {
+      return { message: 'no_password' };
+    }
+    if (!formData.get('image')) {
+      return { message: 'no_image' };
+    }
 
-  const onChangeId: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setId(e.target.value);
-  };
+    let shouldRedirect = false;
 
-  const onChangePassword: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setPassword(e.target.value);
-  };
-  const onChangeNickname: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setNickname(e.target.value);
-  };
-  const onChangeImageFile: ChangeEventHandler<HTMLInputElement> = (e) => {
-    // e.target.files && setImageFile(e.target.files[0]);
-  };
-
-  const onSubmit: FormEventHandler = (e) => {
-    e.preventDefault();
-    fetch('http://localhost:9090/api/users', {
-      method: 'post',
-      body: JSON.stringify({
-        id,
-        nickname,
-        image,
-        password,
-      }),
-      credentials: 'include',
-    })
-      .then((response: Response) => {
-        console.log(response.status);
-        if (response.status === 200) {
-          router.replace('/home');
-        }
-      })
-      .catch((err) => {
-        console.error(err);
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`, {
+        method: 'post',
+        body: formData,
+        credentials: 'include',
       });
+
+      if (response.status === 403) {
+        return { message: 'user_exists' };
+      }
+
+      console.log(await response.json());
+      shouldRedirect = true;
+    } catch (error) {
+      console.error(error);
+    }
+
+    if (shouldRedirect) {
+      redirect('/home');
+    }
   };
 
   return (
     <div className={style.modalBackground}>
       <div className={style.modal}>
         <div className={style.modalHeader}>
-          <button type="button" className={style.closeButton} onClick={onClickClose}>
-            {}
-            <CloseIcon />
-          </button>
+          <BackButton />
           <div>계정을 생성하세요.</div>
         </div>
-        <form>
+        <form action={submit}>
           <div className={style.modalBody}>
             <div className={style.inputDiv}>
               <label className={style.inputLabel} htmlFor="id">
@@ -75,11 +61,11 @@ function SignupModal() {
               </label>
               <input
                 id="id"
+                name="id"
                 className={style.input}
                 type="text"
                 placeholder=""
-                value={id}
-                onChange={onChangeId}
+                required
               />
             </div>
             <div className={style.inputDiv}>
@@ -88,11 +74,11 @@ function SignupModal() {
               </label>
               <input
                 id="name"
+                name="name"
                 className={style.input}
                 type="text"
                 placeholder=""
-                value={nickname}
-                onChange={onChangeNickname}
+                required
               />
             </div>
             <div className={style.inputDiv}>
@@ -101,11 +87,11 @@ function SignupModal() {
               </label>
               <input
                 id="password"
+                name="password"
                 className={style.input}
                 type="password"
                 placeholder=""
-                value={password}
-                onChange={onChangePassword}
+                required
               />
             </div>
             <div className={style.inputDiv}>
@@ -114,15 +100,16 @@ function SignupModal() {
               </label>
               <input
                 id="image"
+                name="image"
+                required
                 className={style.input}
                 type="file"
                 accept="image/*"
-                onChange={onChangeImageFile}
               />
             </div>
           </div>
           <div className={style.modalFooter}>
-            <button type="button" className={style.actionButton} disabled>
+            <button type="submit" className={style.actionButton}>
               가입하기
             </button>
           </div>

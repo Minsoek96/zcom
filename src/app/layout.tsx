@@ -18,8 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <MSWComponent />
       <StyledComponentsRegistry>
+        <MSWComponent />
         <body className={inter.className}>{children}</body>
       </StyledComponentsRegistry>
     </html>
