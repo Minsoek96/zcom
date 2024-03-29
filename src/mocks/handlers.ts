@@ -13,16 +13,18 @@ const handlers = [
     { tagId: 9, title: '나인초', count: 1264 },
   ])),
 
-  http.post('/api/users', async () => {
-    console.log('회원가입');
-    return HttpResponse.text(JSON.stringify('user_exists'), {
-      status: 403,
-    });
-    // HttpResponse.text(JSON.stringify('ok'), {
-    //   headers: {
-    //     'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/;Max-Age=0',
-    //   },
-  }),
+  http.post(
+    '/api/users',
+    async () => HttpResponse.text(JSON.stringify('ok'), {
+      headers: {
+        'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/;Max-Age=0',
+      },
+    }),
+    // console.log('회원가입');
+    // return HttpResponse.text(JSON.stringify('user_exists'), {
+    //   status: 403,
+    // });
+  ),
 ];
 
 export default handlers;
