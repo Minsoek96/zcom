@@ -1,36 +1,25 @@
-'use client';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
-import styled from 'styled-components';
+import getPostRecommends from '@/app/_lib/getPostRecommends';
 
-import { useTabStore } from '@/app/_store/useTabStore';
 import Tab from '../_components/tab/Tab';
 import PostForm from '../_components/Post/PostForm';
 import PostViewList from '../_components/Post/PostViewList';
 
-export default function Home() {
-  const { tab } = useTabStore();
+export default async function Home() {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['posts', 'recommends'],
+    queryFn: getPostRecommends,
+  });
+
+  const dehydratedState = dehydrate(queryClient);
 
   return (
-    <Container>
+    <HydrationBoundary state={dehydratedState}>
       <Tab />
       <PostForm />
       <PostViewList />
-      <PostViewList />
-      <PostViewList />
-      <div>
-        <h3>{tab}</h3>
-      </div>
-    </Container>
+    </HydrationBoundary>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 200dvh;
-  border: 1px solid #eff3f4;
-  
-  >div:first-child ~ div {
-    padding-inline: 15px;
-  }
-`;
