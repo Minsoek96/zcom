@@ -18,7 +18,7 @@ function PostActionButtons({ btnText = '게시하기' }:PostActionButtonProps) {
         />
       </div>
       <div>
-        <PostBtn name={btnText} onClick={() => console.log('d')} />
+        <PostBtn name={btnText} onClick={() => alert('d')} />
       </div>
     </Container>
   );

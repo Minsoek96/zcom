@@ -12,7 +12,6 @@ function FollowRecList() {
 
   const handleFollowClick = (e:React.MouseEvent) => {
     e.stopPropagation();
-    console.log('팔로우 신청');
   };
 
   return (

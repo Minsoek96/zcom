@@ -37,14 +37,14 @@ const submit = async (
       return { message: 'user_exists' };
     }
 
-    console.log(await response.json());
+    // console.log(await response.json());
     shouldRedirect = true;
   } catch (error) {
-    console.error(error);
+    // console.error(error);
   }
 
   if (shouldRedirect) {
-    console.log('redirect');
+    // console.log('redirect');
     redirect('/home');
   }
   return { message: '' };
