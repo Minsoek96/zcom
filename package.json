@@ -28,6 +28,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@swc/plugin-styled-components": "^1.5.122",
     "@tanstack/react-query-devtools": "^5.28.13",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
