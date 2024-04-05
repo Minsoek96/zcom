@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 
 import SideBar from './_components/SideBar/SideBar';
 import RightSideSection from './_components/rightSideSection/RightSideSection';
+import RQProvider from '../_components/RQProvider';
 
 function AfterLoginLayout({
   children,
@@ -19,14 +20,18 @@ function AfterLoginLayout({
           <SideBar />
         </SideSection>
       </SideWrraper>
-      <RightSectionWrraper>
-        <RightSectionInner>
-          <MainWrraper>{children}</MainWrraper>
-          <RightSection>
-            <RightSideSection />
-          </RightSection>
-        </RightSectionInner>
-      </RightSectionWrraper>
+
+      <RQProvider>
+        <RightSectionWrraper>
+          <RightSectionInner>
+            <MainWrraper>{children}</MainWrraper>
+            <RightSection>
+              <RightSideSection />
+            </RightSection>
+          </RightSectionInner>
+        </RightSectionWrraper>
+      </RQProvider>
+
       {modal}
     </Container>
   );
