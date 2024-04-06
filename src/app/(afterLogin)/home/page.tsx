@@ -1,11 +1,16 @@
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
 
 import getPostRecommends from '@/app/_lib/getPostRecommends';
 
 import Container from '@/app/(afterLogin)/home/_style/Container';
+import { Suspense } from 'react';
 import Tab from '../_components/tab/Tab';
 import PostForm from '../_components/Post/PostForm';
-import PostViewList from '../_components/Post/PostViewList';
+import PostFeedTabSwitcher from '../_components/Post/PostFeedTabSwitcher';
 
 export default async function Home() {
   const queryClient = new QueryClient();
@@ -21,7 +26,7 @@ export default async function Home() {
       <HydrationBoundary state={dehydratedState}>
         <Tab />
         <PostForm />
-        <PostViewList />
+        <PostFeedTabSwitcher />
       </HydrationBoundary>
     </Container>
   );

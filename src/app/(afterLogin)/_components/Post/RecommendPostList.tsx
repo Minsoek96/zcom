@@ -8,7 +8,7 @@ import getPostRecommends from '@/app/_lib/getPostRecommends';
 
 import PostItem from './PostItem';
 
-export default function PostViewList() {
+export default function RecommendPostList() {
   const { data } = useQuery<Post[]>({
     queryKey: ['posts', 'recommends'],
     queryFn: getPostRecommends,
