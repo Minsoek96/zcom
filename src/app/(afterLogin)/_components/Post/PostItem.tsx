@@ -21,9 +21,11 @@ function PostItem({ post }: PostItemProps) {
   return (
     <Container>
       <PostWrapper>
+
         <div>
           <ImageLink src={post.User.image} id="img" width={40} height={40} />
         </div>
+
         <div>
           <UserInfoContainer>
             <Link href={`${id}`}>
@@ -43,6 +45,7 @@ function PostItem({ post }: PostItemProps) {
           </div>
           <UserActionButtons />
         </div>
+
       </PostWrapper>
     </Container>
   );

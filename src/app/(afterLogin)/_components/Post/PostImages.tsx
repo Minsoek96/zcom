@@ -1,6 +1,7 @@
 import { Post } from '@/app/_types/Post';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import styled, { css } from 'styled-components';
 
@@ -128,7 +129,7 @@ type PostImagesProps = {
 };
 
 export default function PostImages({ post }: PostImagesProps) {
-  const { Images, User } = post;
+  const { Images, User, postId } = post;
 
   if (!Images || Images.length === 0) {
     return null;
@@ -138,12 +139,14 @@ export default function PostImages({ post }: PostImagesProps) {
     <Container count={Images.length}>
       {Images.map((image) => (
         <StyledImageWrapper key={image.imageId}>
-          <Image
-            src={image.link}
-            alt={`${User.id}'s image`}
-            fill
-            style={{ objectFit: 'cover' }}
-          />
+          <Link href={`/${User.id}/status/${postId}/photo/${image.imageId}`}>
+            <Image
+              src={image.link}
+              alt={`${User.id}'s image`}
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </Link>
         </StyledImageWrapper>
       ))}
     </Container>
