@@ -30,9 +30,8 @@ function AfterLoginLayout({
             </RightSection>
           </RightSectionInner>
         </RightSectionWrraper>
+        {modal}
       </RQProvider>
-
-      {modal}
     </Container>
   );
 }

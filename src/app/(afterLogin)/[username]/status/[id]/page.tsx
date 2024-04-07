@@ -7,9 +7,7 @@ export default function PostDetailPage() {
   return (
     <main>
       <Header mainText="게시하기" />
-      <PostViewList />
       <CommentForm />
-      <PostViewList />
       <PostViewList />
     </main>
   );
