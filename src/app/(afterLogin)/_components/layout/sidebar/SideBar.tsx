@@ -10,7 +10,7 @@ import PostBtn from '@/app/_components/ui/PostBtn';
 import NavMenuList from './NavMenuList';
 import Profile from './Profile';
 
-import Zlogo from '../../../../../public/zlogo.png';
+import Zlogo from '../../../../../../public/zlogo.png';
 
 function SideBar() {
   const router = useRouter();

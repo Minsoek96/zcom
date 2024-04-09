@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 import ButtonIcon from '@/app/_components/ui/ButtonIcon';
 
-import { CommentIcon, LikeIcon, RetweetIcon } from '../../_constants/MenuIcons';
+import { CommentIcon, LikeIcon, RetweetIcon } from '../../../_constants/MenuIcons';
 
 function UserActionButtons() {
   const commented = false;

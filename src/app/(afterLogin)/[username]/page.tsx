@@ -1,9 +1,10 @@
 'use client';
 
-import Header from '@/app/_components/ui/Header';
 import { usePathname } from 'next/navigation';
 import { styled } from 'styled-components';
-import ProfilBody from '../_components/Profil/ProfilBody';
+
+import Header from '@/app/_components/ui/Header';
+import ProfilBody from '../_components/profil/ProfilBody';
 
 function Profil() {
   const name = usePathname();

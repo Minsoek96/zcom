@@ -8,9 +8,9 @@ import formatTimeFromNow from '@/app/_utils/day';
 
 import { Post } from '@/app/_types/Post';
 
-import ImageLink from './ImageLink';
 import UserActionButtons from './UserActionButtons';
 import PostImages from './PostImages';
+import ImageLink from '../ImageLink';
 
 type PostItemProps = {
   post: Post;
@@ -21,7 +21,6 @@ function PostItem({ post }: PostItemProps) {
   return (
     <Container>
       <PostWrapper>
-
         <div>
           <ImageLink src={post.User.image} id="img" width={40} height={40} />
         </div>
@@ -45,7 +44,6 @@ function PostItem({ post }: PostItemProps) {
           </div>
           <UserActionButtons />
         </div>
-
       </PostWrapper>
     </Container>
   );

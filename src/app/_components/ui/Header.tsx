@@ -7,7 +7,7 @@ import { styled } from 'styled-components';
 import { BackIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 
 type HeaderProps = {
-  mainText: string;
+  mainText: string|React.ReactNode;
 };
 
 function Header({ mainText }: HeaderProps) {
@@ -25,7 +25,7 @@ function Header({ mainText }: HeaderProps) {
         </div>
       </div>
       <div>
-        <span>{mainText}</span>
+        {mainText}
       </div>
     </Container>
   );

@@ -7,10 +7,9 @@ import {
 import getPostRecommends from '@/app/_lib/getPostRecommends';
 
 import Container from '@/app/(afterLogin)/home/_style/Container';
-import { Suspense } from 'react';
 import Tab from '../_components/tab/Tab';
-import PostForm from '../_components/Post/PostForm';
-import PostFeedTabSwitcher from '../_components/Post/PostFeedTabSwitcher';
+import PostForm from '../_components/post/form/PostForm';
+import PostFeedTabSwitcher from '../_components/post/PostFeedTabSwitcher';
 
 export default async function Home() {
   const queryClient = new QueryClient();

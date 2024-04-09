@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 import NavMenuItem from './NavMenuItem';
 
-import { menuItems } from '../../_constants/menuItems';
+import { menuItems } from '../../../_constants/menuItems';
 
 const NavMenuContainer = styled.ul`
   display: flex;

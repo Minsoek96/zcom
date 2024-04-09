@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 import ButtonIcon from '@/app/_components/ui/ButtonIcon';
 import PostBtn from '@/app/_components/ui/PostBtn';
-import { PictureIcon } from '../../_constants/MenuIcons';
+import { PictureIcon } from '../../../_constants/MenuIcons';
 
 type PostActionButtonProps = {
   btnText?: string

@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import Banner from './Banner';
-import ImageLink from '../Post/ImageLink';
+import ImageLink from '../post/ImageLink';
 import ProfilActionBtns from './ProfilActionBtns';
 
 function ProfilBody() {

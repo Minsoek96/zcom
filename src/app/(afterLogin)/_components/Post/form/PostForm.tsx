@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 
-import ImageLink from './ImageLink';
+import ImageLink from '../ImageLink';
 import PostActionButtons from './PostActionButtons';
 import ResizableTextarea from './ResizableTextarea';
 

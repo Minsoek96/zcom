@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 import { useRouter } from 'next/navigation';
-import ImageLink from '../Post/ImageLink';
+import ImageLink from '../post/ImageLink';
 
 function FollowRecList() {
   const router = useRouter();

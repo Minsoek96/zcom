@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import { signOut, useSession } from 'next-auth/react';
 
-import { MeIcon } from '../../_constants/MenuIcons';
+import { MeIcon } from '../../../_constants/MenuIcons';
 
 function Profile() {
   const router = useRouter();

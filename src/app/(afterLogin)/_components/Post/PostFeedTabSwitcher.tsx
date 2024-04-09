@@ -2,9 +2,9 @@
 
 import { useTabStore } from '@/app/_store/useTabStore';
 
-import RecommendPostList from './RecommendPostList';
+import RecommendPostList from './recommend-list/RecommendPostList';
 
-import FollowingPostList from './FollowingPostList';
+import FollowingPostList from './following-list/FollowingPostList';
 
 export default function PostFeedTabSwitcher() {
   const { tab } = useTabStore();

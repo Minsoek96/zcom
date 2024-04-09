@@ -2,8 +2,8 @@
 
 import { styled } from 'styled-components';
 
-import SideBar from './_components/SideBar/SideBar';
-import RightSideSection from './_components/rightSideSection/RightSideSection';
+import SideBar from './_components/layout/sidebar/SideBar';
+import RightSideSection from './_components/layout/rightSideSection/RightSideSection';
 import RQProvider from '../_components/RQProvider';
 
 function AfterLoginLayout({

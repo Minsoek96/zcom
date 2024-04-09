@@ -6,7 +6,7 @@ import { Post } from '@/app/_types/Post';
 
 import getPostRecommends from '@/app/_lib/getPostRecommends';
 
-import PostItem from './PostItem';
+import PostItem from '../post-detail/PostItem';
 
 export default function RecommendPostList() {
   const { data } = useQuery<Post[]>({

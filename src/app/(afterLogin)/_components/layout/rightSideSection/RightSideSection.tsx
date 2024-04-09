@@ -2,9 +2,9 @@ import { usePathname } from 'next/navigation';
 
 import { styled } from 'styled-components';
 
-import SearchForm from '../SearchForm';
-import MyTrandList from '../mytrand/MyTrandList';
-import FollowRec from '../mytrand/FollowRec';
+import SearchForm from '../../search/SearchForm';
+import MyTrandList from '../../mytrand/MyTrandList';
+import FollowRec from '../../mytrand/FollowRec';
 
 function RightSideSection() {
   const path = usePathname();
