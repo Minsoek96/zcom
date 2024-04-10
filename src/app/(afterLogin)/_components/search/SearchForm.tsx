@@ -1,13 +1,22 @@
+'use client';
+
 import { styled } from 'styled-components';
 
-import { SearchIcon } from '../_constants/MenuIcons';
+import { useRouter } from 'next/navigation';
+import { SearchIcon } from '../../_constants/MenuIcons';
 
 function SearchForm() {
+  const router = useRouter();
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    router.push(`/search?q=${e.currentTarget.search.value}`);
+  };
+
   return (
     <SearchContainer>
-      <SearchFormWrapper>
+      <SearchFormWrapper onSubmit={onSubmit}>
         <SearchIcon />
-        <input type="search" placeholder="검색" />
+        <input name="search" type="search" placeholder="검색" />
       </SearchFormWrapper>
     </SearchContainer>
   );

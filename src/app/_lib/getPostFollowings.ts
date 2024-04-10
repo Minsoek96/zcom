@@ -1,11 +1,7 @@
 export default async function getPostRecommends() {
-  const res = await fetch('http://localhost:9090/api/followingPosts', {
-    next: {
-      tags: ['posts', 'followings'],
-    },
-  });
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
+  const res = await fetch('http://localhost:9090/api/followingPosts');
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
