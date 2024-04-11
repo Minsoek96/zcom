@@ -2,8 +2,8 @@
 
 import { styled } from 'styled-components';
 
-import SearchForm from '../_components/SearchForm';
-import MyTrandList from '../_components/mytrand/MyTrandList';
+import SearchForm from '../_components/search/SearchForm';
+import MyTrendList from '../_components/mytrand/MyTrendList';
 
 function Explore() {
   return (
@@ -12,7 +12,7 @@ function Explore() {
         <SearchForm />
       </div>
       <TrandWrapper>
-        <MyTrandList />
+        <MyTrendList />
       </TrandWrapper>
     </Container>
   );

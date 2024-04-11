@@ -18,18 +18,6 @@ const User = [
 ];
 
 const handlers = [
-  http.get('/api/trends', () => HttpResponse.json([
-    { tagId: 1, title: '제로초', count: 1264 },
-    { tagId: 2, title: '원초', count: 1264 },
-    { tagId: 3, title: '투초', count: 1264 },
-    { tagId: 4, title: '쓰리초', count: 1264 },
-    { tagId: 5, title: '포초', count: 1264 },
-    { tagId: 6, title: '파이브초', count: 1264 },
-    { tagId: 7, title: '식스초', count: 1264 },
-    { tagId: 8, title: '세븐초', count: 1264 },
-    { tagId: 9, title: '나인초', count: 1264 },
-  ])),
-
   http.post('/api/login', () => HttpResponse.json(User[1], {
     headers: {
       'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
@@ -60,72 +48,18 @@ const handlers = [
 
   http.get('/api/postRecommends', async () => {
     await delay(3000);
-    return HttpResponse.json(
-      [
-        {
-          postId: 1,
-          User: User[0],
-          content: `${1} Z.com is so marvelous. I'm gonna buy that.`,
-          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
-          createdAt: generateDate(),
-        },
-        {
-          postId: 2,
-          User: User[0],
-          content: `${2} Z.com is so marvelous. I'm gonna buy that.`,
-          Images: [
-            { imageId: 1, link: faker.image.urlLoremFlickr() },
-            { imageId: 2, link: faker.image.urlLoremFlickr() },
-          ],
-          createdAt: generateDate(),
-        },
-        {
-          postId: 3,
-          User: User[0],
-          content: `${3} Z.com is so marvelous. I'm gonna buy that.`,
-          Images: [],
-          createdAt: generateDate(),
-        },
-        {
-          postId: 4,
-          User: User[0],
-          content: `${4} Z.com is so marvelous. I'm gonna buy that.`,
-          Images: [
-            { imageId: 1, link: faker.image.urlLoremFlickr() },
-            { imageId: 2, link: faker.image.urlLoremFlickr() },
-            { imageId: 3, link: faker.image.urlLoremFlickr() },
-            { imageId: 4, link: faker.image.urlLoremFlickr() },
-          ],
-          createdAt: generateDate(),
-        },
-        {
-          postId: 5,
-          User: User[0],
-          content: `${5} Z.com is so marvelous. I'm gonna buy that.`,
-          Images: [
-            { imageId: 1, link: faker.image.urlLoremFlickr() },
-            { imageId: 2, link: faker.image.urlLoremFlickr() },
-            { imageId: 3, link: faker.image.urlLoremFlickr() },
-          ],
-          createdAt: generateDate(),
-        },
-      ],
-    );
-  }),
-
-  http.get('/api/followingPosts', async () => HttpResponse.json(
-    [
+    return HttpResponse.json([
       {
         postId: 1,
         User: User[0],
-        content: `${1} X.com is so marvelous. I'm gonna buy that.`,
+        content: `${1} Z.com is so marvelous. I'm gonna buy that.`,
         Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
         createdAt: generateDate(),
       },
       {
         postId: 2,
         User: User[0],
-        content: `${2} X.com is so marvelous. I'm gonna buy that.`,
+        content: `${2} Z.com is so marvelous. I'm gonna buy that.`,
         Images: [
           { imageId: 1, link: faker.image.urlLoremFlickr() },
           { imageId: 2, link: faker.image.urlLoremFlickr() },
@@ -135,14 +69,14 @@ const handlers = [
       {
         postId: 3,
         User: User[0],
-        content: `${3} X.com is so marvelous. I'm gonna buy that.`,
+        content: `${3} Z.com is so marvelous. I'm gonna buy that.`,
         Images: [],
         createdAt: generateDate(),
       },
       {
         postId: 4,
         User: User[0],
-        content: `${4} X.com is so marvelous. I'm gonna buy that.`,
+        content: `${4} Z.com is so marvelous. I'm gonna buy that.`,
         Images: [
           { imageId: 1, link: faker.image.urlLoremFlickr() },
           { imageId: 2, link: faker.image.urlLoremFlickr() },
@@ -154,7 +88,7 @@ const handlers = [
       {
         postId: 5,
         User: User[0],
-        content: `${5} X .com is so marvelous. I'm gonna buy that.`,
+        content: `${5} Z.com is so marvelous. I'm gonna buy that.`,
         Images: [
           { imageId: 1, link: faker.image.urlLoremFlickr() },
           { imageId: 2, link: faker.image.urlLoremFlickr() },
@@ -162,53 +96,214 @@ const handlers = [
         ],
         createdAt: generateDate(),
       },
-    ],
-  )),
+    ]);
+  }),
+
+  http.get('/api/followingPosts', async () => HttpResponse.json([
+    {
+      postId: 1,
+      User: User[0],
+      content: `${1} X.com is so marvelous. I'm gonna buy that.`,
+      Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+      createdAt: generateDate(),
+    },
+    {
+      postId: 2,
+      User: User[0],
+      content: `${2} X.com is so marvelous. I'm gonna buy that.`,
+      Images: [
+        { imageId: 1, link: faker.image.urlLoremFlickr() },
+        { imageId: 2, link: faker.image.urlLoremFlickr() },
+      ],
+      createdAt: generateDate(),
+    },
+    {
+      postId: 3,
+      User: User[0],
+      content: `${3} X.com is so marvelous. I'm gonna buy that.`,
+      Images: [],
+      createdAt: generateDate(),
+    },
+    {
+      postId: 4,
+      User: User[0],
+      content: `${4} X.com is so marvelous. I'm gonna buy that.`,
+      Images: [
+        { imageId: 1, link: faker.image.urlLoremFlickr() },
+        { imageId: 2, link: faker.image.urlLoremFlickr() },
+        { imageId: 3, link: faker.image.urlLoremFlickr() },
+        { imageId: 4, link: faker.image.urlLoremFlickr() },
+      ],
+      createdAt: generateDate(),
+    },
+    {
+      postId: 5,
+      User: User[0],
+      content: `${5} X .com is so marvelous. I'm gonna buy that.`,
+      Images: [
+        { imageId: 1, link: faker.image.urlLoremFlickr() },
+        { imageId: 2, link: faker.image.urlLoremFlickr() },
+        { imageId: 3, link: faker.image.urlLoremFlickr() },
+      ],
+      createdAt: generateDate(),
+    },
+  ])),
 
   http.get('/api/search', ({ request }) => {
     const url = new URL(request.url);
     const q = url.searchParams.get('q');
 
-    return HttpResponse.json(
-      [
-        {
-          postId: 1,
-          User: User[0],
-          content: `${1} 검색결과 ${q}`,
-          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
-          createdAt: generateDate(),
-        },
-        {
-          postId: 2,
-          User: User[0],
-          content: `${2} 검색결과 ${q}`,
-          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
-          createdAt: generateDate(),
-        },
-        {
-          postId: 3,
-          User: User[0],
-          content: `${3} 검색결과 ${q}`,
-          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
-          createdAt: generateDate(),
-        },
-        {
-          postId: 4,
-          User: User[0],
-          content: `${4} 검색결과 ${q}`,
-          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
-          createdAt: generateDate(),
-        },
-        {
-          postId: 5,
-          User: User[0],
-          content: `${5} 검색결과 ${q}`,
-          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
-          createdAt: generateDate(),
-        },
-      ],
-    );
+    return HttpResponse.json([
+      {
+        postId: 1,
+        User: User[0],
+        content: `${1} 검색결과 ${q}`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 2,
+        User: User[0],
+        content: `${2} 검색결과 ${q}`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 3,
+        User: User[0],
+        content: `${3} 검색결과 ${q}`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 4,
+        User: User[0],
+        content: `${4} 검색결과 ${q}`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 5,
+        User: User[0],
+        content: `${5} 검색결과 ${q}`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+    ]);
   }),
+
+  http.get('/api/users/:userId', () => HttpResponse.json(User[1])),
+
+  http.get('/api/users/:userId/posts', ({ request }) => {
+    const url = new URL(request.url);
+    const userId = url.searchParams.get('userId');
+
+    return HttpResponse.json([
+      {
+        postId: 1,
+        User: User[0],
+        content: `${1} ${userId}의 게시글`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 2,
+        User: User[0],
+        content: `${2} ${userId}의 게시글`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 3,
+        User: User[0],
+        content: `${3} ${userId}의 게시글`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 4,
+        User: User[0],
+        content: `${4} ${userId}의 게시글`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 5,
+        User: User[0],
+        content: `${5} ${userId}의 게시글`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+    ]);
+  }),
+
+  http.get('/api/users/:userId/posts/:postId', ({ request }) => {
+    const url = new URL(request.url);
+    const userId = url.searchParams.get('userId');
+    const postId = url.searchParams.get('postId');
+
+    return HttpResponse.json({
+      postId: 1,
+      User: User[0],
+      content: `${1} ${userId}의 게시글 ${postId}의 내용`,
+      Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+      createdAt: generateDate(),
+    });
+  }),
+
+  http.get('/api/users/:userId/posts/:postId/comments', ({ request }) => {
+    const url = new URL(request.url);
+    const userId = url.searchParams.get('userId');
+    const postId = url.searchParams.get('postId');
+
+    return HttpResponse.json([
+      {
+        postId: 1,
+        User: User[0],
+        content: `${1} ${userId}의 게시글 ${postId}의 답글`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 2,
+        User: User[0],
+        content: `${2} ${userId}의 게시글 ${postId}의 답글`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 3,
+        User: User[0],
+        content: `${3} ${userId}의 게시글 ${postId}의 답글`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 4,
+        User: User[0],
+        content: `${4} ${userId}의 게시글 ${postId}의 답글`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: 5,
+        User: User[0],
+        content: `${5} ${userId}의 게시글 ${postId}의 답글`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+    ]);
+  }),
+
+  http.get('/api/trends', () => HttpResponse.json(
+    [
+      { tagId: 1, title: '코난 극장판', count: 3254 },
+      { tagId: 2, title: '뒤풀이 할건가요', count: 1218 },
+      { tagId: 3, title: '데이식스', count: 1234 },
+      { tagId: 4, title: '상견례프리패스상', count: 3910 },
+      { tagId: 5, title: '가비지타임', count: 1910 },
+    ],
+  )),
 ];
 
 export default handlers;

@@ -3,7 +3,7 @@ import { usePathname } from 'next/navigation';
 import { styled } from 'styled-components';
 
 import SearchForm from '../../search/SearchForm';
-import MyTrandList from '../../mytrand/MyTrandList';
+import MyTrendList from '../../mytrand/MyTrendList';
 import FollowRec from '../../mytrand/FollowRec';
 
 function RightSideSection() {
@@ -16,7 +16,7 @@ function RightSideSection() {
         && (
           <>
             <SearchForm />
-            <MyTrandList />
+            <MyTrendList />
           </>
         )}
       <FollowRec />
