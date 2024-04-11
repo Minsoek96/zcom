@@ -304,6 +304,8 @@ const handlers = [
       { tagId: 5, title: '가비지타임', count: 1910 },
     ],
   )),
+
+  http.get('/api/followRecommends', () => HttpResponse.json(User)),
 ];
 
 export default handlers;

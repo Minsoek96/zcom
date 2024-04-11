@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 
 import SearchForm from '../../search/SearchForm';
 import MyTrendList from '../../mytrand/MyTrendList';
-import FollowRec from '../../mytrand/FollowRec';
+import FollowRecList from '../../mytrand/FollowRecList';
 
 function RightSideSection() {
   const path = usePathname();
@@ -19,7 +19,7 @@ function RightSideSection() {
             <MyTrendList />
           </>
         )}
-      <FollowRec />
+      <FollowRecList />
     </Container>
   );
 }

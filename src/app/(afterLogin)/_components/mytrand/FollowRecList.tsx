@@ -1,31 +1,25 @@
 import { styled } from 'styled-components';
 
-import { useRouter } from 'next/navigation';
-import ImageLink from '../post/ImageLink';
+import { useQuery } from '@tanstack/react-query';
+
+import getFollowRec from '@/app/_lib/getFollowRec';
+
+import { User } from '@/app/_types/User';
+import FollowRecItem from './FollowRecItem';
 
 function FollowRecList() {
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push('/@back');
-  };
-
-  const handleFollowClick = (e:React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
+  const { data } = useQuery<User[]>({
+    queryKey: ['users', 'followRecommends'],
+    queryFn: getFollowRec,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+  });
   return (
-    <Container onClick={handleClick}>
-      <div>
-        <ImageLink src="/default.PNG" id="logo" width={40} height={40} />
-        <UserInfoContainer>
-          <span>baek</span>
-          <span>@back</span>
-        </UserInfoContainer>
-      </div>
-      <div>
-        <button type="button" onClick={handleFollowClick}>팔로우</button>
-      </div>
+    <Container>
+      <span>팔로우 추천</span>
+      {data?.map((user) => (
+        <FollowRecItem key={user.id} user={user} />
+      ))}
     </Container>
   );
 }
@@ -33,52 +27,19 @@ function FollowRecList() {
 export default FollowRecList;
 
 const Container = styled.div`
-  cursor: pointer;
-  padding-block: 11px;
-  display: flex;
-  justify-content: center;
-
-  > div:first-child {
-    display: flex;
-    flex: 1;
-  }
-
-  > div:last-child {
-    display: flex;
-    width: 71px;
-  }
-
-  button {
-    cursor: pointer;
-    border: none;
-    width: 100%;
-    color: white;
-    background: black;
-    font-size: 14px;
-    font-weight: 700;
-    height: 32px;
-    border-radius: 16px;
-  }
-
-  &:hover {
-    background-color: rgba(0,0,0,0.03);
-  }
-`;
-
-const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-inline: 15px;
-
-  > span:first-child {
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 20px;
+  border-radius: 15px;
+  background-color: RGB(247, 249, 249);
+  margin-block: 15px;
+  padding-block: 11px;
+  > * {
+    padding-inline: 15px;
   }
 
-  > span:last-child {
-    color: #536471;
-    font-size: 13px;
-    line-height: 16px;
+  > span {
+    font-weight: 800;
+    font-size: 19px;
+    margin-bottom: 15px;
   }
 `;
