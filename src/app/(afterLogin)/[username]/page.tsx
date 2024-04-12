@@ -34,7 +34,7 @@ async function Profil({ params }: ProfileProps) {
     <Container>
       <HydrationBoundary state={dyhydratedState}>
         <Header mainText={username} />
-        <ProfilBody />
+        <ProfilBody username={username} />
         <UserPostList username={username} />
       </HydrationBoundary>
     </Container>

@@ -1,6 +1,6 @@
-import PostViewList from '@/app/(afterLogin)/_components/Post/PostViewList';
 import Header from '@/app/_components/ui/Header';
 import CommentForm from '@/app/(afterLogin)/_components/comment/Comment';
+import PostViewList from '@/app/(afterLogin)/_components/Post/PostViewList';
 
 // TODO: 아래 commentList로 분리하기 모형 비슷하고 데이터만 변경
 export default function PostDetailPage() {

@@ -4,7 +4,7 @@ import getUserPosts from '@/app/_lib/getUserPosts';
 
 import { Post } from '@/app/_types/Post';
 
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import PostItem from '../post-detail/PostItem';
 
@@ -24,5 +24,11 @@ export default function UserPostList({ username }: UserPostListProps) {
     gcTime: 300 * 1000,
   });
 
-  return data?.map((post) => <PostItem key={post.postId} post={post} />);
+  const queryClient = useQueryClient();
+  const user = queryClient.getQueryData(['users', username]);
+
+  if (user) {
+    return data?.map((post) => <PostItem key={post.postId} post={post} />);
+  }
+  return null;
 }

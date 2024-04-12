@@ -6,10 +6,10 @@ import { useRouter } from 'next/navigation';
 
 import { styled } from 'styled-components';
 
-import ImageLink from '@/app/(afterLogin)/_components/Post/ImageLink';
-import ResizableTextarea from '@/app/(afterLogin)/_components/Post/ResizableTextarea';
-import PostActionButtons from '@/app/(afterLogin)/_components/Post/PostActionButtons';
+import ImageLink from '@/app/(afterLogin)/_components/post/ImageLink';
 import { CloseIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
+import PostActionButtons from '@/app/(afterLogin)/_components/post/form/PostActionButtons';
+import ResizableTextarea from '@/app/(afterLogin)/_components/post/form/ResizableTextarea';
 
 function Tweet() {
   const router = useRouter();
@@ -88,7 +88,7 @@ const ModalContainer = styled.div`
     top: 0;
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
     border-radius: 9999px;
     width: 32px;
     height: 32px;

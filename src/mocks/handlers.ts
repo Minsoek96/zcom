@@ -1,4 +1,6 @@
-import { HttpResponse, delay, http } from 'msw';
+import {
+  HttpResponse, StrictResponse, delay, http,
+} from 'msw';
 
 import { faker } from '@faker-js/faker';
 
@@ -192,7 +194,19 @@ const handlers = [
     ]);
   }),
 
-  http.get('/api/users/:userId', () => HttpResponse.json(User[1])),
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+  http.get('/api/users/:userId', ({ request, params }): StrictResponse<any> => {
+    const { userId } = params;
+    const found = User.find((v) => v.id === userId);
+    if (found) {
+      return HttpResponse.json(
+        found,
+      );
+    }
+    return HttpResponse.json({ message: 'no_such_user' }, {
+      status: 404,
+    });
+  }),
 
   http.get('/api/users/:userId/posts', ({ params }) => {
     const { userId } = params;
