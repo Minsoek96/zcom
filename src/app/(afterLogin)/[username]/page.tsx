@@ -12,6 +12,7 @@ import getUserPosts from '@/app/_lib/getUserPosts';
 import ProfilBody from '../_components/profil/ProfilBody';
 
 import { Container } from './_styled';
+import UserPostList from '../_components/post/userpost-list/UserPostList';
 
 type ProfileProps = {
   params: { username: string };
@@ -34,6 +35,7 @@ async function Profil({ params }: ProfileProps) {
       <HydrationBoundary state={dyhydratedState}>
         <Header mainText={username} />
         <ProfilBody />
+        <UserPostList username={username} />
       </HydrationBoundary>
     </Container>
   );

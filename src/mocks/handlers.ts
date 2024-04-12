@@ -194,9 +194,8 @@ const handlers = [
 
   http.get('/api/users/:userId', () => HttpResponse.json(User[1])),
 
-  http.get('/api/users/:userId/posts', ({ request }) => {
-    const url = new URL(request.url);
-    const userId = url.searchParams.get('userId');
+  http.get('/api/users/:userId/posts', ({ params }) => {
+    const { userId } = params;
 
     return HttpResponse.json([
       {
