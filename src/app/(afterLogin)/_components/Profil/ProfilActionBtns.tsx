@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from 'styled-components';
 import { MessageIcon, PointIcon } from '../../_constants/MenuIcons';
 

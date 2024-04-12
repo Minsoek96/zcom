@@ -1,3 +1,5 @@
+'use client';
+
 import { styled } from 'styled-components';
 import Banner from './Banner';
 import ImageLink from '../post/ImageLink';

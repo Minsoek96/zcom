@@ -11,7 +11,7 @@ function FollowRecItem({ user }:FollowRecProps) {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push('/@back');
+    router.push(`/${user.id}`);
   };
 
   const handleFollowClick = (e:React.MouseEvent) => {

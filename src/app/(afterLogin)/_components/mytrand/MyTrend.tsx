@@ -1,13 +1,18 @@
 import { Hashtag } from '@/app/_types/Hashtag';
+
+import Link from 'next/link';
+
 import { styled } from 'styled-components';
 
 type MyTrendProps = {
-    trend : Hashtag
-}
-export default function MyTrend({ trend }:MyTrendProps) {
+  trend: Hashtag;
+};
+export default function MyTrend({ trend }: MyTrendProps) {
   return (
     <ItemContainer>
-      <p>{trend.title}</p>
+      <Link href={`/search?q=${trend.title}`}>
+        <p>{trend.title}</p>
+      </Link>
       <p>
         {trend.count.toLocaleString()}
         {' '}
@@ -20,10 +25,9 @@ export default function MyTrend({ trend }:MyTrendProps) {
 const ItemContainer = styled.div`
   cursor: pointer;
   margin-block: 20px;
-  p:first-child {
-    font-weight: bold;
-  }
-  p:last-child {
+  font-weight: bold;
+  > p{
+    font-weight: lighter;
     font-size: 12px;
     color: #536472;
     margin-top: 8px;
