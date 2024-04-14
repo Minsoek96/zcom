@@ -10,5 +10,5 @@ export default Banner;
 
 const Container = styled.div`
   height: 200px;
-  background-color: aqua;
+  background-color: RGB(207, 217, 222);
 `;
