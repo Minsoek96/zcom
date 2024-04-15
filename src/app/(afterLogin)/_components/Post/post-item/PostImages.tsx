@@ -139,7 +139,7 @@ export default function PostImages({ post }: PostImagesProps) {
     <Container count={Images.length}>
       {Images.map((image) => (
         <StyledImageWrapper key={image.imageId}>
-          <Link href={`/${User.id}/status/${postId}/photo/${image.imageId}`}>
+          <Link href={`/${User.id}/status/${postId}/photo/${image.imageId}`} onClick={(e) => e.stopPropagation()}>
             <Image
               src={image.link}
               alt={`${User.id}'s image`}

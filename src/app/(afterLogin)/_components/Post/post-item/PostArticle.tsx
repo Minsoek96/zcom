@@ -1,3 +1,5 @@
+'use client';
+
 import { Post } from '@/app/_types/Post';
 import { useRouter } from 'next/navigation';
 import React from 'react';

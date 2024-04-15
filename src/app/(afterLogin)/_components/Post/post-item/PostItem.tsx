@@ -1,6 +1,6 @@
 'use client';
 
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 import Link from 'next/link';
 
@@ -28,7 +28,7 @@ function PostItem({ post }: PostItemProps) {
           </div>
           <div>
             <UserInfoContainer>
-              <Link href={`${id}`}>
+              <Link href={`${id}`} onClick={(e) => e.stopPropagation()}>
                 <span>{nickname}</span>
               </Link>
               {' '}
