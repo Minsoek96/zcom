@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 
-import ImageLink from '../Post/ImageLink';
-import ResizableTextarea from '../Post/ResizableTextarea';
-import PostActionButtons from '../Post/PostActionButtons';
+import ImageLink from '../post/ImageLink';
+import ResizableTextarea from '../post/form/ResizableTextarea';
+import PostActionButtons from '../post/form/PostActionButtons';
 
 function CommentForm() {
   const [text, setText] = useState('');

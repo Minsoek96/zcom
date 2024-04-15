@@ -6,7 +6,7 @@ import { Post } from '@/app/_types/Post';
 
 import getPostFollowings from '@/app/_lib/getPostFollowings';
 
-import PostItem from '../post-detail/PostItem';
+import PostItem from '../post-item/PostItem';
 
 export default function FollowingPostList() {
   const { data } = useQuery<Post[]>({

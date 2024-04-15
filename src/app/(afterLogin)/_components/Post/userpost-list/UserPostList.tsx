@@ -6,7 +6,7 @@ import { Post } from '@/app/_types/Post';
 
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
-import PostItem from '../post-detail/PostItem';
+import PostItem from '../post-item/PostItem';
 
 type UserPostListProps = {
   username: string;

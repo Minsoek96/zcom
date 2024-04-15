@@ -11,6 +11,7 @@ import { Post } from '@/app/_types/Post';
 import UserActionButtons from './UserActionButtons';
 import PostImages from './PostImages';
 import ImageLink from '../ImageLink';
+import PostArticle from './PostArticle';
 
 type PostItemProps = {
   post: Post;
@@ -19,33 +20,34 @@ type PostItemProps = {
 function PostItem({ post }: PostItemProps) {
   const { id, nickname } = post.User;
   return (
-    <Container>
-      <PostWrapper>
-        <div>
-          <ImageLink src={post.User.image} id="img" width={40} height={40} />
-        </div>
-
-        <div>
-          <UserInfoContainer>
-            <Link href={`${id}`}>
-              <span>{nickname}</span>
-            </Link>
-            {' '}
-            <span>
-              @
-              {post.User.id}
-            </span>
-            {' · '}
-            <span>{formatTimeFromNow({ createdAt: post.createdAt })}</span>
-          </UserInfoContainer>
+    <PostArticle post={post}>
+      <Container>
+        <PostWrapper>
           <div>
-            {post.Images && <PostImages post={post} />}
-            {post.content}
+            <ImageLink src={post.User.image} id="img" width={40} height={40} />
           </div>
-          <UserActionButtons />
-        </div>
-      </PostWrapper>
-    </Container>
+          <div>
+            <UserInfoContainer>
+              <Link href={`${id}`}>
+                <span>{nickname}</span>
+              </Link>
+              {' '}
+              <span>
+                @
+                {post.User.id}
+              </span>
+              {' · '}
+              <span>{formatTimeFromNow({ createdAt: post.createdAt })}</span>
+            </UserInfoContainer>
+            <div>
+              {post.Images && <PostImages post={post} />}
+              {post.content}
+            </div>
+            <UserActionButtons />
+          </div>
+        </PostWrapper>
+      </Container>
+    </PostArticle>
   );
 }
 

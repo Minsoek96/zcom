@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { Post } from '@/app/_types/Post';
 import getSearchResult from '@/app/_lib/getSearchResult';
-import PostItem from '../post/post-detail/PostItem';
+import PostItem from '../post/post-item/PostItem';
 
 type Props = {
   searchParams: { q: string, f?: string, pf?: string };

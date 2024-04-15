@@ -1,0 +1,28 @@
+import { QueryFunction } from '@tanstack/query-core';
+import { Post } from '../_types/Post';
+
+const getPostDetail: QueryFunction<
+  Post,
+  [_1: string, _2: string]
+> = async ({ queryKey }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_1, id] = queryKey;
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${id}`,
+    {
+      credentials: 'include',
+      cache: 'no-store',
+    },
+  );
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+};
+
+export default getPostDetail;
