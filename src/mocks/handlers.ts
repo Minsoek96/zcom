@@ -151,6 +151,30 @@ const handlers = [
     },
   ])),
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  http.get('/api/posts/:postId', ({ request, params }): StrictResponse<any> => {
+    const { postId } = params;
+    // eslint-disable-next-line radix
+    if (parseInt(postId as string) > 10) {
+      return HttpResponse.json({ message: 'no_such_post' }, {
+        status: 404,
+      });
+    }
+    return HttpResponse.json(
+      {
+        postId,
+        User: User[0],
+        content: `${1} 게시글 아이디 ${postId}의 내용`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+          { imageId: 3, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+    );
+  }),
+
   http.get('/api/search', ({ request }) => {
     const url = new URL(request.url);
     const q = url.searchParams.get('q');
