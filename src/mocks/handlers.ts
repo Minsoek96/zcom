@@ -343,6 +343,49 @@ const handlers = [
   )),
 
   http.get('/api/followRecommends', () => HttpResponse.json(User)),
+
+  http.get('/api/posts/:postId/comments', ({ params }) => {
+    const { postId } = params;
+    return HttpResponse.json(
+      [
+        {
+          postId: 1,
+          User: User[0],
+          content: `${1} 게시글 ${postId}의 답글`,
+          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+          createdAt: generateDate(),
+        },
+        {
+          postId: 2,
+          User: User[0],
+          content: `${2} 게시글 ${postId}의 답글`,
+          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+          createdAt: generateDate(),
+        },
+        {
+          postId: 3,
+          User: User[0],
+          content: `${3} 게시글 ${postId}의 답글`,
+          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+          createdAt: generateDate(),
+        },
+        {
+          postId: 4,
+          User: User[0],
+          content: `${4} 게시글 ${postId}의 답글`,
+          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+          createdAt: generateDate(),
+        },
+        {
+          postId: 5,
+          User: User[0],
+          content: `${5} 게시글 ${postId}의 답글`,
+          Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+          createdAt: generateDate(),
+        },
+      ],
+    );
+  }),
 ];
 
 export default handlers;
