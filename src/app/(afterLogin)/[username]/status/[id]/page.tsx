@@ -34,7 +34,7 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
     <main>
       <HydrationBoundary state={dyhydratedState}>
         <Header mainText="게시하기" />
-        <PostDetail id={id} />
+        <PostDetail id={id} isPhoto />
         <CommentForm />
         <CommentList id={id} />
       </HydrationBoundary>

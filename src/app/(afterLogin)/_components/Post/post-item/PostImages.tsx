@@ -23,7 +23,7 @@ const TwoImage = css`
   gap: 4px;
 
   > div {
-    width: 260px;
+    width: 50%;
     height: 270px;
   }
 
@@ -103,7 +103,8 @@ const FourImage = css`
 `;
 
 const Container = styled.div<{ count: number }>`
-  width: 505px;
+  width: 100%;
+  max-width:  505px;
   height: 270px;
   margin-top: 11px;
 

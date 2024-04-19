@@ -15,9 +15,10 @@ import PostArticle from './PostArticle';
 
 type PostItemProps = {
   post: Post;
+  isPhoto?: boolean;
 };
 
-function PostItem({ post }: PostItemProps) {
+function PostItem({ post, isPhoto = true }: PostItemProps) {
   const { id, nickname } = post.User;
   return (
     <PostArticle post={post}>
@@ -40,7 +41,7 @@ function PostItem({ post }: PostItemProps) {
               <span>{formatTimeFromNow({ createdAt: post.createdAt })}</span>
             </UserInfoContainer>
             <div>
-              {post.Images && <PostImages post={post} />}
+              {isPhoto && post.Images && <PostImages post={post} />}
               {post.content}
             </div>
             <UserActionButtons />
@@ -70,7 +71,7 @@ const PostWrapper = styled.div`
   padding-inline: 15px;
   padding-block: 11px;
   border-bottom: 1px solid #eff3f4;
-  width: 100%;
+  width: 97%;
 
   > div:first-child {
     width: 40px;

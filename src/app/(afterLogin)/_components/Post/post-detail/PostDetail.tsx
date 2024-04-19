@@ -8,8 +8,9 @@ import PostItem from '../post-item/PostItem';
 
 type UserPostListProps = {
   id: string;
+  isPhoto: boolean;
 };
-export default function PostDetail({ id }: UserPostListProps) {
+export default function PostDetail({ id, isPhoto }: UserPostListProps) {
   const { data, error } = useQuery<
     Post,
     Error,
@@ -32,5 +33,5 @@ export default function PostDetail({ id }: UserPostListProps) {
     return null;
   }
 
-  return <PostItem post={data} />;
+  return <PostItem post={data} isPhoto={isPhoto} />;
 }
