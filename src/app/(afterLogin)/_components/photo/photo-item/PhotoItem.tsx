@@ -19,7 +19,7 @@ export default function PhotoItem({ image, idx }: PhotoItemProps) {
 }
 
 const Container = styled.div`
-  position: relative; /* Image 컴포넌트가 fill 레이아웃을 사용할 때 필요합니다. */
-  width: 100%; /* 컨테이너의 너비를 지정합니다. */
-  height: 100%; /* 컨테이너의 높이를 지정합니다. */
+  position: relative;
+  width: 873px;
+  height: 873px;
 `;
