@@ -127,3 +127,27 @@ export function PointIcon() {
     </svg>
   );
 }
+
+export function PreArrow() {
+  return (
+    <svg
+      width="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <g>
+        <path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z" />
+      </g>
+    </svg>
+  );
+}
+
+export function NextArrow() {
+  return (
+    <svg width="24" viewBox="0 0 24 24" aria-hidden="true">
+      <g>
+        <path d="M12.957 4.54L20.414 12l-7.457 7.46-1.414-1.42L16.586 13H3v-2h13.586l-5.043-5.04 1.414-1.42z" />
+      </g>
+    </svg>
+  );
+}

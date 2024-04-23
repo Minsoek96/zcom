@@ -5,6 +5,7 @@ interface ButtonIconProps {
   hoverColor: string[];
   isClick?: boolean;
   number?: number;
+  fill: string;
 }
 
 export default function ButtonIcon({
@@ -12,10 +13,11 @@ export default function ButtonIcon({
   hoverColor,
   isClick = false,
   number = 0,
-}:ButtonIconProps) {
+  fill,
+}: ButtonIconProps) {
   return (
     <Container $hoverColor={hoverColor}>
-      <Button $hoverColor={hoverColor} $isClick={isClick || false}>
+      <Button $hoverColor={hoverColor} $isClick={isClick || false} $fill={fill}>
         {Icon}
       </Button>
       <span>{number === 0 ? null : number}</span>
@@ -26,6 +28,7 @@ export default function ButtonIcon({
 interface ActionProps {
   $hoverColor: string[];
   $isClick?: boolean;
+  $fill?: string;
 }
 
 const Container = styled.div<ActionProps>`
@@ -48,7 +51,7 @@ const Button = styled.button.attrs({
   background-color: inherit;
 
   svg {
-    fill: ${(props) => (props.$isClick ? props.$hoverColor[1] : 'rgb(83, 100, 113)')};
+    fill: ${(props) => (props.$isClick ? props.$hoverColor[1] : props.$fill)};
   }
 
   &:hover {

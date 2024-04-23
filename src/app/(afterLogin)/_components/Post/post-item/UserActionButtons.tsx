@@ -2,9 +2,17 @@ import { styled } from 'styled-components';
 
 import ButtonIcon from '@/app/_components/ui/ButtonIcon';
 
-import { CommentIcon, LikeIcon, RetweetIcon } from '../../../_constants/MenuIcons';
+import {
+  CommentIcon,
+  LikeIcon,
+  RetweetIcon,
+} from '../../../_constants/MenuIcons';
 
-function UserActionButtons() {
+type UserActionButtonProps = {
+  fill?: string;
+};
+
+function UserActionButtons({ fill = 'rgb(83, 100, 113)' }: UserActionButtonProps) {
   const commented = false;
   const reposted = true;
   const liked = true;
@@ -16,6 +24,7 @@ function UserActionButtons() {
         hoverColor={['rgba(29, 155, 240, 0.1)', 'rgba(29, 155, 240)']}
         isClick={commented}
         number={0}
+        fill={fill}
       />
 
       <ButtonIcon
@@ -23,12 +32,14 @@ function UserActionButtons() {
         hoverColor={['rgba(0, 186, 124, 0.2)', 'rgba(0, 186, 124)']}
         isClick={reposted}
         number={2}
+        fill={fill}
       />
       <ButtonIcon
         icon={<LikeIcon />}
         hoverColor={['rgba(224, 36, 94, 0.2)', 'rgba(224, 36, 94)']}
         isClick={liked}
         number={3}
+        fill={fill}
       />
     </Container>
   );

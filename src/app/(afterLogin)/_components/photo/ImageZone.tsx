@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import { styled } from 'styled-components';
 import { useState } from 'react';
 import PhotoItem from './photo-item/PhotoItem';
+import { CloseIcon, NextArrow, PreArrow } from '../../_constants/MenuIcons';
+import UserActionButtons from '../post/post-item/UserActionButtons';
 
 type ImageZoneProps = {
   photoid: string;
@@ -19,10 +21,14 @@ export default function ImageZone({ photoid, id }: ImageZoneProps) {
   const router = useRouter();
 
   const handleClick = (type: 'pre' | 'next') => {
-    const changePhotoId = type === 'pre' ? Number(photoid) - 1 : Number(photoid) + 2;
+    const changePhotoId = type === 'pre' ? Number(photoid) - 1 : Number(photoid) + 1;
     setBtype(type);
     setCurrent(1);
-    router.push(`/elonmusk/status/${id}/photo/${changePhotoId}`);
+    router.replace(`/elonmusk/status/${id}/photo/${changePhotoId}`);
+  };
+
+  const handleClose = () => {
+    router.back();
   };
 
   // TOOD: 이미지 슬라이더 구현 URL변경이 ??
@@ -36,37 +42,77 @@ export default function ImageZone({ photoid, id }: ImageZoneProps) {
     <Container>
       <Wrrapper $currentIndex={current} $type={btype}>
         {data?.Images.map((image) => (
-          <PhotoItem key={image.imageId} image={image} idx={3} />
+          <PhotoItem key={image.imageId} image={image} idx={Number(photoid)} />
         ))}
       </Wrrapper>
-      <button type="button" onClick={() => handleClick('pre')}>
-        {'<-'}
-      </button>
-      <button type="button" onClick={() => handleClick('next')}>
-        {'->'}
-      </button>
+      <div onClick={() => handleClick('pre')}>
+        <PreArrow />
+      </div>
+      <div onClick={() => handleClick('next')}>
+        <NextArrow />
+      </div>
+      <div onClick={handleClose}>
+        <CloseIcon />
+      </div>
+      <UserActionButtons fill="white" />
     </Container>
   );
 }
 
 const Container = styled.div`
   position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 95%;
 
-  > button {
+  > div:nth-child(2),
+  > div:nth-child(3) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    border-radius: 9999px;
+    background-color: black;
+    width: 34px;
+    height: 34px;
+
+    svg {
+      fill: white;
+    }
   }
 
-  > button:first-child {
+  > div:nth-child(2) {
     left: 10px;
   }
 
-  > button:last-child {
+  > div:nth-child(3) {
     right: 10px;
+  }
+
+  > div:nth-child(4) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 34px;
+    height: 34px;
+    border-radius: 9999px;
+    background-color: black;
+    svg {
+      fill: white;
+    }
+  }
+
+  > div:last-child {
+    display: flex;
+    width: 873px;
   }
 `;
 
@@ -77,6 +123,7 @@ type WrrapperProps = {
 
 const Wrrapper = styled.div<WrrapperProps>`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -84,5 +131,5 @@ const Wrrapper = styled.div<WrrapperProps>`
   transform: ${(props) => (props.$type === 'pre'
     ? `translateX(${props.$currentIndex * 100}%)`
     : `translateX(-${props.$currentIndex * 100}%)`)};
-  transition: transform 0.5s ease;
+  transition: transform 0.2s ease;
 `;

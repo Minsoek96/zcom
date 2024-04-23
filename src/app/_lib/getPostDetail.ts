@@ -11,7 +11,6 @@ const getPostDetail: QueryFunction<
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${id}`,
     {
       credentials: 'include',
-      cache: 'no-store',
     },
   );
   // The return value is *not* serialized
