@@ -18,8 +18,8 @@ export default function ImageZone({ photoid, id }: ImageZoneProps) {
 
   const router = useRouter();
 
-  const handleClick = (type:'pre'|'next') => {
-    const changePhotoId = Number(photoid) + 1;
+  const handleClick = (type: 'pre' | 'next') => {
+    const changePhotoId = type === 'pre' ? Number(photoid) - 1 : Number(photoid) + 2;
     setBtype(type);
     setCurrent(1);
     router.push(`/elonmusk/status/${id}/photo/${changePhotoId}`);
@@ -34,7 +34,7 @@ export default function ImageZone({ photoid, id }: ImageZoneProps) {
   });
   return (
     <Container>
-      <Wrrapper currentIndex={current} type={btype}>
+      <Wrrapper $currentIndex={current} $type={btype}>
         {data?.Images.map((image) => (
           <PhotoItem key={image.imageId} image={image} idx={3} />
         ))}
@@ -71,8 +71,8 @@ const Container = styled.div`
 `;
 
 type WrrapperProps = {
-  currentIndex: number;
-  type: string;
+  $currentIndex: number;
+  $type: string;
 };
 
 const Wrrapper = styled.div<WrrapperProps>`
@@ -81,8 +81,8 @@ const Wrrapper = styled.div<WrrapperProps>`
   justify-content: center;
   width: 100%;
   height: 100%;
-  transform: ${(props) => (props.type === 'pre'
-    ? `translateX(-${props.currentIndex * 100}%)`
-    : `translateX(${props.currentIndex * 100}%)`)};
+  transform: ${(props) => (props.$type === 'pre'
+    ? `translateX(${props.$currentIndex * 100}%)`
+    : `translateX(-${props.$currentIndex * 100}%)`)};
   transition: transform 0.5s ease;
 `;

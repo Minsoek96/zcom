@@ -102,9 +102,9 @@ const FourImage = css`
   }
 `;
 
-const Container = styled.div<{ count: number }>`
+const Container = styled.div<{ $count: number }>`
   width: 100%;
-  max-width:  505px;
+  max-width: 505px;
   height: 270px;
   margin-top: 11px;
 
@@ -112,17 +112,25 @@ const Container = styled.div<{ count: number }>`
     cursor: pointer;
   }
 
-  ${({ count }) => count === 1 && OneImage}
+  ${({ $count }) => $count === 1 && OneImage}
 
-  ${({ count }) => count === 2 && TwoImage}
+  ${({ $count }) => $count === 2 && TwoImage}
 
-  ${({ count }) => count === 3 && ThreeImage}
+  ${({ $count }) => $count === 3 && ThreeImage}
 
-  ${({ count }) => count === 4 && FourImage}
+  ${({ $count }) => $count === 4 && FourImage}
 `;
 
 const StyledImageWrapper = styled.div`
   position: relative;
+`;
+
+const StyleLink = styled(Link)`
+  position: absolute;
+  // 추가적인 스타일링은 여기에 적용
+  display: block;
+  width: 100%;
+  height: 100%;
 `;
 
 type PostImagesProps = {
@@ -137,17 +145,21 @@ export default function PostImages({ post }: PostImagesProps) {
   }
 
   return (
-    <Container count={Images.length}>
+    <Container $count={Images.length}>
       {Images.map((image) => (
         <StyledImageWrapper key={image.imageId}>
-          <Link href={`/${User.id}/status/${postId}/photo/${image.imageId}`} onClick={(e) => e.stopPropagation()}>
+          <StyleLink
+            href={`/${User.id}/status/${postId}/photo/${image.imageId}`}
+            onClick={(e) => e.stopPropagation()}
+          >
             <Image
               src={image.link}
               alt={`${User.id}'s image`}
               fill
               style={{ objectFit: 'cover' }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
             />
-          </Link>
+          </StyleLink>
         </StyledImageWrapper>
       ))}
     </Container>

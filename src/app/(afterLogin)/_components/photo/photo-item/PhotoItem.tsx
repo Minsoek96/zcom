@@ -12,7 +12,13 @@ export default function PhotoItem({ image, idx }: PhotoItemProps) {
   return (
     isSelect && (
       <Container>
-        <Image src={link} alt={link} layout="fill" objectFit="cover" />
+        <Image
+          src={link}
+          alt={link}
+          fill
+          style={{ objectFit: 'cover' }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+        />
       </Container>
     )
   );
