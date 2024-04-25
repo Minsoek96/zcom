@@ -19,9 +19,10 @@ export default function ImageZone({ photoid, id }: ImageZoneProps) {
   const [btype, setBtype] = useState('');
 
   const router = useRouter();
+  const photoNumber = Number(photoid);
 
   const handleClick = (type: 'pre' | 'next') => {
-    const changePhotoId = type === 'pre' ? Number(photoid) - 1 : Number(photoid) + 1;
+    const changePhotoId = type === 'pre' ? photoNumber - 1 : photoNumber + 1;
     setBtype(type);
     setCurrent(1);
     router.replace(`/elonmusk/status/${id}/photo/${changePhotoId}`);
@@ -38,6 +39,10 @@ export default function ImageZone({ photoid, id }: ImageZoneProps) {
     staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
     gcTime: 300 * 1000,
   });
+
+  const isPreBlock = photoNumber > 1;
+  const isNextBlock = photoNumber < (data?.Images.length ?? 0);
+
   return (
     <Container>
       <Wrrapper $currentIndex={current} $type={btype}>
@@ -45,19 +50,54 @@ export default function ImageZone({ photoid, id }: ImageZoneProps) {
           <PhotoItem key={image.imageId} image={image} idx={Number(photoid)} />
         ))}
       </Wrrapper>
-      <div onClick={() => handleClick('pre')}>
-        <PreArrow />
-      </div>
-      <div onClick={() => handleClick('next')}>
-        <NextArrow />
-      </div>
-      <div onClick={handleClose}>
+      {isPreBlock && (
+        <PreArrowWrrapper onClick={() => handleClick('pre')}>
+          <PreArrow />
+        </PreArrowWrrapper>
+      )}
+      {isNextBlock && (
+        <NextArrowWrrpper onClick={() => handleClick('next')}>
+          <NextArrow />
+        </NextArrowWrrpper>
+      )}
+      <CloseWrrapper onClick={handleClose}>
         <CloseIcon />
-      </div>
+      </CloseWrrapper>
       <UserActionButtons fill="white" />
     </Container>
   );
 }
+
+const ArrowBase = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 9999px;
+  background-color: black;
+  width: 34px;
+  height: 34px;
+
+  svg {
+    fill: white;
+  }
+`;
+
+const PreArrowWrrapper = styled(ArrowBase)`
+  left: 10px;
+`;
+
+const NextArrowWrrpper = styled(ArrowBase)`
+  right: 10px;
+`;
+
+const CloseWrrapper = styled(ArrowBase)`
+  top: 16px;
+  left: 16px;
+  transform: none;
+`;
 
 const Container = styled.div`
   position: relative;
@@ -67,48 +107,6 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   height: 95%;
-
-  > div:nth-child(2),
-  > div:nth-child(3) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 9999px;
-    background-color: black;
-    width: 34px;
-    height: 34px;
-
-    svg {
-      fill: white;
-    }
-  }
-
-  > div:nth-child(2) {
-    left: 10px;
-  }
-
-  > div:nth-child(3) {
-    right: 10px;
-  }
-
-  > div:nth-child(4) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    width: 34px;
-    height: 34px;
-    border-radius: 9999px;
-    background-color: black;
-    svg {
-      fill: white;
-    }
-  }
 
   > div:last-child {
     display: flex;
