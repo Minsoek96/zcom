@@ -19,7 +19,7 @@ export const menuItems = [
     name: '쪽지',
   },
   {
-    path: '/me?.id',
+    path: 'user',
     svg: <MeIcon />,
     name: '프로필',
   },

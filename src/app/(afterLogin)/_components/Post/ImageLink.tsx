@@ -8,7 +8,7 @@ type ImageType = {
   height: number;
 };
 function ImageLink({
-  src, id, width, height,
+  src, id = '', width, height,
 }: ImageType) {
   if (!src) {
     return null;

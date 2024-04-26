@@ -10,20 +10,12 @@ import ImageLink from '@/app/(afterLogin)/_components/post/ImageLink';
 import { CloseIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 import PostActionButtons from '@/app/(afterLogin)/_components/post/form/PostActionButtons';
 import ResizableTextarea from '@/app/(afterLogin)/_components/post/form/ResizableTextarea';
+import { useSession } from 'next-auth/react';
 
 function Tweet() {
   const router = useRouter();
   const [text, setText] = useState('');
-  const target = {
-    User: {
-      id: 'elonmusk',
-      nickname: 'Elon Musk',
-      image: '/yRsRRjGO.jpg',
-    },
-    content: '클론코딩 라이브로 하니 너무 힘들어요 ㅠㅠ',
-    createdAt: new Date(),
-    Images: [],
-  }; // 임시
+  const { data: me } = useSession();
 
   const handleBack = () => {
     router.back();
@@ -35,8 +27,8 @@ function Tweet() {
         <div onClick={handleBack}><CloseIcon /></div>
         <div>
           <ImageLink
-            src={target.User.image}
-            id={target.User.id}
+            src={me?.user?.image as string}
+            id={me?.user?.id as string}
             width={40}
             height={40}
           />

@@ -4,30 +4,21 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 
+import { useSession } from 'next-auth/react';
 import ImageLink from '../../post/ImageLink';
 import ResizableTextarea from '../../post/form/ResizableTextarea';
 import PostActionButtons from '../../post/form/PostActionButtons';
 
 function CommentForm() {
+  const { data: me } = useSession();
   const [text, setText] = useState('');
-
-  const target = {
-    User: {
-      id: 'elonmusk',
-      nickname: 'Elon Musk',
-      image: '/yRsRRjGO.jpg',
-    },
-    content: '클론코딩 라이브로 하니 너무 힘들어요 ㅠㅠ',
-    createdAt: new Date(),
-    Images: [],
-  }; // 임시
 
   return (
     <Container>
       <div>
         <ImageLink
-          src={target.User.image}
-          id={target.User.id}
+          src={me?.user?.image as string}
+          id={me?.user?.id as string}
           width={40}
           height={40}
         />

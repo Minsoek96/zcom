@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 import { usePathname } from 'next/navigation';
@@ -43,10 +44,12 @@ type NavMenuItemProps = {
 
 function NavMenuItem({ path, name, Icon }: NavMenuItemProps) {
   const pathName = usePathname();
+  const { data: me } = useSession();
+  const isProfile = path === 'user' && `/${me?.user?.email}`;
 
   return (
     <NavItemsContainer>
-      <Link href={path}>
+      <Link href={isProfile || path}>
         <NavItemsWrapper $isSelected={pathName === path}>
           {Icon}
           <div>{name}</div>
