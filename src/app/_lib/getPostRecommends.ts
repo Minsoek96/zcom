@@ -1,5 +1,8 @@
-export default async function getPostRecommends() {
-  const res = await fetch('http://localhost:9090/api/postRecommends');
+type Props = {
+  pageParam?: number;
+};
+export default async function getPostRecommends({ pageParam }: Props) {
+  const res = await fetch(`http://localhost:9090/api/postRecommends?cursor=${pageParam}`);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 

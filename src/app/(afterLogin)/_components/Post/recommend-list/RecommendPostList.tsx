@@ -1,18 +1,59 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
 
 import { Post } from '@/app/_types/Post';
 
 import getPostRecommends from '@/app/_lib/getPostRecommends';
 
+import { Fragment, useEffect } from 'react';
+
+import { useInView } from 'react-intersection-observer';
+
 import PostItem from '../post-item/PostItem';
 
 export default function RecommendPostList() {
-  const { data } = useQuery<Post[]>({
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+  } = useInfiniteQuery<
+    Post[],
+    Error,
+    InfiniteData<Post[]>,
+    [_1: string, _2: string],
+    number
+  >({
     queryKey: ['posts', 'recommends'],
     queryFn: getPostRecommends,
+    initialPageParam: 0,
+    getNextPageParam: (lastpage) => lastpage.at(-1)?.postId,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
   });
 
-  return data?.map((post) => <PostItem key={post.postId} post={post} />);
+  const { ref, inView } = useInView({
+    threshold: 0.9,
+    delay: 0,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      console.log('진행');
+      !isFetching && hasNextPage && fetchNextPage();
+    }
+  }, [inView, isFetching, hasNextPage, fetchNextPage]);
+
+  return (
+    <>
+      {data?.pages.map((page, i) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Fragment key={i}>
+          {page.map((post) => <PostItem key={post.postId} post={post} />)}
+        </Fragment>
+      ))}
+      <div ref={ref} style={{ height: 50 }} />
+    </>
+  );
 }

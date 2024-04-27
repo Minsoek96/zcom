@@ -13,9 +13,10 @@ import PostFeedTabSwitcher from '../_components/post/PostFeedTabSwitcher';
 
 export default async function Home() {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({
+  await queryClient.prefetchInfiniteQuery({
     queryKey: ['posts', 'recommends'],
     queryFn: getPostRecommends,
+    initialPageParam: 0,
   });
 
   const dehydratedState = dehydrate(queryClient);
