@@ -5,7 +5,7 @@ import { Post } from '@/app/_types/Post';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { styled } from 'styled-components';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PhotoItem from './photo-item/PhotoItem';
 import { CloseIcon, NextArrow, PreArrow } from '../../_constants/MenuIcons';
 import UserActionButtons from '../post/post-item/UserActionButtons';
@@ -42,6 +42,22 @@ export default function ImageZone({ photoid, id }: ImageZoneProps) {
 
   const isPreBlock = photoNumber > 1;
   const isNextBlock = photoNumber < (data?.Images.length ?? 0);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent):void => {
+    if (isNextBlock&&event.key === 'ArrowRight') {
+        handleClick('next')
+      } else if (isPreBlock&&event.key === 'ArrowLeft') {
+        handleClick('pre')
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [router, photoid]);
 
   return (
     <Container>
@@ -105,6 +121,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   width: 100%;
   height: 95%;
 
@@ -129,5 +146,5 @@ const Wrrapper = styled.div<WrrapperProps>`
   transform: ${(props) => (props.$type === 'pre'
     ? `translateX(${props.$currentIndex * 100}%)`
     : `translateX(-${props.$currentIndex * 100}%)`)};
-  transition: transform 0.2s ease;
+  transition: transform 0.5s ease;
 `;
