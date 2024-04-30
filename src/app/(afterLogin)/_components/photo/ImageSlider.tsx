@@ -5,16 +5,16 @@ import { Post } from '@/app/_types/Post';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { styled } from 'styled-components';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PhotoItem from './photo-item/PhotoItem';
-import { CloseIcon, NextArrow, PreArrow } from '../../_constants/MenuIcons';
 import UserActionButtons from '../post/post-item/UserActionButtons';
+import SliderActions from './SliderActions';
 
-type ImageZoneProps = {
+type ImageSliderProps = {
   photoid: string;
   id: string;
 };
-export default function ImageZone({ photoid, id }: ImageZoneProps) {
+export default function ImageSlider({ photoid, id }: ImageSliderProps) {
   const [current, setCurrent] = useState(0);
   const [btype, setBtype] = useState('');
 
@@ -44,11 +44,11 @@ export default function ImageZone({ photoid, id }: ImageZoneProps) {
   const isNextBlock = photoNumber < (data?.Images.length ?? 0);
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent):void => {
-    if (isNextBlock&&event.key === 'ArrowRight') {
-        handleClick('next')
-      } else if (isPreBlock&&event.key === 'ArrowLeft') {
-        handleClick('pre')
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (isNextBlock && event.key === 'ArrowRight') {
+        handleClick('next');
+      } else if (isPreBlock && event.key === 'ArrowLeft') {
+        handleClick('pre');
       }
     };
 
@@ -66,55 +66,16 @@ export default function ImageZone({ photoid, id }: ImageZoneProps) {
           <PhotoItem key={image.imageId} image={image} idx={Number(photoid)} />
         ))}
       </Wrrapper>
-      {isPreBlock && (
-        <PreArrowWrrapper onClick={() => handleClick('pre')}>
-          <PreArrow />
-        </PreArrowWrrapper>
-      )}
-      {isNextBlock && (
-        <NextArrowWrrpper onClick={() => handleClick('next')}>
-          <NextArrow />
-        </NextArrowWrrpper>
-      )}
-      <CloseWrrapper onClick={handleClose}>
-        <CloseIcon />
-      </CloseWrrapper>
+      <SliderActions
+        onArrow={handleClick}
+        onClose={handleClose}
+        isNextBlock={isNextBlock}
+        isPreBlock={isPreBlock}
+      />
       <UserActionButtons fill="white" />
     </Container>
   );
 }
-
-const ArrowBase = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 9999px;
-  background-color: black;
-  width: 34px;
-  height: 34px;
-
-  svg {
-    fill: white;
-  }
-`;
-
-const PreArrowWrrapper = styled(ArrowBase)`
-  left: 10px;
-`;
-
-const NextArrowWrrpper = styled(ArrowBase)`
-  right: 10px;
-`;
-
-const CloseWrrapper = styled(ArrowBase)`
-  top: 16px;
-  left: 16px;
-  transform: none;
-`;
-
 const Container = styled.div`
   position: relative;
   display: flex;
@@ -126,6 +87,8 @@ const Container = styled.div`
   height: 95%;
 
   > div:last-child {
+    position: fixed;
+    bottom: 12px;
     display: flex;
     width: 873px;
   }

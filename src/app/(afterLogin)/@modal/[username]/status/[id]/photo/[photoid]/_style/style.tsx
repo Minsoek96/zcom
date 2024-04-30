@@ -7,7 +7,7 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
@@ -27,4 +27,5 @@ export const RightSection = styled.div`
   flex-direction: column;
   width: 350px;
   background-color: white;
+  overflow-x: hidden;
 `;

@@ -9,7 +9,7 @@ import getComments from '@/app/_lib/getComments';
 import PostDetail from '@/app/(afterLogin)/_components/post/post-detail/PostDetail';
 import CommentForm from '@/app/(afterLogin)/_components/comment/form/CommentForm';
 import CommentList from '@/app/(afterLogin)/_components/comment/comment-list/CommentList';
-import ImageZone from '@/app/(afterLogin)/_components/photo/ImageZone';
+import ImageSlider from '@/app/(afterLogin)/_components/photo/ImageSlider';
 import { Container, LeftSection, RightSection } from './_style/style';
 
 type PhotoViewProps = {
@@ -32,7 +32,7 @@ export default async function PhotoView({ params }: PhotoViewProps) {
   return (
     <Container>
       <LeftSection>
-        <ImageZone photoid={photoid} id={id} />
+        <ImageSlider photoid={photoid} id={id} />
       </LeftSection>
       <HydrationBoundary state={dyhydratedState}>
         <RightSection>
