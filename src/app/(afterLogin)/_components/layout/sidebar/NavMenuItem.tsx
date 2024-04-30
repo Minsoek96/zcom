@@ -5,6 +5,31 @@ import { usePathname } from 'next/navigation';
 
 import { styled } from 'styled-components';
 
+type NavMenuItemProps = {
+  path: string;
+  name: string;
+  Icon: React.ReactNode;
+};
+
+function NavMenuItem({ path, name, Icon }: NavMenuItemProps) {
+  const pathName = usePathname();
+  const { data: me } = useSession();
+  const isProfile = path === 'user' && `/${me?.user?.email}`;
+
+  return (
+    <NavItemsContainer>
+      <Link href={isProfile || path}>
+        <NavItemsWrapper $isSelected={pathName === path}>
+          {Icon}
+          <div>{name}</div>
+        </NavItemsWrapper>
+      </Link>
+    </NavItemsContainer>
+  );
+}
+
+export default NavMenuItem;
+
 const NavItemsContainer = styled.li`
   list-style: none;
   a {
@@ -35,28 +60,3 @@ const NavItemsWrapper = styled.div<{ $isSelected: boolean }>`
     stroke-width : 1.5px;
   }
 `;
-
-type NavMenuItemProps = {
-  path: string;
-  name: string;
-  Icon: React.ReactNode;
-};
-
-function NavMenuItem({ path, name, Icon }: NavMenuItemProps) {
-  const pathName = usePathname();
-  const { data: me } = useSession();
-  const isProfile = path === 'user' && `/${me?.user?.email}`;
-
-  return (
-    <NavItemsContainer>
-      <Link href={isProfile || path}>
-        <NavItemsWrapper $isSelected={pathName === path}>
-          {Icon}
-          <div>{name}</div>
-        </NavItemsWrapper>
-      </Link>
-    </NavItemsContainer>
-  );
-}
-
-export default NavMenuItem;

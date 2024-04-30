@@ -1,20 +1,11 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-
-import { Post } from '@/app/_types/Post';
-
-import getPostFollowings from '@/app/_lib/getPostFollowings';
+import useFetchFollowings from '@/app/_hooks/useFetchFollowings';
 
 import PostItem from '../post-item/PostItem';
 
 export default function FollowingPostList() {
-  const { data } = useQuery<Post[]>({
-    queryKey: ['posts', 'followings'],
-    queryFn: getPostFollowings,
-  });
+  const { followings } = useFetchFollowings();
 
-  return (
-    data?.map((post) => <PostItem key={post.postId} post={post} />)
-  );
+  return followings?.map((post) => <PostItem key={post.postId} post={post} />);
 }

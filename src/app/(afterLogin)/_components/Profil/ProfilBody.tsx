@@ -1,9 +1,9 @@
 'use client';
 
 import { styled } from 'styled-components';
-import { useQuery } from '@tanstack/react-query';
-import { User } from '@/app/_types/User';
-import getUser from '@/app/_lib/getUser';
+
+import useFetchUser from '@/app/_hooks/useFetchUser';
+
 import Banner from './Banner';
 import ImageLink from '../post/ImageLink';
 import ProfilActionBtns from './ProfilActionBtns';
@@ -13,12 +13,7 @@ type ProfilBodyProps = {
   username: string
 }
 function ProfilBody({ username }:ProfilBodyProps) {
-  const { data: user, error } = useQuery<User, Error, User, [_1: string, _2: string]>({
-    queryKey: ['users', username],
-    queryFn: getUser,
-    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
-    gcTime: 300 * 1000,
-  });
+  const { user, error } = useFetchUser({ username });
 
   // TODO: 중복 스타일 제거 (배너, 이미지링크 처리)
   if (error) {

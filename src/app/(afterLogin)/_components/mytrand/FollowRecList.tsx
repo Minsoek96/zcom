@@ -1,23 +1,16 @@
 import { styled } from 'styled-components';
 
-import { useQuery } from '@tanstack/react-query';
+import useFetchFollowRecommends from '@/app/_hooks/useFetchFollowRecommends';
 
-import getFollowRec from '@/app/_lib/getFollowRec';
-
-import { User } from '@/app/_types/User';
 import FollowRecItem from './FollowRecItem';
 
 function FollowRecList() {
-  const { data } = useQuery<User[]>({
-    queryKey: ['users', 'followRecommends'],
-    queryFn: getFollowRec,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
-  });
+  const { recommends } = useFetchFollowRecommends();
+
   return (
     <Container>
       <span>팔로우 추천</span>
-      {data?.map((user) => (
+      {recommends?.map((user) => (
         <FollowRecItem key={user.id} user={user} />
       ))}
     </Container>

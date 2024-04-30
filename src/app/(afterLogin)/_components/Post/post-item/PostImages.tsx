@@ -5,6 +5,39 @@ import Link from 'next/link';
 
 import styled, { css } from 'styled-components';
 
+type PostImagesProps = {
+  post: Post;
+};
+
+export default function PostImages({ post }: PostImagesProps) {
+  const { Images, User, postId } = post;
+
+  if (!Images || Images.length === 0) {
+    return null;
+  }
+
+  return (
+    <Container $count={Images.length}>
+      {Images.map((image) => (
+        <StyledImageWrapper key={image.imageId}>
+          <StyleLink
+            href={`/${User.id}/status/${postId}/photo/${image.imageId}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={image.link}
+              alt={`${User.id}'s image`}
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            />
+          </StyleLink>
+        </StyledImageWrapper>
+      ))}
+    </Container>
+  );
+}
+
 const OneImage = css`
   display: flex;
   > div {
@@ -132,36 +165,3 @@ const StyleLink = styled(Link)`
   width: 100%;
   height: 100%;
 `;
-
-type PostImagesProps = {
-  post: Post;
-};
-
-export default function PostImages({ post }: PostImagesProps) {
-  const { Images, User, postId } = post;
-
-  if (!Images || Images.length === 0) {
-    return null;
-  }
-
-  return (
-    <Container $count={Images.length}>
-      {Images.map((image) => (
-        <StyledImageWrapper key={image.imageId}>
-          <StyleLink
-            href={`/${User.id}/status/${postId}/photo/${image.imageId}`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={image.link}
-              alt={`${User.id}'s image`}
-              fill
-              style={{ objectFit: 'cover' }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-            />
-          </StyleLink>
-        </StyledImageWrapper>
-      ))}
-    </Container>
-  );
-}

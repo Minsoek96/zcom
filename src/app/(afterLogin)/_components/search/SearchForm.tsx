@@ -7,6 +7,7 @@ import { SearchIcon } from '../../_constants/MenuIcons';
 
 function SearchForm() {
   const router = useRouter();
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     router.push(`/search?q=${e.currentTarget.search.value}`);

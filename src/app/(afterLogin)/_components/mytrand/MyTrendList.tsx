@@ -1,24 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
-
-import { Hashtag } from '@/app/_types/Hashtag';
-
-import getTrends from '@/app/_lib/getTrends';
-
 import { styled } from 'styled-components';
+
+import useFetchTrends from '@/app/_hooks/useFetchTrends';
 
 import MyTrend from './MyTrend';
 
 function MyTrendList() {
-  const { data } = useQuery<Hashtag[]>({
-    queryKey: ['trends'],
-    queryFn: getTrends,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
-  });
+  const { trends } = useFetchTrends();
+
   return (
     <Container>
       <span>나를 위한 트렌드</span>
-      {data?.map((trend) => (
+      {trends?.map((trend) => (
         <MyTrend trend={trend} key={trend.tagId} />
       ))}
     </Container>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import Banner from './Banner';
 
 export default function NotUser() {
