@@ -60,7 +60,7 @@ const NextArrowWrrpper = styled(ArrowBase)`
 `;
 
 const CloseWrrapper = styled(ArrowBase)`
-  top: 16px;
-  left: 16px;
+  top: 11px;
+  left: 11px;
   transform: none;
 `;

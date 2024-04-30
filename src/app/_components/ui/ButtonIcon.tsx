@@ -5,7 +5,7 @@ interface ButtonIconProps {
   hoverColor: string[];
   isClick?: boolean;
   number?: number;
-  fill: string;
+  fill?: string;
 }
 
 export default function ButtonIcon({
@@ -13,7 +13,7 @@ export default function ButtonIcon({
   hoverColor,
   isClick = false,
   number = 0,
-  fill,
+  fill = 'white',
 }: ButtonIconProps) {
   return (
     <Container $hoverColor={hoverColor}>

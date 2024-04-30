@@ -1,11 +1,14 @@
 'use client';
 
-import getPostDetail from '@/app/_lib/getPostDetail';
-import { Post } from '@/app/_types/Post';
-import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+
 import { styled } from 'styled-components';
-import { useEffect, useState } from 'react';
+
+import { useCallback, useState } from 'react';
+
+import useFetchPostDetail from '@/app/_hooks/useFetchPostDeatil';
+import useSliderKeyEvent from './hooks/useSliderKeyEvent';
+
 import PhotoItem from './photo-item/PhotoItem';
 import UserActionButtons from '../post/post-item/UserActionButtons';
 import SliderActions from './SliderActions';
@@ -16,53 +19,37 @@ type ImageSliderProps = {
 };
 export default function ImageSlider({ photoid, id }: ImageSliderProps) {
   const [current, setCurrent] = useState(0);
-  const [btype, setBtype] = useState('');
+  const [arrowType, setArrowType] = useState('');
+
+  const { post } = useFetchPostDetail({ id });
 
   const router = useRouter();
-  const photoNumber = Number(photoid);
 
-  const handleClick = (type: 'pre' | 'next') => {
+  const photoNumber = Number(photoid);
+  const isPreBlock = photoNumber > 1;
+  const isNextBlock = photoNumber < (post?.Images.length ?? 0);
+
+  const handleClick = useCallback((type: 'pre' | 'next') => {
     const changePhotoId = type === 'pre' ? photoNumber - 1 : photoNumber + 1;
-    setBtype(type);
+    setArrowType(type);
     setCurrent(1);
-    router.replace(`/elonmusk/status/${id}/photo/${changePhotoId}`);
-  };
+    router.replace(`/${post?.User}/status/${id}/photo/${changePhotoId}`);
+  }, [photoNumber, router]);
 
   const handleClose = () => {
     router.back();
   };
 
-  // TOOD: 이미지 슬라이더 구현 URL변경이 ??
-  const { data } = useQuery<Post, Error, Post, [_1: string, _2: string]>({
-    queryKey: ['posts', id],
-    queryFn: getPostDetail,
-    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
-    gcTime: 300 * 1000,
+  useSliderKeyEvent({
+    onClick: handleClick, isNextBlock, isPreBlock, photoid,
   });
 
-  const isPreBlock = photoNumber > 1;
-  const isNextBlock = photoNumber < (data?.Images.length ?? 0);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent): void => {
-      if (isNextBlock && event.key === 'ArrowRight') {
-        handleClick('next');
-      } else if (isPreBlock && event.key === 'ArrowLeft') {
-        handleClick('pre');
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [router, photoid]);
+  // TOOD: 이미지 슬라이더 구현 URL변경이 ??
 
   return (
     <Container>
-      <Wrrapper $currentIndex={current} $type={btype}>
-        {data?.Images.map((image) => (
+      <Wrrapper $currentIndex={current} $type={arrowType}>
+        {post?.Images.map((image) => (
           <PhotoItem key={image.imageId} image={image} idx={Number(photoid)} />
         ))}
       </Wrrapper>
