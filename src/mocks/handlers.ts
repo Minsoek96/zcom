@@ -1,5 +1,5 @@
 import {
-  HttpResponse, StrictResponse, delay, http,
+  HttpResponse, StrictResponse, http,
 } from 'msw';
 
 import { faker } from '@faker-js/faker';
@@ -26,14 +26,11 @@ const handlers = [
     },
   })),
 
-  http.post('/api/logout', () => {
-    console.log('로그아웃');
-    return new HttpResponse(null, {
-      headers: {
-        'Set-Cookie': 'connect.sid=;HttpOnly;Path=/;Max-Age=0',
-      },
-    });
-  }),
+  http.post('/api/logout', () => new HttpResponse(null, {
+    headers: {
+      'Set-Cookie': 'connect.sid=;HttpOnly;Path=/;Max-Age=0',
+    },
+  })),
 
   http.post(
     '/api/users',

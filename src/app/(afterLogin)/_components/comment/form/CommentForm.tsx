@@ -5,13 +5,24 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import { useSession } from 'next-auth/react';
+import useFetchPostDetail from '@/app/_hooks/useFetchPostDeatil';
+
 import ImageLink from '../../post/ImageLink';
 import ResizableTextarea from '../../post/form/ResizableTextarea';
 import PostActionButtons from '../../post/form/PostActionButtons';
 
-function CommentForm() {
+type CommentFormProps = {
+  id: string;
+}
+
+function CommentForm({ id }:CommentFormProps) {
+  const { isPost } = useFetchPostDetail({ id });
   const { data: me } = useSession();
   const [text, setText] = useState('');
+
+  if (!isPost) {
+    return null;
+  }
 
   return (
     <Container>

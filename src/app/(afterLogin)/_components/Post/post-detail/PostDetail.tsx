@@ -5,6 +5,7 @@ import { Post } from '@/app/_types/Post';
 
 import { useQuery } from '@tanstack/react-query';
 import PostItem from '../post-item/PostItem';
+import NotFoundPost from '../NotFoundPost';
 
 type UserPostListProps = {
   id: string;
@@ -23,14 +24,10 @@ export default function PostDetail({ id, isPhoto }: UserPostListProps) {
     gcTime: 300 * 1000,
   });
 
-  if (error) {
+  if (error || !data) {
     return (
-      <div>게시글을 찾을 수 없습니다.</div>
+      <NotFoundPost />
     );
-  }
-
-  if (!data) {
-    return null;
   }
 
   return <PostItem post={data} isPhoto={isPhoto} />;

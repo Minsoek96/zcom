@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Post } from '../_types/Post';
 import getPostDetail from '../_lib/getPostDetail';
 
@@ -12,7 +12,11 @@ export default function useFetchPostDetail({ id } : usePostDeatilProps) {
     staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
     gcTime: 300 * 1000,
   });
+
+  const queryClient = useQueryClient();
+  const isPost = queryClient.getQueryData(['posts', id]);
   return {
     post: data,
+    isPost,
   };
 }

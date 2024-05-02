@@ -43,11 +43,10 @@ export default function RecommendPostList() {
 
   useEffect(() => {
     if (inView) {
-      console.log('진행');
       // eslint-disable-next-line no-unused-expressions
       !isFetching && hasNextPage && fetchNextPage();
     }
-  }, [inView, isFetching, hasNextPage, fetchNextPage]);
+  }, [inView]);
 
   return (
     <>

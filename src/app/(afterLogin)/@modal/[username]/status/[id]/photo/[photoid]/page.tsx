@@ -29,6 +29,8 @@ export default async function PhotoView({ params }: PhotoViewProps) {
   });
 
   const dyhydratedState = dehydrate(queryClient);
+
+  // TODO: CommentForm 활용 적절한지 검토
   return (
     <Container>
       <LeftSection>
@@ -37,7 +39,7 @@ export default async function PhotoView({ params }: PhotoViewProps) {
       <HydrationBoundary state={dyhydratedState}>
         <RightSection>
           <PostDetail id={id} isPhoto={false} />
-          <CommentForm />
+          <CommentForm id={id} />
           <CommentList id={id} />
         </RightSection>
       </HydrationBoundary>
