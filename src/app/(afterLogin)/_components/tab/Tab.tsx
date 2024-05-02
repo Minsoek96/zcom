@@ -53,7 +53,7 @@ const FixedContainer = styled.div<{ $currentTab: string }>`
   > div:first-child {
     border-right: 1px solid #eff3f4;;
     font-weight: ${(props) => (props.$currentTab === 'recommend' ? '700' : '0')};
-    
+
 
     div {
       position: absolute;
@@ -63,7 +63,7 @@ const FixedContainer = styled.div<{ $currentTab: string }>`
       height: 4px;
     }
   }
-  
+
   > div:last-child {
     font-weight: ${(props) => (props.$currentTab === 'recommend' ? '0' : '700')};
 
@@ -74,5 +74,9 @@ const FixedContainer = styled.div<{ $currentTab: string }>`
       width: 56px;
       height: 4px;
     }
+  }
+
+  @media screen and (max-width: 650px){
+    width: 440px;
   }
 `;

@@ -18,6 +18,7 @@ export default function PhotoItem({ image, idx }: PhotoItemProps) {
           fill
           style={{ objectFit: 'cover' }}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+          priority
         />
       </Container>
     )

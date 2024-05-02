@@ -6,17 +6,17 @@ import { useRouter } from 'next/navigation';
 
 import { signOut, useSession } from 'next-auth/react';
 
-import { MeIcon } from '../../../_constants/MenuIcons';
+import { MoreIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
+import ImageLink from '../../post/ImageLink';
 
 function Profile() {
   const router = useRouter();
   const { data: me } = useSession();
 
   const onLogOut = () => {
-    signOut({ redirect: false })
-      .then(() => {
-        router.replace('/');
-      });
+    signOut({ redirect: false }).then(() => {
+      router.replace('/');
+    });
   };
 
   if (!me?.user) {
@@ -27,13 +27,13 @@ function Profile() {
   return (
     <Container>
       <div onClick={onLogOut}>
-        <MeIcon />
-        <div>
-          <div>{me?.user?.name}</div>
-          <div>{me?.user?.email}</div>
-        </div>
+        <ImageLink src={me.user.image || ''} id="logo" width={36} height={36} />
+        <UserInfo>
+          <div>{me.user?.name}</div>
+          <div>{me.user?.email}</div>
+        </UserInfo>
       </div>
-      <div>...</div>
+      <MoreIcon />
     </Container>
   );
 }
@@ -54,5 +54,16 @@ const Container = styled.div`
   &:hover {
     background-color: RGB(231, 231, 232);
     border-radius: 21px;
+  }
+
+  @media screen and (max-width: 1300px) {
+  }
+`;
+
+const UserInfo = styled.div`
+   display: block;
+
+  @media screen and (max-width: 1300px){
+    display: none;
   }
 `;

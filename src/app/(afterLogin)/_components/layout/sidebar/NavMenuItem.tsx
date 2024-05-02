@@ -57,6 +57,12 @@ const NavItemsWrapper = styled.div<{ $isSelected: boolean }>`
   svg {
     fill: ${(props) => (props.$isSelected ? '#000;' : 'none')};
     stroke: #000;
-    stroke-width : 1.5px;
+    stroke-width: 1.5px;
+  }
+
+  @media screen and (max-width: 1300px) {
+    > div:last-child {
+      display: none;
+    }
   }
 `;

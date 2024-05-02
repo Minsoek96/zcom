@@ -28,7 +28,7 @@ function SideBar() {
           </Logo>
         </Link>
         <NavMenuList />
-        <PostBtn onClick={handleOpenPost} name="게시하기" />
+        <PostBtn onClick={handleOpenPost} name="게시하기" media />
       </div>
       <Profile />
     </SideBarContainer>
@@ -41,6 +41,7 @@ const SideBarContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-inline: 11px;
   position: fixed;
   height: 100vh;
   width: inherit;

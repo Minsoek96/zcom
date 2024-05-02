@@ -30,4 +30,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: inherit;
+
+  @media screen and (max-width: 1025px) {
+    display: none;
+  }
 `;
