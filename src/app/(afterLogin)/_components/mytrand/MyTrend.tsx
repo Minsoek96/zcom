@@ -24,13 +24,17 @@ export default function MyTrend({ trend }: MyTrendProps) {
 
 const ItemContainer = styled.div`
   cursor: pointer;
-  margin-block: 20px;
+  margin-block: 2.0rem;
   font-weight: bold;
+  > a {
+    font-size: 1.6rem;
+  }
+
   > p{
     font-weight: lighter;
-    font-size: 12px;
+    font-size: 1.2rem;
     color: #536472;
-    margin-top: 8px;
+    margin-top: .8rem;
   }
 
   &:hover {

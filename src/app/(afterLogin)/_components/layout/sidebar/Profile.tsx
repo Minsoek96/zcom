@@ -41,10 +41,11 @@ function Profile() {
 export default Profile;
 
 const Container = styled.div`
+  font-size: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 11px;
+  padding: 1.1em;
   cursor: pointer;
 
   div:first-child {
@@ -61,9 +62,10 @@ const Container = styled.div`
 `;
 
 const UserInfo = styled.div`
-   display: block;
+  font-size: 1.6rem;
+  display: block;
 
-  @media screen and (max-width: 1300px){
+  @media screen and (max-width: 1300px) {
     display: none;
   }
 `;

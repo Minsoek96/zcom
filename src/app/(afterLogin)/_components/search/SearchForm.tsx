@@ -26,9 +26,9 @@ export default SearchForm;
 
 const SearchContainer = styled.div`
   width: inherit;
-  margin-top: 6px;
-  margin-bottom: 12px;
-  height: 50px;
+  margin-top: .6rem;
+  margin-bottom: 1.2rem;
+  height: 5.0rem;
 `;
 
 const SearchFormWrapper = styled.form`
@@ -36,24 +36,24 @@ const SearchFormWrapper = styled.form`
   align-items: center;
   position: fixed;
   width: inherit;
-  height: 42px;
-  border-radius: 21px;
+  height: 4.2rem;
+  border-radius: 2.1rem;
   background-color: rgb(239, 243, 244);
 
   svg {
     margin-left: 20px;
     fill: rgb(83, 100, 113);
-    width: 20px;
+    width: 2.0rem;
   }
 
   input {
-    border-radius: 21px;
+    border-radius: 2.1rem;
     outline: none;
     background-color: inherit;
     border: none;
-    padding: 12px;
-    margin-left: 5px;
-    font-size: 15px;
+    padding: .8em;
+    margin-left: .5rem;
+    font-size: 1.5rem;
     width: 100%;
   }
 `;

@@ -50,13 +50,14 @@ export default CommentForm;
 
 const Container = styled.div`
   display: flex;
-  margin-top: 21px;
+  margin-top: 2.1rem;
   border-bottom: 1px solid #eff3f4;
-  padding-bottom: 15px;
-  padding-inline: 15px;
+  padding-bottom: 1.5em;
+  padding-inline: 1.5em;
+  font-size: 1rem;
 
   > div:first-child {
-    width: 40px;
+    width: 4rem;
   }
 
   > div:last-child {

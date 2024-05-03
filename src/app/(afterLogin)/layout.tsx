@@ -51,11 +51,11 @@ const SideWrraper = styled.div`
 `;
 
 const SideSection = styled.section`
-  width: 275px;
+  width: 27.5rem;
   height: 100dvh;
 
   @media screen and (max-width: 1300px) {
-    width: 75px;
+    width: 7.5rem;
   }
 `;
 
@@ -70,12 +70,12 @@ const RightSectionInner = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100dvh;
-  width: 1000px;
+  width: 100rem;
 `;
 
 // TODO:: 자식의 정적인 크기
 const MainWrraper = styled.main`
-  width: 600px;
+  width: 60rem;
   height: 200dvh;
   border: 1px solid #eff3f4;
   @media screen and (max-width: 650px) {
@@ -86,6 +86,6 @@ const MainWrraper = styled.main`
 const RightSection = styled.section`
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 35rem;
   height: 100dvh;
 `;

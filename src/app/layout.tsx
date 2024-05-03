@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 
 import { Inter } from 'next/font/google';
 
-import './globals.css';
+// import './globals.css';
 
 import StyledComponentsRegistry from '@/lib/styledComponentRegistry';
 
 import MSWComponent from './_components/MSWComponent';
 import AuthSession from './_components/AuthSession';
+import GlobalStyle from './_styles/GlobalStyle';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <StyledComponentsRegistry>
+        <GlobalStyle />
         <MSWComponent />
         <body className={inter.className}>
           <AuthSession>{children}</AuthSession>

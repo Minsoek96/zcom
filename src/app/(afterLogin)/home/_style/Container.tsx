@@ -9,7 +9,7 @@ const Container = styled.div`
   border: 1px solid #eff3f4;
 
   >div:first-child ~ div {
-    padding-inline: 15px;
+    padding-inline: 0.95em;
   }
 `;
 

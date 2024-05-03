@@ -38,10 +38,11 @@ function SideBar() {
 export default SideBar;
 
 const SideBarContainer = styled.section`
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-inline: 11px;
+  padding-inline: 1.1em;
   position: fixed;
   height: 100vh;
   width: inherit;
@@ -49,9 +50,9 @@ const SideBarContainer = styled.section`
 
 const Logo = styled.div`
   display: inline-block;
-  height: 56px;
-  padding: 5px;
-  margin-top: 2px;
+  height: 5.6rem;
+  padding: .5em;
+  margin-top: .2rem;
 
   img {
     aspect-ratio: 1 / 1;
@@ -59,6 +60,6 @@ const Logo = styled.div`
 
   :hover {
     background-color: RGB(231, 231, 232);
-    border-radius: 21px;
+    border-radius: 2.1rem;
   }
 `;

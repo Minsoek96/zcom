@@ -20,13 +20,14 @@ function MyTrendList() {
 export default MyTrendList;
 
 const Container = styled.div`
+  font-size: 1rem;
   width: inherit;
   background-color: RGB(247, 249, 249);
-  border-radius: 15px;
-  padding-block: 11px;
-  padding-inline: 15px;
+  border-radius: 1.5rem;
+  padding-block: 1.1em;
+  padding-inline: 1.5em;
   > span {
     font-weight: 800;
-    font-size: 19px;
+    font-size: 1.9rem;
   }
 `;

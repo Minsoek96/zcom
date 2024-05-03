@@ -37,8 +37,9 @@ function FollowRecItem({ user }:FollowRecProps) {
 export default FollowRecItem;
 
 const Container = styled.div`
+  font-size: 1rem;
   cursor: pointer;
-  padding-block: 11px;
+  padding-block: 1.1em;
   display: flex;
   justify-content: center;
 
@@ -49,7 +50,7 @@ const Container = styled.div`
 
   > div:last-child {
     display: flex;
-    width: 71px;
+    width: 7.1rem;
   }
 
   button {
@@ -58,10 +59,10 @@ const Container = styled.div`
     width: 100%;
     color: white;
     background: black;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 700;
-    height: 32px;
-    border-radius: 16px;
+    height: 3rem;
+    border-radius: 1.6rem;
   }
 
   &:hover {
@@ -72,17 +73,17 @@ const Container = styled.div`
 const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-inline: 15px;
+  padding-inline: 1.5em;
 
   > span:first-child {
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 700;
-    line-height: 20px;
+    line-height: 2.0rem;
   }
 
   > span:last-child {
     color: #536471;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
   }
 `;

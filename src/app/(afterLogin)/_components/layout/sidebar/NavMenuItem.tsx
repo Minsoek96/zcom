@@ -38,20 +38,20 @@ const NavItemsContainer = styled.li`
 
   a:hover {
     background-color: rgba(15, 20, 25, 0.1);
-    border-radius: 29px;
+    border-radius: 2.9rem;
   }
 `;
 
 const NavItemsWrapper = styled.div<{ $isSelected: boolean }>`
   display: inline-flex;
-  height: 50px;
-  padding: 12px;
+  font-size: 2rem;
+  height: 5rem;
+  padding: .6em;
   align-items: center;
-  font-size: 19px;
   font-weight: ${(props) => (props.$isSelected ? 'bold' : 'none')};
 
   div {
-    margin-inline: 20px;
+    margin-inline: 1em;
   }
 
   svg {

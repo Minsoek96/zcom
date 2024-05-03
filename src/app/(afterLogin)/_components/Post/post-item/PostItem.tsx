@@ -90,8 +90,8 @@ const PostWrapper = styled.div`
 `;
 
 const UserInfoContainer = styled.div`
-  font-size: 14px;
-  margin-bottom: 2px;
+  font-size: 1.4rem;
+  margin-bottom: .2rem;
   > a > span:first-child {
     font-weight: 700;
   }

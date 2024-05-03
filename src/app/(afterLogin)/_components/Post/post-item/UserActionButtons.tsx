@@ -48,8 +48,9 @@ function UserActionButtons({ fill = 'rgb(83, 100, 113)' }: UserActionButtonProps
 export default UserActionButtons;
 
 const Container = styled.div`
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
-  height: 30px;
-  padding-top: 12px;
+  height: 3rem;
+  padding-top: 1.2em;
 `;

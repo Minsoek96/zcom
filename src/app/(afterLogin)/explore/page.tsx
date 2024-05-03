@@ -24,12 +24,13 @@ const Container = styled.div`
   width: inherit;
 
   > div {
-    padding-inline: 15px;
-    padding-block: 15px;
+    font-size: 1rem;
+    padding-inline: 1.5em;
+    padding-block: 1.5em;
   }
 
   > div:first-child {
-    width: 570px;
+    width: 57rem;
     padding-bottom: 0;
   }
 `;

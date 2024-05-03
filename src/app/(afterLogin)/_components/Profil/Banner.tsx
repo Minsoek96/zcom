@@ -9,6 +9,6 @@ function Banner() {
 export default Banner;
 
 const Container = styled.div`
-  height: 200px;
+  height: 20rem;
   background-color: RGB(207, 217, 222);
 `;

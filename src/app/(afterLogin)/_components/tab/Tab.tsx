@@ -26,18 +26,21 @@ function Tab() {
 export default Tab;
 
 const TabContainer = styled.div`
-  height: 50px;
+  height: 5rem;
 `;
 
 const FixedContainer = styled.div<{ $currentTab: string }>`
-  width: 597px;
+  width: 59.7rem;
   vertical-align: 1px;
   display: flex;
   position: fixed;
-  font-size: 14px;
-  line-height: 19px;
+  font-size: 1.4rem;
+  line-height: 1.35em;
   text-align: center;
   backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #536472;
+  z-index: 10;
 
   > div  {
     cursor: pointer;
@@ -46,7 +49,7 @@ const FixedContainer = styled.div<{ $currentTab: string }>`
     justify-content: center;
     flex: 1;
     position: relative;
-    padding: 15px;
+    padding: 1em;
     border-bottom: 1px solid #eff3f4;
   }
 
@@ -54,29 +57,33 @@ const FixedContainer = styled.div<{ $currentTab: string }>`
     border-right: 1px solid #eff3f4;;
     font-weight: ${(props) => (props.$currentTab === 'recommend' ? '700' : '0')};
 
+    color: ${(props) => props.$currentTab === 'recommend' && '#000'};
+
 
     div {
       position: absolute;
       bottom: 0;
       background-color: ${(props) => (props.$currentTab === 'recommend' ? 'rgb(29, 155, 240)' : 'none')};
-      width: 56px;
-      height: 4px;
+      width: 5.6rem;
+      height: 0.4rem;
     }
   }
 
   > div:last-child {
     font-weight: ${(props) => (props.$currentTab === 'recommend' ? '0' : '700')};
 
+    color: ${(props) => props.$currentTab === 'follow' && '#000'};
+
     div {
       position: absolute;
       bottom: 0;
       background-color: ${(props) => (props.$currentTab === 'recommend' ? 'none' : 'rgb(29, 155, 240)')};
-      width: 56px;
-      height: 4px;
+      width: 5.6rem;
+      height: 0.4rem;
     }
   }
 
   @media screen and (max-width: 650px){
-    width: 440px;
+    width: 44rem;
   }
 `;

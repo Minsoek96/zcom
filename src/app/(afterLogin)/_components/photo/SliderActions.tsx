@@ -38,8 +38,8 @@ const ArrowBase = styled.div`
   transform: translateY(-50%);
   border-radius: 9999px;
   background-color: black;
-  width: 34px;
-  height: 34px;
+  width: 3.4rem;
+  height: 3.4rem;
   cursor: pointer;
 
   svg {
@@ -52,15 +52,15 @@ const ArrowBase = styled.div`
 `;
 
 const PreArrowWrrapper = styled(ArrowBase)`
-  left: 10px;
+  left: 1rem;
 `;
 
 const NextArrowWrrpper = styled(ArrowBase)`
-  right: 10px;
+  right: 1rem;
 `;
 
 const CloseWrrapper = styled(ArrowBase)`
-  top: 11px;
-  left: 11px;
+  top: 1.1rem;
+  left: 1.1rem;
   transform: none;
 `;

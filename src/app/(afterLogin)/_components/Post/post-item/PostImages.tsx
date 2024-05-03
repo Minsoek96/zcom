@@ -45,7 +45,7 @@ const OneImage = css`
     height: 100%;
 
     img {
-      border-radius: 18px;
+      border-radius: 1.8rem;
     }
   }
 `;
@@ -57,20 +57,20 @@ const TwoImage = css`
 
   > div {
     width: 50%;
-    height: 270px;
+    height: 27rem;
   }
 
   > div:nth-child(1) {
     img {
-      border-top-left-radius: 18px;
-      border-bottom-left-radius: 18px;
+      border-top-left-radius: 1.8rem;
+      border-bottom-left-radius: 1.8rem;
     }
   }
 
   > div:nth-child(2) {
     img {
-      border-top-right-radius: 18px;
-      border-bottom-right-radius: 18px;
+      border-top-right-radius: 1.8rem;
+      border-bottom-right-radius: 1.8rem;
     }
   }
 `;
@@ -80,27 +80,27 @@ const ThreeImage = css`
   grid-template-areas:
     "a a b b"
     "a a c c";
-  gap: 4px;
+  gap: .4rem;
 
   > div:nth-child(1) {
     grid-area: a;
     img {
-      border-top-left-radius: 18px;
-      border-bottom-left-radius: 18px;
+      border-top-left-radius: 1.8rem;
+      border-bottom-left-radius: 1.8rem;
     }
   }
 
   > div:nth-child(2) {
     grid-area: b;
     img {
-      border-top-right-radius: 18px;
+      border-top-right-radius: 1.8rem;
     }
   }
 
   > div:nth-child(3) {
     grid-area: c;
     img {
-      border-bottom-right-radius: 18px;
+      border-bottom-right-radius: 1.8rem;
     }
   }
 `;
@@ -112,34 +112,34 @@ const FourImage = css`
 
   > div:nth-child(1) {
     img {
-      border-top-left-radius: 18px;
+      border-top-left-radius: 1.8rem;
     }
   }
 
   > div:nth-child(2) {
     img {
-      border-top-right-radius: 18px;
+      border-top-right-radius: 1.8rem;
     }
   }
 
   > div:nth-child(3) {
     img {
-      border-bottom-left-radius: 18px;
+      border-bottom-left-radius: 1.8rem;
     }
   }
 
   > div:nth-child(4) {
     img {
-      border-bottom-right-radius: 18px;
+      border-bottom-right-radius: 1.8rem;
     }
   }
 `;
 
 const Container = styled.div<{ $count: number }>`
   width: 100%;
-  max-width: 505px;
-  height: 270px;
-  margin-top: 11px;
+  max-width: 50.5rem;
+  height: 27rem;
+  margin-top: 1.1rem;
 
   img:hover {
     cursor: pointer;

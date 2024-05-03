@@ -75,9 +75,9 @@ const Container = styled.div`
 
   > div:last-child {
     position: fixed;
-    bottom: 12px;
+    bottom: 1.2rem;
     display: flex;
-    width: 873px;
+    width: 87.3rem;
   }
 `;
 

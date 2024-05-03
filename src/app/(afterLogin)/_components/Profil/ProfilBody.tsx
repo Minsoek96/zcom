@@ -64,11 +64,12 @@ const Container = styled.div`
     bottom: 0;
     flex-direction: column;
     justify-content: flex-end;
-    padding-bottom: 11px;
-    padding-inline: 15px;
+    font-size: 1rem;
+    padding-bottom: 1.1em;
+    padding-inline: 1.5em;
     > span {
-      margin-right: 19px;
-      font-size: 13px;
+      margin-right: 1.9rem;
+      font-size: 1.3rem;
     }
   }
 `;
