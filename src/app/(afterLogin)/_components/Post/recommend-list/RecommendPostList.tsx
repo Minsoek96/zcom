@@ -1,15 +1,9 @@
 'use client';
 
-import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
+import { Fragment, useCallback } from 'react';
 
-import { Post } from '@/app/_types/Post';
-
-import getPostRecommends from '@/app/_lib/getPostRecommends';
-
-import { Fragment, useEffect } from 'react';
-
-import { useInView } from 'react-intersection-observer';
-
+import useFetchTypePosts from '@/app/_hooks/useFetchTypePosts';
+import useObserver from '@/app/_hooks/useObserver';
 import PostItem from '../post-item/PostItem';
 
 // TODO : 포스트 불러오는 훅에 대해서 생각하기
@@ -17,43 +11,25 @@ import PostItem from '../post-item/PostItem';
 
 export default function RecommendPostList() {
   const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-  } = useInfiniteQuery<
-    Post[],
-    Error,
-    InfiniteData<Post[]>,
-    [_1: string, _2: string],
-    number
-  >({
-    queryKey: ['posts', 'recommends'],
-    queryFn: getPostRecommends,
-    initialPageParam: 0,
-    getNextPageParam: (lastpage) => lastpage.at(-1)?.postId,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
-  });
+    infinitePosts, isFetching, hasNextPage, fetchNextPage,
+  } = useFetchTypePosts({ type: 'recommends' });
 
-  const { ref, inView } = useInView({
-    threshold: 0.9,
-    delay: 0,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      // eslint-disable-next-line no-unused-expressions
-      !isFetching && hasNextPage && fetchNextPage();
+  const handleCallback = useCallback(() => {
+    if (!isFetching && hasNextPage) {
+      fetchNextPage();
     }
-  }, [inView]);
+  }, []);
+
+  const { ref } = useObserver({ callback: handleCallback, threshold: 0.9 });
 
   return (
     <>
-      {data?.pages.map((page, i) => (
+      {infinitePosts?.pages.map((page, i) => (
         // eslint-disable-next-line react/no-array-index-key
         <Fragment key={i}>
-          {page.map((post) => <PostItem key={post.postId} post={post} />)}
+          {page.map((post) => (
+            <PostItem key={post.postId} post={post} />
+          ))}
         </Fragment>
       ))}
       <div ref={ref} style={{ height: 50 }} />

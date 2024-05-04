@@ -99,55 +99,59 @@ const handlers = [
     ]);
   }),
 
-  http.get('/api/followingPosts', async () => HttpResponse.json([
-    {
-      postId: 1,
-      User: User[0],
-      content: `${1} X.com is so marvelous. I'm gonna buy that.`,
-      Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
-      createdAt: generateDate(),
-    },
-    {
-      postId: 2,
-      User: User[0],
-      content: `${2} X.com is so marvelous. I'm gonna buy that.`,
-      Images: [
-        { imageId: 1, link: faker.image.urlLoremFlickr() },
-        { imageId: 2, link: faker.image.urlLoremFlickr() },
-      ],
-      createdAt: generateDate(),
-    },
-    {
-      postId: 3,
-      User: User[0],
-      content: `${3} X.com is so marvelous. I'm gonna buy that.`,
-      Images: [],
-      createdAt: generateDate(),
-    },
-    {
-      postId: 4,
-      User: User[0],
-      content: `${4} X.com is so marvelous. I'm gonna buy that.`,
-      Images: [
-        { imageId: 1, link: faker.image.urlLoremFlickr() },
-        { imageId: 2, link: faker.image.urlLoremFlickr() },
-        { imageId: 3, link: faker.image.urlLoremFlickr() },
-        { imageId: 4, link: faker.image.urlLoremFlickr() },
-      ],
-      createdAt: generateDate(),
-    },
-    {
-      postId: 5,
-      User: User[0],
-      content: `${5} X .com is so marvelous. I'm gonna buy that.`,
-      Images: [
-        { imageId: 1, link: faker.image.urlLoremFlickr() },
-        { imageId: 2, link: faker.image.urlLoremFlickr() },
-        { imageId: 3, link: faker.image.urlLoremFlickr() },
-      ],
-      createdAt: generateDate(),
-    },
-  ])),
+  http.get('/api/followingPosts', async ({ request }) => {
+    const url = new URL(request.url);
+    const cursor = Number(url.searchParams.get('cursor')) || 0;
+    return HttpResponse.json([
+      {
+        postId: cursor + 1,
+        User: User[0],
+        content: `${cursor + 1} followingPosts`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 2,
+        User: User[0],
+        content: `${cursor + 2} followingPosts`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 3,
+        User: User[0],
+        content: `${cursor + 3} followingPosts`,
+        Images: [],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 4,
+        User: User[0],
+        content: `${cursor + 4} followingPosts`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+          { imageId: 3, link: faker.image.urlLoremFlickr() },
+          { imageId: 4, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 5,
+        User: User[0],
+        content: `${cursor + 5} followingPosts`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+          { imageId: 3, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+    ]);
+  }),
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   http.get('/api/posts/:postId', ({ request, params }): StrictResponse<any> => {
