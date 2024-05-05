@@ -13,7 +13,7 @@ function Login() {
 
   useEffect(() => {
     router.replace('/i/flow/login');
-  });
+  }, [router]);
 
   if (session?.user) {
     router.replace('/home');
