@@ -33,7 +33,9 @@ function Profile() {
           <div>{me.user?.email}</div>
         </UserInfo>
       </div>
-      <MoreIcon />
+      <div>
+        <MoreIcon />
+      </div>
     </Container>
   );
 }
@@ -50,6 +52,12 @@ const Container = styled.div`
 
   div:first-child {
     display: flex;
+  }
+
+  > div:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &:hover {

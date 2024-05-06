@@ -1,10 +1,11 @@
 'use client';
 
-import { styled } from 'styled-components';
+import { ThemeProvider, styled } from 'styled-components';
 
 import SideBar from './_components/layout/sidebar/SideBar';
 import RightSideSection from './_components/layout/rightSideSection/RightSideSection';
 import RQProvider from '../_components/RQProvider';
+import defaultTheme from '../_styles/defaultTheme';
 
 function AfterLoginLayout({
   children,
@@ -14,25 +15,27 @@ function AfterLoginLayout({
   modal: React.ReactNode;
 }>) {
   return (
-    <Container>
-      <SideWrraper>
-        <SideSection>
-          <SideBar />
-        </SideSection>
-      </SideWrraper>
+    <ThemeProvider theme={defaultTheme}>
+      <Container>
+        <SideWrraper>
+          <SideSection>
+            <SideBar />
+          </SideSection>
+        </SideWrraper>
 
-      <RQProvider>
-        <RightSectionWrraper>
-          <RightSectionInner>
-            <MainWrraper>{children}</MainWrraper>
-            <RightSection>
-              <RightSideSection />
-            </RightSection>
-          </RightSectionInner>
-        </RightSectionWrraper>
-        {modal}
-      </RQProvider>
-    </Container>
+        <RQProvider>
+          <RightSectionWrraper>
+            <RightSectionInner>
+              <MainWrraper>{children}</MainWrraper>
+              <RightSection>
+                <RightSideSection />
+              </RightSection>
+            </RightSectionInner>
+          </RightSectionWrraper>
+          {modal}
+        </RQProvider>
+      </Container>
+    </ThemeProvider>
   );
 }
 
