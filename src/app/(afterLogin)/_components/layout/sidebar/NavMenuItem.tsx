@@ -14,12 +14,15 @@ type NavMenuItemProps = {
 function NavMenuItem({ path, name, Icon }: NavMenuItemProps) {
   const pathName = usePathname();
   const { data: me } = useSession();
-  const isProfile = path === 'user' && `/${me?.user?.email}`;
+  const isProfile = path === '/user' && `/${me?.user?.email}`;
+  const isSelected = isProfile ? pathName === isProfile : path === pathName;
 
   return (
     <NavItemsContainer>
       <Link href={isProfile || path}>
-        <NavItemsWrapper $isSelected={pathName === path}>
+        <NavItemsWrapper
+          $isSelected={isSelected}
+        >
           {Icon}
           <div>{name}</div>
         </NavItemsWrapper>
@@ -46,7 +49,7 @@ const NavItemsWrapper = styled.div<{ $isSelected: boolean }>`
   display: inline-flex;
   font-size: 2rem;
   height: 5rem;
-  padding: .6em;
+  padding: 0.6em;
   align-items: center;
   font-weight: ${(props) => (props.$isSelected ? 'bold' : 'none')};
 
