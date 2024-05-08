@@ -2,10 +2,14 @@
 
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+type GlobalProps = {
+    $font: number;
+}
+
+const GlobalStyle = createGlobalStyle<GlobalProps>`
     html {
         box-sizing: border-box;
-        font-size: 62.5%;
+        font-size: ${(props) => props.$font}%;
     }
 
     a{

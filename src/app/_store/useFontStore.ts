@@ -12,7 +12,7 @@ type Action = {
 };
 
 export const useFontStore = create<State & Action>((set) => ({
-  fontSize: '중간',
+  fontSize: 'middle',
   setFontSize: (type: FontType) => set(() => ({ fontSize: type })),
   selectedOffset: 52,
   setSelectedOffset: (offset: number) => set(() => ({ selectedOffset: offset })),

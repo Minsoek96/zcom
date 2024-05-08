@@ -1,6 +1,6 @@
-export type FontType = '매우작게' | '작게' | '중간' | '크게' | '매우크게';
+export type FontType = 'xsmall' | 'small' | 'middle' | 'large' | 'xlarge';
 
-export type FontData = {
+export type FontDataProps = {
   id: string;
   font: FontType;
   offset: number;

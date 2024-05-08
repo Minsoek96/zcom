@@ -25,7 +25,7 @@ type Props = {
 const Container = styled.button.attrs<Props>({
   type: 'button',
 })`
-  width: 233px;
+  width: 23.3rem;
   text-align: center;
   font-weight: bold;
   font-size: 19px;
@@ -33,7 +33,7 @@ const Container = styled.button.attrs<Props>({
   background: #1d9bf0;
   border-radius: 9999px;
   border: none;
-  height: 54px;
+  height: 5.4rem;
   cursor: pointer;
 
   &:hover {
@@ -48,8 +48,8 @@ const Container = styled.button.attrs<Props>({
   @media screen and (max-width: 1300px) {
     ${({ $media }) => $media
       && css`
-        width: 50px;
-        height: 50px;
+        width: 5.0rem;
+        height: 5.0rem;
 
         span {
           display: none;

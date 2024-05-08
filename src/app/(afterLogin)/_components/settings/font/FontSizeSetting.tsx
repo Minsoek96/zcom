@@ -1,48 +1,18 @@
 'use client';
 
-import { FontData } from '@/app/_types/FontType';
 import styled from 'styled-components';
+
 import { useFontStore } from '@/app/_store/useFontStore';
+
 import FontMarker from './font-marker/FontMarker';
 
-const fontData: FontData[] = [
-  {
-    id: 'sx-font',
-    font: '매우작게',
-    offset: 2,
-    idx: 0,
-  },
-  {
-    id: 'sm-font',
-    font: '작게',
-    offset: 27,
-    idx: 1,
-  },
-  {
-    id: 'm-font',
-    font: '중간',
-    offset: 52,
-    idx: 2,
-  },
-  {
-    id: 'l-font',
-    font: '크게',
-    offset: 77,
-    idx: 3,
-  },
-  {
-    id: 'xl-font',
-    font: '매우크게',
-    offset: 98,
-    idx: 4,
-  },
-];
+import fontData from './fontdata';
 
 export default function FontSizeSetting() {
-  const { fontSize, selectedOffset } = useFontStore();
+  const { selectedOffset } = useFontStore();
 
   return (
-    <Container $fontSize={fontSize}>
+    <Container>
       <h2>글꼴 크기</h2>
       <SettingWrrapper>
         <p>Aa</p>
@@ -58,12 +28,8 @@ export default function FontSizeSetting() {
   );
 }
 
-type Props = {
-  $fontSize: string;
-};
-
-const Container = styled.div<Props>`
-  font-size: ${(props) => (props.$fontSize === '중간' ? '1rem' : '2rem')};
+const Container = styled.div`
+  font-size: 1rem;
   padding-inline: 1.1em;
   padding-block: 1.4em;
   border-bottom: 1px solid #eff3f4;
