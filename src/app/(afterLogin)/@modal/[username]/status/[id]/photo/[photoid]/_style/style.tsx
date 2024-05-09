@@ -28,4 +28,5 @@ export const RightSection = styled.div`
   width: 350px;
   background-color: white;
   overflow-x: hidden;
+  padding-right: 1em;
 `;

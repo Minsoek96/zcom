@@ -9,7 +9,7 @@ function FollowRecList() {
 
   return (
     <Container>
-      <span>팔로우 추천</span>
+      <div><span>팔로우 추천</span></div>
       {recommends?.map((user) => (
         <FollowRecItem key={user.id} user={user} />
       ))}
@@ -24,14 +24,21 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 1.5rem;
-  background-color: RGB(247, 249, 249);
+  border: 1px solid ${(props) => props.theme.colors.borderColor};
   margin-block: 1.5rem;
-  padding-block: 1.1em;
-  padding-inline: 1.5em;
 
-  > span {
+  > div span {
     font-weight: 800;
-    font-size: 1.9rem;
-    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+
+  > div {
+    padding-block: 1.2em;
+    padding-inline: 1.6em;
+  }
+
+  > div:last-child {
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
   }
 `;

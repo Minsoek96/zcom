@@ -66,7 +66,7 @@ const Container = styled.div`
   }
 
   &:hover {
-    background-color: rgba(0,0,0,0.03);
+    background-color: ${(props) => props.theme.colors.trendHover};
   }
 `;
 
@@ -82,7 +82,7 @@ const UserInfoContainer = styled.div`
   }
 
   > span:last-child {
-    color: #536471;
+    color: ${(props) => props.theme.colors.secondFont};
     font-size: 1.3rem;
     line-height: 1.6rem;
   }

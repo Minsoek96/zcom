@@ -24,7 +24,6 @@ export default function MyTrend({ trend }: MyTrendProps) {
 
 const ItemContainer = styled.div`
   cursor: pointer;
-  margin-block: 2.0rem;
   font-weight: bold;
   > a {
     font-size: 1.6rem;
@@ -33,11 +32,11 @@ const ItemContainer = styled.div`
   > p{
     font-weight: lighter;
     font-size: 1.2rem;
-    color: #536472;
+    color: ${(props) => props.theme.colors.secondFont};
     margin-top: .8rem;
   }
 
   &:hover {
-    opacity: 0.5;
+    background-color: ${(props) => props.theme.colors.trendHover}
   }
 `;

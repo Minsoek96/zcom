@@ -38,7 +38,7 @@ const SearchFormWrapper = styled.form`
   width: inherit;
   height: 4.2rem;
   border-radius: 2.1rem;
-  background-color: rgb(239, 243, 244);
+  background-color: ${(props) => props.theme.colors.form};
 
   svg {
     margin-left: 20px;

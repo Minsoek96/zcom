@@ -20,9 +20,7 @@ function NavMenuItem({ path, name, Icon }: NavMenuItemProps) {
   return (
     <NavItemsContainer>
       <Link href={isProfile || path}>
-        <NavItemsWrapper
-          $isSelected={isSelected}
-        >
+        <NavItemsWrapper $isSelected={isSelected}>
           {Icon}
           <div>{name}</div>
         </NavItemsWrapper>
@@ -35,13 +33,9 @@ export default NavMenuItem;
 
 const NavItemsContainer = styled.li`
   list-style: none;
+  padding-block: 1.2em;
   a {
     display: inline-block;
-  }
-
-  a:hover {
-    background-color: rgba(15, 20, 25, 0.1);
-    border-radius: 2.9rem;
   }
 `;
 
@@ -49,18 +43,23 @@ const NavItemsWrapper = styled.div<{ $isSelected: boolean }>`
   display: inline-flex;
   font-size: 2rem;
   height: 5rem;
-  padding: 0.6em;
   align-items: center;
   font-weight: ${(props) => (props.$isSelected ? 'bold' : 'none')};
+  padding: 0.6em;
 
   div {
     margin-inline: 1em;
   }
 
   svg {
-    fill: ${(props) => (props.$isSelected ? '#000;' : 'none')};
-    stroke: #000;
+    fill: ${(props) => (props.$isSelected ? props.theme.colors.mainFont : 'none')};
+    stroke: ${(props) => props.theme.colors.mainFont};
     stroke-width: 1.5px;
+  }
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.hoverEffect};
+    border-radius: 2.9rem;
   }
 
   @media screen and (max-width: 1300px) {

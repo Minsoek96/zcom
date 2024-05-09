@@ -51,7 +51,7 @@ export default CommentForm;
 const Container = styled.div`
   display: flex;
   margin-top: 2.1rem;
-  border-bottom: 1px solid #eff3f4;
+  border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
   padding-bottom: 1.5em;
   padding-inline: 1.5em;
   font-size: 1rem;

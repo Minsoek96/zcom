@@ -38,11 +38,10 @@ const FixedContainer = styled.div<{ $currentTab: string }>`
   line-height: 1.35em;
   text-align: center;
   backdrop-filter: blur(12px);
-  background-color: rgba(255, 255, 255, 0.85);
-  color: #536472;
+  color: ${(props) => props.theme.colors.secondFont};
   z-index: 10;
 
-  > div  {
+  > div {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -50,15 +49,14 @@ const FixedContainer = styled.div<{ $currentTab: string }>`
     flex: 1;
     position: relative;
     padding: 1em;
-    border-bottom: 1px solid #eff3f4;
+    border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
   }
 
   > div:first-child {
-    border-right: 1px solid #eff3f4;;
+    border-right: 1px solid ${(props) => props.theme.colors.borderColor};
     font-weight: ${(props) => (props.$currentTab === 'recommend' ? '700' : '0')};
 
-    color: ${(props) => props.$currentTab === 'recommend' && '#000'};
-
+    color: ${(props) => props.$currentTab === 'recommend' && props.theme.colors.mainFont};
 
     div {
       position: absolute;
@@ -72,7 +70,7 @@ const FixedContainer = styled.div<{ $currentTab: string }>`
   > div:last-child {
     font-weight: ${(props) => (props.$currentTab === 'recommend' ? '0' : '700')};
 
-    color: ${(props) => props.$currentTab === 'follow' && '#000'};
+    color: ${(props) => props.$currentTab === 'follow' && props.theme.colors.mainFont};
 
     div {
       position: absolute;
@@ -83,7 +81,7 @@ const FixedContainer = styled.div<{ $currentTab: string }>`
     }
   }
 
-  @media screen and (max-width: 650px){
+  @media screen and (max-width: 650px) {
     width: 44rem;
   }
 `;

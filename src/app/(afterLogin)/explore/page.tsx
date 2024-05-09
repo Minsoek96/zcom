@@ -23,21 +23,19 @@ export default Explore;
 const Container = styled.div`
   width: inherit;
 
-  > div {
+  > div:first-child {
     font-size: 1rem;
     padding-inline: 1.5em;
     padding-block: 1.5em;
-  }
-
-  > div:first-child {
     width: 57rem;
     padding-bottom: 0;
   }
 `;
 
 const TrandWrapper = styled.div`
-  border-top: 1px solid #eff3f4;
+  border-top: 1px solid ${(props) => props.theme.colors.borderColor};
+  width: 100%;
   > div {
-    background-color: white;
+    border: none;
   }
 `;

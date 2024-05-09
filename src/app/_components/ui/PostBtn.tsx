@@ -28,7 +28,7 @@ const Container = styled.button.attrs<Props>({
   width: 23.3rem;
   text-align: center;
   font-weight: bold;
-  font-size: 19px;
+  font-size: 1.9rem;
   color: #fff;
   background: #1d9bf0;
   border-radius: 9999px;

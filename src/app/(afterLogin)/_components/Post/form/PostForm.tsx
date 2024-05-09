@@ -40,8 +40,8 @@ export default PostForm;
 const Container = styled.div`
   display: flex;
   margin-top: 21px;
-  border-bottom: 1px solid #eff3f4;
-  padding-bottom: 15px;
+  border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
+  padding-bottom: .5em;
 
   > div:first-child {
     width: 40px;
@@ -49,5 +49,11 @@ const Container = styled.div`
 
   > div:last-child {
     width: 100%;
+
+    > div:last-child {
+      margin-top: 3rem;
+      padding-top: .5em;
+      border-top: 1px solid ${(props) => props.theme.colors.borderColor};
+    }
   }
 `;

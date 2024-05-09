@@ -57,23 +57,24 @@ const Container = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${(props) => props.theme.colors.overlay};
 `;
 
 const ModalContainer = styled.div`
+  font-size: 1rem;
   position: absolute;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   top: 5%;
-  background-color: white;
-  width: 600px;
-  min-height: 300px;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  padding: 15px;
+  background-color: ${(props) => props.theme.colors.themeColor};
+  width: 60rem;
+  min-height: 30rem;
+  border-bottom-left-radius: 1.6em;
+  border-bottom-right-radius: 1.6em;
+  border-top-left-radius: 1.6em;
+  border-top-right-radius: 1.6em;
+  padding: 1.5em;
 
   > div:first-child {
     position: relative;
@@ -82,8 +83,12 @@ const ModalContainer = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 9999px;
-    width: 32px;
-    height: 32px;
+    width: 3.2rem;
+    height: 3.2rem;
+
+    svg {
+      fill: ${(props) => props.theme.colors.mainFont};
+    }
     &:hover {
       background-color: rgba(15,20,25, 0.1);
     }
@@ -92,8 +97,8 @@ const ModalContainer = styled.div`
   > div:nth-child(2) {
     display: flex;
     width: 100%;
-    padding: 11px;
-    min-height: 250px;
+    padding: 1.1em;
+    min-height: 25rem;
     height: auto;
   }
 
@@ -101,5 +106,7 @@ const ModalContainer = styled.div`
     position: relative;
     bottom: 0;
     width: 100%;
+    border-top: 1px solid ${(props) => props.theme.colors.borderColor};
+    padding-top: 1rem;
   }
 `;

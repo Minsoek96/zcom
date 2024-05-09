@@ -45,9 +45,9 @@ export default Profile;
 const Container = styled.div`
   font-size: 1rem;
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  padding: 1.1em;
+  padding: 1.2em;
   cursor: pointer;
 
   div:first-child {
@@ -56,22 +56,29 @@ const Container = styled.div`
 
   > div:last-child {
     display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   &:hover {
-    background-color: RGB(231, 231, 232);
-    border-radius: 21px;
+    background-color: ${(props) => props.theme.colors.hoverEffect};
+    border-radius: 9999px;
   }
 
   @media screen and (max-width: 1300px) {
+    > div:last-child {
+      display: none;
+    }
   }
 `;
 
 const UserInfo = styled.div`
   font-size: 1.6rem;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 0.5em;
+
+  > div:last-child {
+    color: ${(props) => props.theme.colors.secondFont}
+  }
 
   @media screen and (max-width: 1300px) {
     display: none;

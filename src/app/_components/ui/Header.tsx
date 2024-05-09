@@ -7,7 +7,7 @@ import { styled } from 'styled-components';
 import { BackIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 
 type HeaderProps = {
-  mainText: string|React.ReactNode;
+  mainText: string | React.ReactNode;
 };
 
 function Header({ mainText }: HeaderProps) {
@@ -24,9 +24,7 @@ function Header({ mainText }: HeaderProps) {
           <BackIcon />
         </div>
       </div>
-      <div>
-        {mainText}
-      </div>
+      <div>{mainText}</div>
     </Container>
   );
 }
@@ -34,24 +32,29 @@ function Header({ mainText }: HeaderProps) {
 export default Header;
 
 const Container = styled.div`
+  font-size: 1rem;
   display: flex;
   align-items: center;
-  padding-inline: 15px;
-  height: 50px;
-  background-color: white;
+  padding-inline: 1.5em;
+  height: 5rem;
+  border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
 
   > div:first-child {
-    width: 53px;
+    width: 5.3rem;
     > div {
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
+      width: 3.2rem;
+      height: 3.2rem;
+
+      svg {
+        fill: ${(props) => props.theme.colors.mainFont};
+      }
 
       &:hover {
-        background-color: rgba(15, 20, 25, 0.1);
+        background-color: ${(props) => props.theme.colors.hoverEffect};
         border-radius: 9999px;
       }
     }
@@ -59,6 +62,6 @@ const Container = styled.div`
 
   > div:nth-child(2) {
     font-weight: 700;
-    font-size: 19px;
+    font-size: 1.9rem;
   }
 `;

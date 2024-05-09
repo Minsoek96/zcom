@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle<GlobalProps>`
 
     a{
         text-decoration: none;
-        color: black;
+        color: ${(props) => props.theme.colors.mainFont}
     }
 
 
@@ -26,7 +26,8 @@ const GlobalStyle = createGlobalStyle<GlobalProps>`
 
     body {
         font-size: 1.6rem;
-        background-color: white;
+        background-color: ${(props) => props.theme.colors.themeColor};
+        color: ${(props) => props.theme.colors.mainFont};
     }
 
     :lang(ko) {

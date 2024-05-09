@@ -9,7 +9,9 @@ function MyTrendList() {
 
   return (
     <Container>
-      <span>나를 위한 트렌드</span>
+      <div>
+        <span>나를 위한 트렌드</span>
+      </div>
       {trends?.map((trend) => (
         <MyTrend trend={trend} key={trend.tagId} />
       ))}
@@ -22,12 +24,20 @@ export default MyTrendList;
 const Container = styled.div`
   font-size: 1rem;
   width: inherit;
-  background-color: RGB(247, 249, 249);
+  border: 1px solid ${(props) => props.theme.colors.borderColor};
   border-radius: 1.5rem;
-  padding-block: 1.1em;
-  padding-inline: 1.5em;
-  > span {
+  > div span {
     font-weight: 800;
-    font-size: 1.9rem;
+    font-size: 2rem;
+  }
+
+  > div {
+    padding-block: 1.2em;
+    padding-inline: 1.6em;
+  }
+
+  > div:last-child {
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
   }
 `;

@@ -40,17 +40,22 @@ function ResizableTextarea({
 
 const StyledTextarea = styled.textarea`
   width: inherit;
-  padding: 12px;
+  padding: 0.8em;
   border: none;
   border-radius: 4px;
   resize: none;
-  max-height: 500px;
+  max-height: 50rem;
   height: auto;
-  font-size: 19px;
+  font-size: 1.9rem;
+  font-weight: ${(props) => props.theme.font.baseWeight};
   font-family: Malgun Gothic;
+  background-color: ${(props) => props.theme.colors.themeColor};
+  color: ${(props) => props.theme.colors.mainFont};
   &:focus {
     outline: none;
   }
+
+  scrollbar-color: ${(props) => props.theme.colors.scrollColor};
 `;
 
 export default ResizableTextarea;

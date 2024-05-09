@@ -1,16 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+
 import { useRouter } from 'next/navigation';
 
 import { styled } from 'styled-components';
 
 import PostBtn from '@/app/_components/ui/PostBtn';
+import { LogoIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 import NavMenuList from './NavMenuList';
 import Profile from './Profile';
-
-import Zlogo from '../../../../../../public/zlogo.png';
 
 function SideBar() {
   const router = useRouter();
@@ -24,7 +23,7 @@ function SideBar() {
       <div>
         <Link href="/home">
           <Logo>
-            <Image src={Zlogo} alt="z.com로고" width={40} height={40} />
+            <LogoIcon />
           </Logo>
         </Link>
         <NavMenuList />
@@ -49,17 +48,26 @@ const SideBarContainer = styled.section`
 `;
 
 const Logo = styled.div`
-  display: inline-block;
+  position: relative;
+  left: -.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 5.6rem;
-  padding: .5em;
+  width: 5.6rem;
+  padding: 1em;
   margin-top: .2rem;
+
+  svg {
+    fill: ${(props) => props.theme.colors.mainFont};
+  }
 
   img {
     aspect-ratio: 1 / 1;
   }
 
-  :hover {
-    background-color: RGB(231, 231, 232);
-    border-radius: 2.1rem;
+  &:hover {
+    background-color: ${(props) => props.theme.colors.hoverEffect};
+    border-radius: 9999px;
   }
 `;

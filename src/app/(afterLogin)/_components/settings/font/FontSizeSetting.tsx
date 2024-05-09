@@ -32,7 +32,7 @@ const Container = styled.div`
   font-size: 1rem;
   padding-inline: 1.1em;
   padding-block: 1.4em;
-  border-bottom: 1px solid #eff3f4;
+  border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
   width: 100%;
   > h2 {
     font-size: 1.8em;

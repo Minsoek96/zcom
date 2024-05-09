@@ -19,6 +19,18 @@ const fontInfo: FontInfoProps = {
   xlarge: 70.5,
 };
 
+// type ThemeInfoProps = {
+//   white: string;
+//   dark: string;
+//   deepDark: string;
+// }
+
+// const ThemeInfo: ThemeInfoProps = {
+//   white: '#FFF',
+//   dark: 'rgb(21, 32, 43)',
+//   deepDark: 'rgb(0, 0, 0)',
+// };
+
 export default function GlobalProvider() {
   const { fontSize } = useFontStore();
   return (

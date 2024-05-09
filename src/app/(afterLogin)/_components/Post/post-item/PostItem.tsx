@@ -57,11 +57,12 @@ export default PostItem;
 const Container = styled.article`
   display: flex;
   flex-direction: column;
+  width: inherit;
 
   //TODO : 아이템 추가시 스타일조정
   cursor: pointer;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: ${(props) => props.theme.colors.trendHover};
     transition: background-color 0.2s ease;
   }
 `;
@@ -70,8 +71,8 @@ const PostWrapper = styled.div`
   display: flex;
   padding-inline: 15px;
   padding-block: 11px;
-  border-bottom: 1px solid #eff3f4;
-  width: 97%;
+  border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
+  width: 100%;
 
   > div:first-child {
     width: 40px;
