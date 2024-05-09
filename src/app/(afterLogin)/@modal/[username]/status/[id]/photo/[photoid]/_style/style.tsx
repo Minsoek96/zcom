@@ -26,7 +26,7 @@ export const RightSection = styled.div`
   display: flex;
   flex-direction: column;
   width: 350px;
-  background-color: white;
   overflow-x: hidden;
   padding-right: 1em;
+  background-color: ${(props) => props.theme.colors.themeColor};
 `;

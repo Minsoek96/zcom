@@ -1,11 +1,11 @@
 import Header from '@/app/_components/ui/Header';
-import ThemeSettings from '../_components/settings/ThemeSettings';
+import ScreenSetting from '../_components/settings/ScreenSettings';
 
 export default function SettingPage() {
   return (
     <div>
       <Header mainText="화면" />
-      <ThemeSettings />
+      <ScreenSetting />
     </div>
   );
 }

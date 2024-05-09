@@ -67,7 +67,7 @@ const Marker = styled.div<MarkerProps>`
   }
 
   &:hover {
-    background-color: rgba(249, 24, 128, 0.1);
+    background-color: ${(props) => props.theme.colors.hoverEffect};
 
     span {
       display: flex;
