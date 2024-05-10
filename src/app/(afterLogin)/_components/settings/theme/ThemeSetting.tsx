@@ -1,7 +1,9 @@
 'use client';
 
-import { useThemeStore } from '@/app/_store/useThemeStore';
-import { ThemeDataProps, ThemeType } from '@/app/_types/ThemeType';
+import useThemeStorage from '@/app/_hooks/useThemeStorage';
+
+import { ThemeDataProps } from '@/app/_types/ThemeType';
+
 import styled from 'styled-components';
 
 const themeData:ThemeDataProps[] = [
@@ -26,11 +28,7 @@ const themeData:ThemeDataProps[] = [
 ];
 
 export default function ThemeSetting() {
-  const { setTheme } = useThemeStore();
-
-  const handleChange = (type: ThemeType) => {
-    setTheme(type);
-  };
+  const { handleChangeTheme } = useThemeStorage();
 
   // TODO : 인풋 라디오 컴포넌트화 생각하기 (update 반영)
 
@@ -48,7 +46,7 @@ export default function ThemeSetting() {
               type="radio"
               defaultChecked={theme.checked}
               checked={theme.checked}
-              onChange={() => handleChange(theme.id)}
+              onChange={() => handleChangeTheme(theme.id)}
             />
             <span>{theme.text}</span>
           </ThemeContainer>
