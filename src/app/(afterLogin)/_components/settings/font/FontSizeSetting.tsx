@@ -9,7 +9,7 @@ import FontMarker from './font-marker/FontMarker';
 import fontData from './fontdata';
 
 export default function FontSizeSetting() {
-  const { selectedOffset } = useFontStore();
+  const { fontOption } = useFontStore();
 
   return (
     <Container>
@@ -17,7 +17,7 @@ export default function FontSizeSetting() {
       <SettingWrrapper>
         <p>Aa</p>
         <FontSliderContainer>
-          <SliderProgress width={selectedOffset} />
+          <SliderProgress width={fontOption.offset} />
           {fontData.map((item) => (
             <FontMarker key={item.id} item={item} />
           ))}

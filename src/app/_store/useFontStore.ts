@@ -1,21 +1,22 @@
 import { create } from 'zustand';
 import { FontType } from '../_types/FontType';
 
-type State = {
+type FontOptionProps = {
   fontSize: FontType;
-  selectedOffset: number;
+  offset: number;
+};
+
+type State = {
+  fontOption: FontOptionProps;
 };
 
 type Action = {
-  setFontSize: (value: FontType) => void;
-  setSelectedOffset: (offset: number) => void;
+  setFontOptions: (size: FontType, offset: number) => void;
 };
 
 export const useFontStore = create<State & Action>((set) => ({
-  fontSize: 'middle',
-  setFontSize: (type: FontType) => set(() => ({ fontSize: type })),
-  selectedOffset: 52,
-  setSelectedOffset: (offset: number) => set(() => ({ selectedOffset: offset })),
+  fontOption: { fontSize: 'middle', offset: 52 },
+  setFontOptions: (fontSize: FontType, offset: number) => set({ fontOption: { fontSize, offset } }),
 }));
 
 export const empty = {};

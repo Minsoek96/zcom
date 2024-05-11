@@ -1,5 +1,7 @@
-import { useFontStore } from '@/app/_store/useFontStore';
-import { FontDataProps, FontType } from '@/app/_types/FontType';
+import useThemeStorage from '@/app/_hooks/useThemeStorage';
+
+import { FontDataProps } from '@/app/_types/FontType';
+
 import { styled } from 'styled-components';
 
 type FontMarkerProps = {
@@ -8,14 +10,9 @@ type FontMarkerProps = {
 
 export default function FontMarker({ item }: FontMarkerProps) {
   const { font, offset } = item;
-  const { setSelectedOffset, setFontSize, selectedOffset } = useFontStore();
+  const { handleChangeFont, fontOption } = useThemeStorage();
 
-  const isSelected = offset <= selectedOffset;
-
-  const handleChangeFont = (type: FontType, targetOffset: number) => {
-    setFontSize(type);
-    setSelectedOffset(targetOffset);
-  };
+  const isSelected = offset <= fontOption.offset;
 
   return (
     <FontItem>
