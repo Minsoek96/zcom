@@ -187,3 +187,13 @@ export function MoreIcon() {
     </svg>
   );
 }
+
+export function CircleIcon() {
+  return (
+    <svg width={45} viewBox="0 0 24 24" aria-hidden="true">
+      <g>
+        <circle cx="12" cy="12" r="10.3" />
+      </g>
+    </svg>
+  );
+}

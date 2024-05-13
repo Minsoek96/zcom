@@ -1,12 +1,13 @@
 'use client';
 
+import RadioCheck from '@/app/_components/ui/CheckBox';
 import useThemeStorage from '@/app/_hooks/useThemeStorage';
 
 import { ThemeDataProps } from '@/app/_types/ThemeType';
 
 import styled from 'styled-components';
 
-const themeData:ThemeDataProps[] = [
+const themeData: ThemeDataProps[] = [
   {
     id: 'defaultTheme',
     color: 'rgb(255, 255, 255)',
@@ -42,10 +43,9 @@ export default function ThemeSetting() {
             $isSelected={theme.checked}
             key={theme.id}
           >
-            <input
-              type="radio"
-              defaultChecked={theme.checked}
-              checked={theme.checked}
+            <RadioCheck
+              checked={false}
+              id={theme.id}
               onChange={() => handleChangeTheme(theme.id)}
             />
             <span>{theme.text}</span>
@@ -84,7 +84,7 @@ const SettingWrrapper = styled.div`
     font-size: 1.5rem;
   }
 
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     flex-direction: column;
   }
 `;
