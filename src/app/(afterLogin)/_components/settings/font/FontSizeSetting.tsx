@@ -56,12 +56,12 @@ const FontSliderContainer = styled.div`
   position: relative;
   width: 90%;
   height: 0.4rem;
-  background-color:rgb(252, 140, 192);
+  background-color:${(props) => props.theme.colors.subColor};
 `;
 
 const SliderProgress = styled.div<{ width: number }>`
   position: absolute;
   height: 100%;
-  background-color: #F91880;
+  background-color: ${(props) => props.theme.colors.mainColor};
   width: ${(props) => props.width}%;
 `;

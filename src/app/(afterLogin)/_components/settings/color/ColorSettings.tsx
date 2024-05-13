@@ -1,56 +1,68 @@
 'use client';
 
 import { CircleIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
+import RadioCheck from '@/app/_components/ui/CheckBox';
+import { useColorStore } from '@/app/_store/useColorStore';
+import { ColorDataProps } from '@/app/_types/ColorType';
 
 import styled from 'styled-components';
 
-const colorData = [
+const colorData: ColorDataProps[] = [
   {
     id: 'blue01',
-    color: 'rgb(29, 155, 240)',
-    checked: false,
+    mainColor: 'rgb(29, 155, 240)',
+    subColor: 'rgb(142, 205, 248)',
+    text: '하늘색',
   },
   {
     id: 'yellow02',
-    color: 'rgb(255, 212, 0)',
-    checked: false,
+    mainColor: 'rgb(255, 212, 0)',
+    subColor: 'rgb(255, 234, 128)',
+    text: '노란색',
   },
   {
     id: 'pink03',
-    color: 'rgb(249, 24, 128)',
-    checked: false,
+    mainColor: 'rgb(249, 24, 128)',
+    subColor: 'rgb(252, 140, 192)',
+    text: '분홍색',
   },
   {
     id: 'pupple04',
-    color: 'rgb(120, 86, 255)',
-    checked: false,
+    mainColor: 'rgb(120, 86, 255)',
+    subColor: 'rgb(188, 171, 255)',
+    text: '보라색',
   },
   {
     id: 'orange05',
-    color: 'rgb(255, 122, 0)',
-    checked: false,
+    mainColor: 'rgb(255, 122, 0)',
+    subColor: 'rgb(255, 189, 128)',
+    text: '주황색',
   },
   {
     id: 'green06',
-    color: 'rgb(0, 186, 124)',
-    checked: false,
+    mainColor: 'rgb(0, 186, 124)',
+    subColor: 'rgb(128, 221, 190)',
+    text: '연두색',
   },
 ];
 
 export default function ColorSettings() {
-  // TODO : 인풋 라디오 컴포넌트화 생각하기 (update 반영)
+  const { color, setColor } = useColorStore();
 
   return (
     <Container>
       <h2>색상</h2>
       <SettingWrrapper>
         {colorData.map((theme) => (
-          <ColorContainer
-            $circleColor={theme.color}
-            $isSelected={theme.checked}
-            key={theme.id}
-          >
+          <ColorContainer $circleColor={theme.mainColor} key={theme.id}>
             <CircleIcon />
+            <RadioCheck
+              checked={color.mainColor === theme.mainColor}
+              id={theme.id}
+              onChange={() => {
+                setColor(theme.mainColor, theme.subColor);
+              }}
+            />
           </ColorContainer>
         ))}
       </SettingWrrapper>
@@ -72,7 +84,6 @@ const Container = styled.div`
 
 type SettingProps = {
   $circleColor: string;
-  $isSelected: boolean;
 };
 
 const SettingWrrapper = styled.div`
@@ -86,13 +97,12 @@ const SettingWrrapper = styled.div`
     font-size: 1.5rem;
   }
 
-  @media screen and (max-width: 600px){
-     display: grid;
-     grid-template-columns: 1fr 1fr 1fr;
-     grid-template-rows: 1fr 1fr;
-     width: 100%;
-    }
-
+  @media screen and (max-width: 600px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+  }
 `;
 
 const ColorContainer = styled.div<SettingProps>`

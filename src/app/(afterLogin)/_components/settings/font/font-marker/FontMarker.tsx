@@ -56,7 +56,7 @@ const Marker = styled.div<MarkerProps>`
     width: 1.6rem;
     height: 1.6rem;
     border-radius: 50%;
-    background-color: ${(props) => (props.$isMarker ? 'rgb(249, 24, 128)' : 'rgb(252, 140, 192)')};
+    background-color: ${(props) => (props.$isMarker ? props.theme.colors.mainColor : props.theme.colors.subColor)};
   }
 
   span {

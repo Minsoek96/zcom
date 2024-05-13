@@ -11,6 +11,8 @@ const darkTheme:Theme = {
     form: 'rgb(39, 51, 64)',
     trendHover: 'rgba(255,255,255,0.03)',
     scrollColor: 'rgb(92, 110, 126) rgb(30, 39, 50)',
+    mainColor: null || '',
+    subColor: null || '',
   },
   font: {
     baseWeight: '400',

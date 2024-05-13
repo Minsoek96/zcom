@@ -9,6 +9,8 @@ const defaultTheme = {
     form: 'rgb(239, 243, 244)',
     trendHover: 'rgba(0,0,0,0.03)',
     scrollColor: 'rgb(185, 202, 211) rgb(247, 249, 249)',
+    mainColor: null || '',
+    subColor: null || '',
   },
   font: {
     baseWeight: '400',

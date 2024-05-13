@@ -30,14 +30,14 @@ const Container = styled.button.attrs<Props>({
   font-weight: bold;
   font-size: 1.9rem;
   color: #fff;
-  background: #1d9bf0;
+  background: ${(props) => props.theme.colors.mainColor};
   border-radius: 9999px;
   border: none;
   height: 5.4rem;
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(26, 140, 216);
+    background-color:${(props) => props.theme.colors.subColor};
   }
 
   svg {

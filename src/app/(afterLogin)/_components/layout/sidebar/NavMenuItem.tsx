@@ -21,7 +21,10 @@ function NavMenuItem({ path, name, Icon }: NavMenuItemProps) {
     <NavItemsContainer>
       <Link href={isProfile || path}>
         <NavItemsWrapper $isSelected={isSelected}>
-          {Icon}
+          <div>
+            <div />
+            {Icon}
+          </div>
           <div>{name}</div>
         </NavItemsWrapper>
       </Link>
@@ -47,7 +50,23 @@ const NavItemsWrapper = styled.div<{ $isSelected: boolean }>`
   font-weight: ${(props) => (props.$isSelected ? 'bold' : 'none')};
   padding: 0.6em;
 
-  div {
+  div:first-child {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    div {
+      display: ${(props) => (props.$isSelected ? 'block' : 'none')};
+      position: absolute;
+      width: .5rem;
+      height: .5rem;
+      background-color:${(props) => props.theme.colors.mainColor};
+      top: -.4rem;
+      right: -.1rem;
+      border-radius: 9999px;
+    }
+  }
+
+  div:last-child {
     margin-inline: 1em;
   }
 

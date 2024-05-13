@@ -29,7 +29,7 @@ const themeData: ThemeDataProps[] = [
 ];
 
 export default function ThemeSetting() {
-  const { handleChangeTheme } = useThemeStorage();
+  const { handleChangeTheme, theme: themeType } = useThemeStorage();
 
   // TODO : 인풋 라디오 컴포넌트화 생각하기 (update 반영)
 
@@ -44,7 +44,7 @@ export default function ThemeSetting() {
             key={theme.id}
           >
             <RadioCheck
-              checked={false}
+              checked={themeType === theme.id}
               id={theme.id}
               onChange={() => handleChangeTheme(theme.id)}
             />

@@ -11,6 +11,8 @@ const deepDarkTheme: Theme = {
     form: 'rgb(32, 35, 39)',
     trendHover: 'rgba(255,255,255,0.03)',
     scrollColor: 'rgb(62, 65, 68) rgb(22, 24, 28)',
+    mainColor: null || '',
+    subColor: null || '',
   },
   font: {
     baseWeight: '400',
