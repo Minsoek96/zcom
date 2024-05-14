@@ -10,6 +10,7 @@ export default function useFetchFollowRecommends() {
     queryFn: getFollowRec,
     staleTime: 60 * 1000,
     gcTime: 300 * 1000,
+    retry: 3,
   });
 
   return {

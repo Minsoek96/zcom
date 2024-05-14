@@ -9,6 +9,7 @@ export default function useFetchTrends() {
     queryFn: getTrends,
     staleTime: 60 * 1000,
     gcTime: 300 * 1000,
+    retry: 3,
   });
 
   return {

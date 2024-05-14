@@ -4,6 +4,8 @@ import {
 
 import { faker } from '@faker-js/faker';
 
+const ServerBaseURL = 'http://localhost:9090';
+
 function generateDate() {
   const lastWeek = new Date(Date.now());
   lastWeek.setDate(lastWeek.getDate() - 7);
@@ -20,20 +22,20 @@ const User = [
 ];
 
 const handlers = [
-  http.post('/api/login', () => HttpResponse.json(User[1], {
+  http.post(`${ServerBaseURL}/api/login`, () => HttpResponse.json(User[1], {
     headers: {
       'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
     },
   })),
 
-  http.post('/api/logout', () => new HttpResponse(null, {
+  http.post(`${ServerBaseURL}/api/logout`, () => new HttpResponse(null, {
     headers: {
       'Set-Cookie': 'connect.sid=;HttpOnly;Path=/;Max-Age=0',
     },
   })),
 
   http.post(
-    '/api/users',
+    `${ServerBaseURL}/api/users`,
     async () => HttpResponse.text(JSON.stringify('ok'), {
       headers: {
         'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/;Max-Age=0',
@@ -45,7 +47,7 @@ const handlers = [
     // });
   ),
 
-  http.get('/api/postRecommends', async ({ request }) => {
+  http.get(`${ServerBaseURL}/api/postRecommends`, async ({ request }) => {
     const url = new URL(request.url);
     const cursor = Number(url.searchParams.get('cursor')) || 0;
     return HttpResponse.json([
@@ -99,7 +101,7 @@ const handlers = [
     ]);
   }),
 
-  http.get('/api/followingPosts', async ({ request }) => {
+  http.get(`${ServerBaseURL}/api/followingPosts`, async ({ request }) => {
     const url = new URL(request.url);
     const cursor = Number(url.searchParams.get('cursor')) || 0;
     return HttpResponse.json([
@@ -154,7 +156,7 @@ const handlers = [
   }),
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
-  http.get('/api/posts/:postId', ({ request, params }): StrictResponse<any> => {
+  http.get(`${ServerBaseURL}/api/posts/:postId`, ({ request, params }): StrictResponse<any> => {
     const { postId } = params;
     // eslint-disable-next-line radix
     if (parseInt(postId as string) > 10) {
@@ -177,7 +179,7 @@ const handlers = [
     );
   }),
 
-  http.get('/api/search', ({ request }) => {
+  http.get(`${ServerBaseURL}/api/search`, ({ request }) => {
     const url = new URL(request.url);
     const q = url.searchParams.get('q');
 
@@ -221,7 +223,7 @@ const handlers = [
   }),
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-  http.get('/api/users/:userId', ({ request, params }): StrictResponse<any> => {
+  http.get(`${ServerBaseURL}/api/users/:userId`, ({ request, params }): StrictResponse<any> => {
     const { userId } = params;
     const found = User.find((v) => v.id === userId);
     if (found) {
@@ -234,7 +236,7 @@ const handlers = [
     });
   }),
 
-  http.get('/api/users/:userId/posts', ({ params }) => {
+  http.get(`${ServerBaseURL}/api/users/:userId/posts`, ({ params }) => {
     const { userId } = params;
 
     return HttpResponse.json([
@@ -276,7 +278,7 @@ const handlers = [
     ]);
   }),
 
-  http.get('/api/users/:userId/posts/:postId', ({ request }) => {
+  http.get(`${ServerBaseURL}/api/users/:userId/posts/:postId`, ({ request }) => {
     const url = new URL(request.url);
     const userId = url.searchParams.get('userId');
     const postId = url.searchParams.get('postId');
@@ -290,7 +292,7 @@ const handlers = [
     });
   }),
 
-  http.get('/api/users/:userId/posts/:postId/comments', ({ request }) => {
+  http.get(`${ServerBaseURL}/api/users/:userId/posts/:postId/comments`, ({ request }) => {
     const url = new URL(request.url);
     const userId = url.searchParams.get('userId');
     const postId = url.searchParams.get('postId');
@@ -334,7 +336,7 @@ const handlers = [
     ]);
   }),
 
-  http.get('/api/trends', () => HttpResponse.json(
+  http.get(`${ServerBaseURL}/api/trends`, () => HttpResponse.json(
     [
       { tagId: 1, title: '코난 극장판', count: 3254 },
       { tagId: 2, title: '뒤풀이 할건가요', count: 1218 },
@@ -344,9 +346,9 @@ const handlers = [
     ],
   )),
 
-  http.get('/api/followRecommends', () => HttpResponse.json(User)),
+  http.get(`${ServerBaseURL}/api/followRecommends`, () => HttpResponse.json(User)),
 
-  http.get('/api/posts/:postId/comments', ({ params }) => {
+  http.get(`${ServerBaseURL}/api/posts/:postId/comments`, ({ params }) => {
     const { postId } = params;
     return HttpResponse.json(
       [

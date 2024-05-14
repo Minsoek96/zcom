@@ -1,16 +1,34 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+// export default function MSWComponent() {
+//   useEffect(() => {
+//     if (typeof window !== 'undefined') {
+//       if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
+//         // eslint-disable-next-line global-require
+//         require('@/mocks/browser');
+//       }
+//     }
+//   }, []);
+
+//   return null;
+// }
 
 export default function MSWComponent() {
+  const [isWorkerStarted, setIsWorkerStarted] = useState(false);
+
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
-        // eslint-disable-next-line global-require
-        require('@/mocks/browser');
-      }
+    // if (process.env.NODE_ENV === 'development') {
+    if (typeof window !== 'undefined' && !isWorkerStarted) {
+      (async () => {
+        const { worker } = await import('@/mocks/browser');
+        worker.start();
+        setIsWorkerStarted(true);
+      })();
+      // }
     }
-  }, []);
+  }, [isWorkerStarted]);
 
   return null;
 }
