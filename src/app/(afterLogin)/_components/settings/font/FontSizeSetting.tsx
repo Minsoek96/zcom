@@ -2,14 +2,14 @@
 
 import styled from 'styled-components';
 
-import { useFontStore } from '@/app/_store/useFontStore';
-
+import useThemeSetStore from '@/app/_store/useThemeSetStore';
 import FontMarker from './font-marker/FontMarker';
 
 import fontData from './fontdata';
 
 export default function FontSizeSetting() {
-  const { fontOption } = useFontStore();
+  const { themeSettings } = useThemeSetStore();
+  const { offset } = themeSettings.fontOption;
 
   return (
     <Container>
@@ -17,7 +17,7 @@ export default function FontSizeSetting() {
       <SettingWrrapper>
         <p>Aa</p>
         <FontSliderContainer>
-          <SliderProgress width={fontOption.offset} />
+          <SliderProgress width={offset} />
           {fontData.map((item) => (
             <FontMarker key={item.id} item={item} />
           ))}

@@ -1,11 +1,13 @@
 'use client';
 
+import styled from 'styled-components';
+
 import { CircleIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 import RadioCheck from '@/app/_components/ui/CheckBox';
-import { useColorStore } from '@/app/_store/useColorStore';
-import { ColorDataProps } from '@/app/_types/ColorType';
 
-import styled from 'styled-components';
+import useThemeStorage from '@/app/_hooks/useThemeStorage';
+
+import { ColorDataProps } from '@/app/_types/ColorType';
 
 const colorData: ColorDataProps[] = [
   {
@@ -47,7 +49,8 @@ const colorData: ColorDataProps[] = [
 ];
 
 export default function ColorSettings() {
-  const { color, setColor } = useColorStore();
+  const { color, handleChangeColor } = useThemeStorage();
+  const { mainColor } = color;
 
   return (
     <Container>
@@ -57,10 +60,10 @@ export default function ColorSettings() {
           <ColorContainer $circleColor={theme.mainColor} key={theme.id}>
             <CircleIcon />
             <RadioCheck
-              checked={color.mainColor === theme.mainColor}
+              checked={mainColor === theme.mainColor}
               id={theme.id}
               onChange={() => {
-                setColor(theme.mainColor, theme.subColor);
+                handleChangeColor(theme.mainColor, theme.subColor);
               }}
             />
           </ColorContainer>

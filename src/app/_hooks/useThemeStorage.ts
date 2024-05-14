@@ -1,18 +1,21 @@
-import { useCallback, useEffect } from 'react';
-
-import { useThemeStore } from '../_store/useThemeStore';
+import { useCallback } from 'react';
 
 import LocalStorageService from '../_service/LocalStorageService';
 
 import { ThemeType } from '../_types/ThemeType';
-import { useFontStore } from '../_store/useFontStore';
 import { FontType } from '../_types/FontType';
+import useThemeSetStore from '../_store/useThemeSetStore';
+import { ColorType, subColorType } from '../_types/ColorType';
+
+// TODO useRef 처리
+const storage = new LocalStorageService('X-theme');
 
 export default function useThemeStorage() {
-  const { setTheme, theme } = useThemeStore();
-  const { setFontOptions, fontOption } = useFontStore();
+  const {
+    setTheme, setFontOptions, themeSettings, setColor,
+  } = useThemeSetStore();
 
-  const storage = new LocalStorageService('X-theme');
+  const { fontOption, theme, color } = themeSettings;
 
   const updateStorage = <T extends object>(updates: T) => {
     const currentSaveMode = storage.get() || {};
@@ -25,7 +28,7 @@ export default function useThemeStorage() {
       updateStorage({ theme: themeType });
       setTheme(themeType);
     },
-    [theme],
+    [],
   );
 
   const handleChangeFont = useCallback(
@@ -33,21 +36,23 @@ export default function useThemeStorage() {
       updateStorage({ fontSize, offset });
       setFontOptions(fontSize, offset);
     },
-    [fontOption],
+    [],
   );
 
-  useEffect(() => {
-    const storedSettings = storage.get() || {};
-    if (storedSettings.theme) setTheme(storedSettings.theme);
-    if (storedSettings.fontSize && storedSettings.offset) {
-      setFontOptions(storedSettings.fontSize, storedSettings.offset);
-    }
-  }, []);
+  const handleChangeColor = useCallback(
+    (mainColor: ColorType, subColor: subColorType) => {
+      updateStorage({ mainColor, subColor });
+      setColor(mainColor, subColor);
+    },
+    [],
+  );
 
   return {
     handleChangeTheme,
     handleChangeFont,
+    handleChangeColor,
     fontOption,
     theme,
+    color,
   };
 }

@@ -8,7 +8,7 @@ import darkTheme from '@/app/_styles/darkTheme';
 
 import useThemeStorage from '@/app/_hooks/useThemeStorage';
 
-import { useColorStore } from '@/app/_store/useColorStore';
+import useThemeLocalEffect from '@/app/_hooks/useThemeLocalEffect';
 import StyledComponentsRegistry from './styledComponentRegistry';
 
 type ProvidersProps = {
@@ -21,9 +21,8 @@ const themes = {
   deepDarkTheme,
 };
 export default function Providers({ children }: ProvidersProps) {
-  const { theme } = useThemeStorage();
-  const { color } = useColorStore();
-
+  const { theme, color } = useThemeStorage();
+  useThemeLocalEffect();
   // TODO : 로컬 스토리지 연결 작업 (로컬 스토리지 ? LocalForage ?)
   // TOOD : 모든 로컬 스토리지 상태 통합하기
   // TODO : 커스텀 훅 호출로인한 useEffect 마운트 초기화 문제 해결
