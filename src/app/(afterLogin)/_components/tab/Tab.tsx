@@ -9,15 +9,15 @@ function Tab() {
 
   return (
     <TabContainer>
-      <FixedContainer $currentTab={tab}>
-        <div onClick={() => setTab('recommend')}>
+      <FixedContainer>
+        <RecommedTab $currentTab={tab} onClick={() => setTab('recommend')}>
           추천
           <div />
-        </div>
-        <div onClick={() => setTab('follow')}>
+        </RecommedTab>
+        <FollowingTab $currentTab={tab} onClick={() => setTab('follow')}>
           팔로우 중
           <div />
-        </div>
+        </FollowingTab>
       </FixedContainer>
     </TabContainer>
   );
@@ -29,7 +29,7 @@ const TabContainer = styled.div`
   height: 5rem;
 `;
 
-const FixedContainer = styled.div<{ $currentTab: string }>`
+const FixedContainer = styled.div`
   width: 59.7rem;
   vertical-align: 1px;
   display: flex;
@@ -41,47 +41,54 @@ const FixedContainer = styled.div<{ $currentTab: string }>`
   color: ${(props) => props.theme.colors.secondFont};
   z-index: 10;
 
-  > div {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    position: relative;
-    padding: 1em;
-    border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
-  }
-
-  > div:first-child {
-    border-right: 1px solid ${(props) => props.theme.colors.borderColor};
-    font-weight: ${(props) => (props.$currentTab === 'recommend' ? '700' : '0')};
-
-    color: ${(props) => props.$currentTab === 'recommend' && props.theme.colors.mainFont};
-
-    div {
-      position: absolute;
-      bottom: 0;
-      background-color: ${(props) => (props.$currentTab === 'recommend' ? 'rgb(29, 155, 240)' : 'none')};
-      width: 5.6rem;
-      height: 0.4rem;
-    }
-  }
-
-  > div:last-child {
-    font-weight: ${(props) => (props.$currentTab === 'recommend' ? '0' : '700')};
-
-    color: ${(props) => props.$currentTab === 'follow' && props.theme.colors.mainFont};
-
-    div {
-      position: absolute;
-      bottom: 0;
-      background-color: ${(props) => (props.$currentTab === 'recommend' ? 'none' : 'rgb(29, 155, 240)')};
-      width: 5.6rem;
-      height: 0.4rem;
-    }
-  }
-
   @media screen and (max-width: 650px) {
     width: 44rem;
+  }
+`;
+
+const TabBase = styled.div<{ $currentTab: string }>`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+  padding: 1em;
+  border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
+
+  > div {
+    position: absolute;
+    bottom: 0;
+    width: 5.6rem;
+    height: 0.4rem;
+  }
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.hoverEffect};
+  }
+`;
+
+const RecommedTab = styled(TabBase)`
+
+  font-weight: ${(props) => (props.$currentTab === 'recommend' ? '700' : '0')};
+
+  color: ${(props) => props.$currentTab === 'recommend' && props.theme.colors.mainFont};
+
+  div {
+    background-color: ${(props) => (props.$currentTab === 'recommend'
+    ? props.theme.colors.mainColor
+    : 'none')};
+  }
+`;
+
+const FollowingTab = styled(TabBase)`
+  font-weight: ${(props) => (props.$currentTab === 'recommend' ? '0' : '700')};
+
+  color: ${(props) => props.$currentTab === 'follow' && props.theme.colors.mainFont};
+
+  div {
+    background-color: ${(props) => (props.$currentTab === 'recommend'
+    ? 'none'
+    : props.theme.colors.mainColor)};
   }
 `;

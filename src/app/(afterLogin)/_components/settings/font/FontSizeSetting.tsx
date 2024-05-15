@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import useThemeSetStore from '@/app/_store/useThemeSetStore';
 import FontMarker from './font-marker/FontMarker';
 
-import fontData from './fontdata';
+import fontData from '../data/fontdata';
 
 export default function FontSizeSetting() {
   const { themeSettings } = useThemeSetStore();

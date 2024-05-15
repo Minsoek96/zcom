@@ -34,18 +34,20 @@ const Container = styled.div`
     width: 3.217rem;
     height: 3.21rem;
     border-radius: 9999px;
-    border: 1px solid rgba(15, 20, 25, 0.1);
+    border: 1px solid ${(props) => props.theme.colors.borderColor};
     margin-left: 15px;
   }
   svg {
     width: 19px;
+    fill: ${(props) => props.theme.colors.mainFont};
   }
 `;
 
 const FollowButton = styled.button.attrs({ type: 'button' })`
   cursor: pointer;
-  border: 1px solid rgba(15, 20, 25, 0.1);
-  background-color: white;
+  border: 1px solid ${(props) => props.theme.colors.borderColor};
+  background-color: ${(props) => props.theme.colors.themeColor};
+  color: ${(props) => props.theme.colors.mainFont};
   width: inherit;
   font-size: 1.4rem;
   font-weight: 700;

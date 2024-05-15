@@ -5,9 +5,9 @@ import PostBtn from '@/app/_components/ui/PostBtn';
 import { PictureIcon } from '../../../_constants/MenuIcons';
 
 type PostActionButtonProps = {
-  btnText?: string
-}
-function PostActionButtons({ btnText = '게시하기' }:PostActionButtonProps) {
+  btnText?: string;
+};
+function PostActionButtons({ btnText = '게시하기' }: PostActionButtonProps) {
   return (
     <Container>
       <div>
@@ -32,10 +32,11 @@ const Container = styled.div`
   width: 100%;
 
   svg {
-    fill: rgb(26, 140, 216);
+    fill: ${(props) => props.theme.colors.mainColor};
     width: 25px;
     height: 25px;
   }
+
 
   button:last-child {
     width: inherit;

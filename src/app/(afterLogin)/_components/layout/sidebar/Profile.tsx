@@ -56,6 +56,10 @@ const Container = styled.div`
 
   > div:last-child {
     display: flex;
+
+    svg{
+      fill: ${(props) => props.theme.colors.mainFont};
+    }
   }
 
   &:hover {
