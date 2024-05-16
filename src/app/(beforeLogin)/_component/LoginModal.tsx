@@ -21,15 +21,18 @@ function LoginModal() {
     setMessage('');
 
     try {
-      await signIn('credentials', {
+      const response = await signIn('credentials', {
         username: id,
         password,
         redirect: false,
       });
+      console.log(response);
+      if (response?.ok) {
+        router.replace('/home');
+      }
     } catch (error) {
       setMessage('아이디와 비밀번호가 일치하지 않습니다.');
     }
-    router.replace('/home');
   };
   const onClickClose = () => {
     router.back();

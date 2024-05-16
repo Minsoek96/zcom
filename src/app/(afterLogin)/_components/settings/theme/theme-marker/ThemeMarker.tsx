@@ -17,6 +17,7 @@ export default function ThemeMarker({ theme }:ThemeMarkerProps) {
       $backColor={theme.color}
       $isSelected={themeType === theme.id}
       key={theme.id}
+      onClick={() => handleChangeTheme(theme.id)}
     >
       <RadioCheck
         checked={themeType === theme.id}

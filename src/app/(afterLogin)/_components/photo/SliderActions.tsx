@@ -2,14 +2,19 @@ import { styled } from 'styled-components';
 import { CloseIcon, NextArrow, PreArrow } from '../../_constants/MenuIcons';
 
 type SliderActionsProps = {
-    isPreBlock: boolean;
-    isNextBlock: boolean;
-    onArrow: (type:'pre'|'next') => void;
-    onClose: () => void;
-}
+  isPreBlock: boolean;
+  isNextBlock: boolean;
+  onArrow: (type: 'pre' | 'next') => void;
+  onClose?: () => void;
+  closeBlock?: boolean;
+};
 export default function SliderActions({
-  isPreBlock, isNextBlock, onArrow, onClose,
-}:SliderActionsProps) {
+  isPreBlock,
+  isNextBlock,
+  onArrow,
+  onClose = () => {},
+  closeBlock = false,
+}: SliderActionsProps) {
   return (
     <>
       {isPreBlock && (
@@ -22,9 +27,11 @@ export default function SliderActions({
           <NextArrow />
         </NextArrowWrrpper>
       )}
-      <CloseWrrapper onClick={onClose}>
-        <CloseIcon />
-      </CloseWrrapper>
+      {!closeBlock && (
+        <CloseWrrapper onClick={onClose}>
+          <CloseIcon />
+        </CloseWrrapper>
+      )}
     </>
   );
 }
@@ -47,7 +54,7 @@ const ArrowBase = styled.div`
   }
 
   &:hover {
-    background-color: rgba(26,26,26,0.75)
+    background-color: rgba(26, 26, 26, 0.75);
   }
 `;
 

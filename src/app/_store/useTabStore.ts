@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 type TabType = 'recommend' | 'follow';
 type SearchType = 'all' | 'follow';

@@ -4,6 +4,7 @@ interface ButtonIconProps {
   icon: React.ReactNode;
   hoverColor: string[];
   isClick?: boolean;
+  onClick?: () => void;
   number?: number;
   fill?: string;
 }
@@ -12,12 +13,18 @@ export default function ButtonIcon({
   icon: Icon,
   hoverColor,
   isClick = false,
+  onClick = () => (console.log('')),
   number = 0,
   fill = 'white',
 }: ButtonIconProps) {
   return (
     <Container $hoverColor={hoverColor}>
-      <Button $hoverColor={hoverColor} $isClick={isClick || false} $fill={fill}>
+      <Button
+        $hoverColor={hoverColor}
+        $isClick={isClick || false}
+        $fill={fill}
+        onClick={onClick}
+      >
         {Icon}
       </Button>
       <span>{number === 0 ? null : number}</span>
