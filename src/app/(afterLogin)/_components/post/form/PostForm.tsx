@@ -15,17 +15,33 @@ import ImagePreview from './image-preview/ImagePreivew';
 
 function PostForm() {
   const { data: me } = useSession();
-  const { imagePreviews, setImageFiles, setImagePreviews } = usePostStateStore();
+  const { imagePreviews, setImagePreviews } = usePostStateStore();
   const [text, setText] = useState('');
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     if (files) {
       const fileArray = Array.from(files);
-      const imageUrls = fileArray.map((file) => URL.createObjectURL(file));
-      const makePreview = [...imagePreviews, ...imageUrls];
-      setImageFiles(fileArray);
-      setImagePreviews(makePreview);
+      const newPreviews: string[] = [];
+
+      fileArray.forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          if (event.target?.result) {
+            newPreviews.push(event.target.result as string);
+
+            if (newPreviews.length === fileArray.length) {
+              setImagePreviews([...imagePreviews, ...newPreviews]);
+            }
+          }
+        };
+
+        reader.onerror = (error) => {
+          console.error('File reading error:', error);
+        };
+
+        reader.readAsDataURL(file);
+      });
     }
   };
 

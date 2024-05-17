@@ -29,6 +29,7 @@ export default function ImagePreview() {
   );
 
   const handleRemoveImage = (url: string) => {
+    URL.revokeObjectURL(url);
     setRemoveImage(url);
     setActiveIndex((prevIndex) => prevIndex - 1);
   };
@@ -69,7 +70,9 @@ const ImagePreviewContainer = styled.div`
   overflow: hidden;
   height: 30rem;
   max-height: 30rem;
-  border-radius: 20px;
+  img {
+    border-radius: 20px;
+  }
 
   svg {
     z-index: 1000;

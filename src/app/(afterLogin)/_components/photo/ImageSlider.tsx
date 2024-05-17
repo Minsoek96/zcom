@@ -29,19 +29,25 @@ export default function ImageSlider({ photoid, id }: ImageSliderProps) {
   const isPreBlock = photoNumber > 1;
   const isNextBlock = photoNumber < (post?.Images.length ?? 0);
 
-  const handleClick = useCallback((type: 'pre' | 'next') => {
-    const changePhotoId = type === 'pre' ? photoNumber - 1 : photoNumber + 1;
-    setArrowType(type);
-    setCurrent(1);
-    router.replace(`/${post?.User}/status/${id}/photo/${changePhotoId}`);
-  }, [photoNumber, router]);
+  const handleClick = useCallback(
+    (type: 'pre' | 'next') => {
+      const changePhotoId = type === 'pre' ? photoNumber - 1 : photoNumber + 1;
+      setArrowType(type);
+      setCurrent(1);
+      router.replace(`/${post?.User}/status/${id}/photo/${changePhotoId}`);
+    },
+    [photoNumber, router],
+  );
 
   const handleClose = () => {
     router.back();
   };
 
   useSliderKeyEvent({
-    onClick: handleClick, isNextBlock, isPreBlock, photoid,
+    onClick: handleClick,
+    isNextBlock,
+    isPreBlock,
+    photoid,
   });
 
   // TOOD: 이미지 슬라이더 구현 URL변경이 ??

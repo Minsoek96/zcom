@@ -1,8 +1,9 @@
+import { useRef } from 'react';
+
 import { styled } from 'styled-components';
 
 import ButtonIcon from '@/app/_components/ui/ButtonIcon';
 import PostBtn from '@/app/_components/ui/PostBtn';
-import { useRef } from 'react';
 
 import { PictureIcon } from '../../../_constants/MenuIcons';
 

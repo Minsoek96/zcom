@@ -48,7 +48,7 @@ const Container = styled.div<ActionProps>`
 `;
 
 const Button = styled.button.attrs({
-  type: 'button',
+  type: 'button', role: 'button',
 })<ActionProps>`
   cursor: pointer;
   width: 34px;
