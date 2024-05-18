@@ -9,9 +9,11 @@ import usePostStateStore from '@/app/_store/usePostStateStore';
 import key from '@/app/_utils/key';
 
 import { CloseIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
+import { useRouter } from 'next/navigation';
 import SliderActions from '../../../photo/SliderActions';
 
 export default function ImagePreview() {
+  const router = useRouter();
   const { imagePreviews, setRemoveImage } = usePostStateStore();
   const [activeIndex, setActiveIndex] = useState(0);
   const isShowArrow = imagePreviews.length > 1;
@@ -34,11 +36,15 @@ export default function ImagePreview() {
     setActiveIndex((prevIndex) => prevIndex - 1);
   };
 
+  const handleUpdateImage = () => {
+    router.push('/compose/tweet/media');
+  };
+
   return (
     <ImagePreviewContainer>
       <ImagePreviewWrrapper $activeIndex={activeIndex}>
         {imagePreviews.map((src, index) => (
-          <Slide key={key(src, index)}>
+          <Slide key={key(src, index)} $length={imagePreviews.length}>
             <Image
               src={src}
               alt="preview"
@@ -46,6 +52,9 @@ export default function ImagePreview() {
               style={{ objectFit: 'cover' }}
               priority
             />
+            <UpdateWrrapper onClick={handleUpdateImage}>
+              <span>수정</span>
+            </UpdateWrrapper>
             <CloseWrrapper onClick={() => handleRemoveImage(src)}>
               <CloseIcon />
             </CloseWrrapper>
@@ -86,10 +95,11 @@ const ImagePreviewWrrapper = styled.div<{ $activeIndex: number }>`
   height: 100%;
   transition: transform 0.5s ease-in-out;
   transform: ${(props) => `translateX(-${props.$activeIndex * 100}%)`};
+  gap: 8px;
 `;
 
-const Slide = styled.div`
-  min-width: 100%;
+const Slide = styled.div<{ $length: number }>`
+  width: ${(props) => (props.$length === 1 ? '100%' : '49%')};
   height: 100%;
   flex-shrink: 0;
   position: relative;
@@ -120,5 +130,11 @@ const ArrowBase = styled.div`
 const CloseWrrapper = styled(ArrowBase)`
   top: 1.1rem;
   right: 1.1rem;
+  transform: none;
+`;
+
+const UpdateWrrapper = styled(ArrowBase)`
+  top: 1.1rem;
+  left: 1.1rem;
   transform: none;
 `;

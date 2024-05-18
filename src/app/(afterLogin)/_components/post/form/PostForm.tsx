@@ -22,24 +22,21 @@ function PostForm() {
     const { files } = e.target;
     if (files) {
       const fileArray = Array.from(files);
-      const newPreviews: string[] = [];
 
-      fileArray.forEach((file) => {
+      fileArray.forEach((file, idx) => {
         const reader = new FileReader();
         reader.onload = (event) => {
+          const newFile = event.target?.result as string;
           if (event.target?.result) {
-            newPreviews.push(event.target.result as string);
-
-            if (newPreviews.length === fileArray.length) {
-              setImagePreviews([...imagePreviews, ...newPreviews]);
-            }
+            setImagePreviews([...imagePreviews, newFile]);
           }
         };
 
-        reader.onerror = (error) => {
-          console.error('File reading error:', error);
-        };
-
+        // reader.onerror = (e) => {
+        //   console.error(
+        //     `File could not be read! Code ${e.target?.error?.code}`,
+        //   );
+        // };// 에러처리
         reader.readAsDataURL(file);
       });
     }
