@@ -197,3 +197,23 @@ export function CircleIcon() {
     </svg>
   );
 }
+
+export function CutIcon() {
+  return (
+    <svg width={18} viewBox="0 0 24 24" aria-hidden="true">
+      <g>
+        <path d="M5 5V2h2v14.5c0 .276.224.5.5.5H22v2h-3v3h-2v-3H7.5C6.119 19 5 17.881 5 16.5V7H2V5h3zm11.5 2H9V5h7.5C17.881 5 19 6.119 19 7.5V15h-2V7.5c0-.276-.224-.5-.5-.5z" />
+      </g>
+    </svg>
+  );
+}
+
+export function FlagIcon() {
+  return (
+    <svg width={18} viewBox="0 0 24 24" aria-hidden="true">
+      <g>
+        <path d="M3 2h18.61l-3.5 7 3.5 7H5v6H3V2zm2 12h13.38l-2.5-5 2.5-5H5v10z" />
+      </g>
+    </svg>
+  );
+}

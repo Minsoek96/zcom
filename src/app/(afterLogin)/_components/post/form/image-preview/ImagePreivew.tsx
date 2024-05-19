@@ -134,7 +134,11 @@ const CloseWrrapper = styled(ArrowBase)`
 `;
 
 const UpdateWrrapper = styled(ArrowBase)`
+  font-size: 1.4rem;
   top: 1.1rem;
   left: 1.1rem;
   transform: none;
+  padding-inline: 1.2em;
+  width: 6.2rem;
+  text-align: center;
 `;

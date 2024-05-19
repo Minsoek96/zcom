@@ -1,23 +1,26 @@
 'use client';
 
+import Media from '@/app/(afterLogin)/_components/media/Media';
 import { styled } from 'styled-components';
 
-function Media() {
+function MediaPage() {
   return (
     <Container>
-      <ModalContainer />
+      <ModalContainer>
+        <Media />
+      </ModalContainer>
     </Container>
   );
 }
 
-export default Media;
+export default MediaPage;
 
 const Container = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 100dvh;
   display: flex;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   top: 0;
   left: 0;

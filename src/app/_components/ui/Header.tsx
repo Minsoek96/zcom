@@ -8,9 +8,13 @@ import { BackIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 
 type HeaderProps = {
   mainText: string | React.ReactNode;
+  action?: {
+    text: string;
+    onClick: () => void;
+  } | null;
 };
 
-function Header({ mainText }: HeaderProps) {
+function Header({ mainText, action = null }: HeaderProps) {
   const router = useRouter();
 
   const handleBackClick = () => {
@@ -25,6 +29,11 @@ function Header({ mainText }: HeaderProps) {
         </div>
       </div>
       <div>{mainText}</div>
+      {action && (
+        <button type="button" onClick={action.onClick}>
+          {action.text}
+        </button>
+      )}
     </Container>
   );
 }
@@ -63,5 +72,11 @@ const Container = styled.div`
   > div:nth-child(2) {
     font-weight: 700;
     font-size: 1.9rem;
+  }
+
+  button {
+    position: absolute;
+    right: 2rem;
+    display: flex;
   }
 `;
