@@ -6,25 +6,24 @@ import Image from 'next/image';
 
 import usePostStateStore from '@/app/_store/usePostStateStore';
 import {
-  RectangleIcon,
-  SquareIcon,
-  WideIcon,
   ZoomInIcon,
   ZoomOutIcon,
 } from '../../_constants/MenuIcons';
+import zoomTypeData, { ZoomType } from './zoomTypeData';
 
-interface ZoomableImageProps {
+type ZoomableImageProps = {
   src: string;
   alt: string;
-}
+};
 
 function ZoomableImage({ src, alt }: ZoomableImageProps) {
   const [scale, setScale] = useState(1);
+  const [zoomType, setZoomType] = useState<ZoomType>('origin');
   const { setImagePreviews } = usePostStateStore();
   const imageRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const zoomBoxWidth = 500;
-  const zoomBoxHight = 350;
+  const zoomBoxHeight = 350;
 
   const handleSave = useCallback(() => {
     if (!canvasRef.current || !imageRef.current) return;
@@ -35,14 +34,14 @@ function ZoomableImage({ src, alt }: ZoomableImageProps) {
 
     const scaleValue = scale;
     const sx = img.width / 2 - zoomBoxWidth / 2 / scaleValue;
-    const sy = img.height / 2 - zoomBoxHight / 2 / scaleValue;
+    const sy = img.height / 2 - zoomBoxHeight / 2 / scaleValue;
     const sWidth = zoomBoxWidth / scaleValue;
-    const sHeight = zoomBoxHight / scaleValue;
+    const sHeight = zoomBoxHeight / scaleValue;
     const dWidth = zoomBoxWidth;
-    const dHeight = zoomBoxHight;
+    const dHeight = zoomBoxHeight;
 
     canvas.width = zoomBoxWidth;
-    canvas.height = zoomBoxHight;
+    canvas.height = zoomBoxHeight;
 
     if (ctx) {
       ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, dWidth, dHeight);
@@ -58,17 +57,31 @@ function ZoomableImage({ src, alt }: ZoomableImageProps) {
   return (
     <Container>
       <ImageWrapper $scale={scale}>
-        <Image ref={imageRef} src={src} alt={alt} width={550} height={500} />
+        <Image
+          ref={imageRef}
+          src={src}
+          alt={alt}
+          width={550}
+          height={500}
+          onLoadingComplete={(img) => {
+            img.setAttribute(
+              'style',
+              `width: ${img.naturalWidth}px; height: ${img.naturalHeight}px;`,
+            );
+          }}
+        />
         <CenterBox />
       </ImageWrapper>
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       <Button onClick={handleSave}>이미지 저장</Button>
       <BottomContainer>
-        <div>
-          <RectangleIcon />
-          <WideIcon />
-          <SquareIcon />
-        </div>
+        <ZoomTypeWrrapper $type={zoomType}>
+          {zoomTypeData.map((item) => (
+            <div key={item.id} onClick={() => setZoomType(item.type)}>
+              {item.icon}
+            </div>
+          ))}
+        </ZoomTypeWrrapper>
         <div>
           <ZoomOutIcon />
           <Slider
@@ -142,17 +155,40 @@ const BottomContainer = styled.div`
     flex-grow: 1;
 
     svg {
-      fill: ${(props) => props.theme.colors.mainColor};
+      fill: ${(props) => props.theme.colors.mainFont};
     }
-  }
-
-  > div:first-child {
-    justify-content: space-around;
   }
 
   > div:last-child {
     display: flex;
     align-items: center;
     justify-content: space-around;
+  }
+`;
+
+const ZoomTypeWrrapper = styled.div<{ $type: ZoomType }>`
+  justify-content: space-around;
+
+
+  > div {
+    display: flex;
+  }
+
+  > div:first-child {
+    svg{
+      fill: ${(props) => props.$type === 'origin' && props.theme.colors.mainColor};
+    }
+  }
+
+  > div:nth-child(2) {
+    svg{
+      fill: ${(props) => props.$type === 'wide' && props.theme.colors.mainColor};
+    }
+  }
+
+  > div:last-child {
+    svg {
+      fill: ${(props) => props.$type === 'square' && props.theme.colors.mainColor};
+    }
   }
 `;
