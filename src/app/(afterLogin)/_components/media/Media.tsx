@@ -7,10 +7,11 @@ import usePostStateStore from '@/app/_store/usePostStateStore';
 import key from '@/app/_utils/key';
 import { CutIcon, FlagIcon } from '../../_constants/MenuIcons';
 import ZoomableImage from './ZoomableImage';
+import TabItem from './tab-item/TabItem';
 
-type TabType = 'cut' | 'imageAlt' | 'content';
+export type TabType = 'cut' | 'imageAlt' | 'content';
 
-type TabInfo = {
+export type TabInfo = {
   id: string;
   main: React.ReactNode;
   type: TabType;
@@ -50,19 +51,17 @@ export default function Media() {
       />
       <TabContainer>
         {tabData.map((tab) => (
-          <TabWrrapper
+          <TabItem
             key={tab.id}
-            onClick={() => handleChangeType(tab.type)}
-            $isSeleted={tabType === tab.type}
-          >
-            {tab.main}
-            <div />
-          </TabWrrapper>
+            tab={tab}
+            isSeleted={tabType === tab.type}
+            onClick={handleChangeType}
+          />
         ))}
       </TabContainer>
       <MediaCutContainer>
         {imagePreviews.map((image, index) => (
-        //   <Image key={key(image, index)} alt="d" src={image} width={450} height={450} />
+          //   <Image key={key(image, index)} alt="d" src={image} width={450} height={450} />
           <ZoomableImage key={key(image, index)} alt="imt" src={image} />
         ))}
       </MediaCutContainer>
@@ -92,40 +91,6 @@ const TabContainer = styled.div`
   display: flex;
   height: 5.3rem;
   border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
-`;
-
-const TabWrrapper = styled.div<{ $isSeleted: boolean }>`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  padding-inline: 1.6rem;
-
-  margin-right: 1rem;
-
-  > div:last-child {
-    position: absolute;
-    bottom: 1px;
-    display: flex;
-    background-color: ${(props) => props.$isSeleted && props.theme.colors.mainColor};
-    height: 4px;
-    width: 5.6rem;
-  }
-
-  svg {
-    fill: ${(props) => (props.$isSeleted
-    ? props.theme.colors.mainFont
-    : props.theme.colors.secondFont)};
-  }
-
-  span {
-    font-size: 1.5rem;
-    color: ${(props) => (props.$isSeleted
-    ? props.theme.colors.mainFont
-    : props.theme.colors.secondFont)};
-  }
 `;
 
 const MediaCutContainer = styled.div``;
