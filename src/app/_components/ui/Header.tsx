@@ -9,7 +9,7 @@ import { BackIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 type HeaderProps = {
   mainText: string | React.ReactNode;
   action?: {
-    node: React.ReactNode;
+    createElements: React.ReactNode;
   } | null;
 };
 
@@ -28,7 +28,7 @@ function Header({ mainText, action = null }: HeaderProps) {
         </div>
       </div>
       <div>{mainText}</div>
-      {action && action.node}
+      {action && <ActionContainer>{action.createElements}</ActionContainer>}
     </Container>
   );
 }
@@ -68,7 +68,9 @@ const Container = styled.div`
     font-size: 1.9rem;
   }
 
-  > div:nth-child(3) {
+`;
+
+const ActionContainer = styled.div`
     position: absolute;
     right: 2rem;
     display: flex;
@@ -76,5 +78,8 @@ const Container = styled.div`
     svg {
       fill : ${(props) => props.theme.colors.mainFont}
     }
-  }
+
+    > div {
+      display: flex;
+    }
 `;

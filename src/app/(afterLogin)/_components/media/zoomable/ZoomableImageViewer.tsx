@@ -1,0 +1,74 @@
+import { ForwardedRef } from 'react';
+
+import { styled } from 'styled-components';
+
+import Image from 'next/image';
+
+type ImageViewerProps = {
+  scale: number;
+  imageRef: ForwardedRef<HTMLImageElement>;
+  src: string;
+  alt: string;
+  zoomTypeWidth: number;
+  zoomTypeHeight: number;
+};
+
+export default function ZoomableImageViewer({
+  scale,
+  imageRef,
+  src,
+  alt,
+  zoomTypeWidth,
+  zoomTypeHeight,
+}: ImageViewerProps) {
+  return (
+    <ImageContainer $scale={scale}>
+      <Image
+        ref={imageRef}
+        src={src}
+        alt={alt}
+        width={550}
+        height={500}
+        onLoadingComplete={(img) => {
+          img.setAttribute(
+            'style',
+            `width: ${img.naturalWidth}px; height: ${img.naturalHeight}px;`,
+          );
+        }}
+      />
+      <CenterBox $zoomWidth={zoomTypeWidth} $zoomHeight={zoomTypeHeight} />
+    </ImageContainer>
+  );
+}
+
+const ImageContainer = styled.div<{ $scale: number }>`
+  display: flex;
+  position: relative;
+  width: 60rem;
+  height: 62rem;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(${(props) => props.$scale});
+    transform-origin: center;
+    object-fit: contain;
+  }
+`;
+
+type ZoomSize = {
+  $zoomWidth: number;
+  $zoomHeight: number;
+};
+const CenterBox = styled.div<ZoomSize>`
+  position: absolute;
+  width: ${(props) => props.$zoomWidth}rem;
+  height: ${(props) => props.$zoomHeight}rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px dashed ${(props) => props.theme.colors.mainColor};
+  pointer-events: none;
+`;
