@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 
 import styled from 'styled-components';
 
-import usePostStateStore from '@/app/_store/usePostStateStore';
+import useMediaStateStore from '@/app/_store/useMediaStateStore';
 
 import ImageLink from '../ImageLink';
 import PostActionButtons from './PostActionButtons';
@@ -15,7 +15,7 @@ import ImagePreview from './image-preview/ImagePreivew';
 
 function PostForm() {
   const { data: me } = useSession();
-  const { imagePreviews, setImagePreviews } = usePostStateStore();
+  const { imagePreviews, setImagePreviews } = useMediaStateStore();
   const [text, setText] = useState('');
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +23,7 @@ function PostForm() {
     if (files) {
       const fileArray = Array.from(files);
 
-      fileArray.forEach((file, idx) => {
+      fileArray.forEach((file) => {
         const reader = new FileReader();
         reader.onload = (event) => {
           const newFile = event.target?.result as string;

@@ -9,8 +9,7 @@ import { BackIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 type HeaderProps = {
   mainText: string | React.ReactNode;
   action?: {
-    text: string;
-    onClick: () => void;
+    node: React.ReactNode;
   } | null;
 };
 
@@ -29,11 +28,7 @@ function Header({ mainText, action = null }: HeaderProps) {
         </div>
       </div>
       <div>{mainText}</div>
-      {action && (
-        <button type="button" onClick={action.onClick}>
-          {action.text}
-        </button>
-      )}
+      {action && action.node}
     </Container>
   );
 }
@@ -54,7 +49,6 @@ const Container = styled.div`
       cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: center;
       width: 3.2rem;
       height: 3.2rem;
 
@@ -74,9 +68,13 @@ const Container = styled.div`
     font-size: 1.9rem;
   }
 
-  button {
+  > div:nth-child(3) {
     position: absolute;
     right: 2rem;
     display: flex;
+
+    svg {
+      fill : ${(props) => props.theme.colors.mainFont}
+    }
   }
 `;

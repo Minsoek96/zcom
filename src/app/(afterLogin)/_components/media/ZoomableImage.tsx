@@ -4,26 +4,28 @@ import styled from 'styled-components';
 
 import Image from 'next/image';
 
-import usePostStateStore from '@/app/_store/usePostStateStore';
-import {
-  ZoomInIcon,
-  ZoomOutIcon,
-} from '../../_constants/MenuIcons';
-import zoomTypeData, { ZoomType } from './zoomTypeData';
+import useMediaStateStore from '@/app/_store/useMediaStateStore';
+import { ZoomInIcon, ZoomOutIcon } from '../../_constants/MenuIcons';
+import zoomTypeData, {
+  ZoomInitalState,
+  ZoomProps,
+  ZoomType,
+} from './zoomTypeData';
 
 type ZoomableImageProps = {
   src: string;
   alt: string;
+  isSelectedMedia: boolean;
 };
 
-function ZoomableImage({ src, alt }: ZoomableImageProps) {
+function ZoomableImage({ src, alt, isSelectedMedia }: ZoomableImageProps) {
   const [scale, setScale] = useState(1);
-  const [zoomType, setZoomType] = useState<ZoomType>('origin');
-  const { setImagePreviews } = usePostStateStore();
+  const [zoomType, setZoomType] = useState<ZoomProps>(ZoomInitalState);
+  const { setUpdateImage } = useMediaStateStore();
   const imageRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const zoomBoxWidth = 500;
-  const zoomBoxHeight = 350;
+  const zoomBoxWidth = zoomType.width * 10;
+  const zoomBoxHeight = zoomType.height * 10;
 
   const handleSave = useCallback(() => {
     if (!canvasRef.current || !imageRef.current) return;
@@ -48,14 +50,14 @@ function ZoomableImage({ src, alt }: ZoomableImageProps) {
       canvas.toBlob((blob) => {
         if (blob) {
           const fileUrl = URL.createObjectURL(blob);
-          setImagePreviews([fileUrl]);
+          setUpdateImage(src, fileUrl);
         }
       }, 'image/png');
     }
   }, [scale]);
 
   return (
-    <Container>
+    <Container $isSelected={isSelectedMedia}>
       <ImageWrapper $scale={scale}>
         <Image
           ref={imageRef}
@@ -70,14 +72,14 @@ function ZoomableImage({ src, alt }: ZoomableImageProps) {
             );
           }}
         />
-        <CenterBox />
+        <CenterBox $zoomWidth={zoomType.width} $zoomHeight={zoomType.height} />
       </ImageWrapper>
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       <Button onClick={handleSave}>이미지 저장</Button>
       <BottomContainer>
-        <ZoomTypeWrrapper $type={zoomType}>
+        <ZoomTypeWrrapper $type={zoomType.type}>
           {zoomTypeData.map((item) => (
-            <div key={item.id} onClick={() => setZoomType(item.type)}>
+            <div key={item.id} onClick={() => setZoomType(item)}>
               {item.icon}
             </div>
           ))}
@@ -101,8 +103,8 @@ function ZoomableImage({ src, alt }: ZoomableImageProps) {
 
 export default ZoomableImage;
 
-const Container = styled.div`
-  display: flex;
+const Container = styled.div<{ $isSelected: boolean }>`
+  display: ${(props) => (props.$isSelected ? 'display' : 'none')};
   flex-direction: column;
   align-items: center;
 `;
@@ -124,14 +126,18 @@ const ImageWrapper = styled.div<{ $scale: number }>`
   }
 `;
 
-const CenterBox = styled.div`
+type ZoomSize = {
+  $zoomWidth: number;
+  $zoomHeight: number;
+};
+const CenterBox = styled.div<ZoomSize>`
   position: absolute;
-  width: 50rem;
-  height: 35rem;
+  width: ${(props) => props.$zoomWidth}rem;
+  height: ${(props) => props.$zoomHeight}rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 2px dashed red;
+  border: 4px dashed ${(props) => props.theme.colors.mainColor};
   pointer-events: none;
 `;
 
@@ -169,19 +175,18 @@ const BottomContainer = styled.div`
 const ZoomTypeWrrapper = styled.div<{ $type: ZoomType }>`
   justify-content: space-around;
 
-
   > div {
     display: flex;
   }
 
   > div:first-child {
-    svg{
+    svg {
       fill: ${(props) => props.$type === 'origin' && props.theme.colors.mainColor};
     }
   }
 
   > div:nth-child(2) {
-    svg{
+    svg {
       fill: ${(props) => props.$type === 'wide' && props.theme.colors.mainColor};
     }
   }

@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
-import { TabInfo, TabType } from '../Media';
+
+import { TabInfo, TabType } from '@/app/_types/MediaType';
 
 type TabItemProps = {
   onClick: (type: TabType) => void;

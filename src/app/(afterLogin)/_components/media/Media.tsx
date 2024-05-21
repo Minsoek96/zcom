@@ -3,19 +3,21 @@ import { useState } from 'react';
 import { styled } from 'styled-components';
 
 import Header from '@/app/_components/ui/Header';
-import usePostStateStore from '@/app/_store/usePostStateStore';
+
+import useMediaStateStore from '@/app/_store/useMediaStateStore';
 import key from '@/app/_utils/key';
-import { CutIcon, FlagIcon } from '../../_constants/MenuIcons';
+
+import { TabInfo, TabType } from '@/app/_types/MediaType';
+
 import ZoomableImage from './ZoomableImage';
+
+import {
+  CutIcon,
+  FlagIcon,
+  NextArrow,
+  PreArrow,
+} from '../../_constants/MenuIcons';
 import TabItem from './tab-item/TabItem';
-
-export type TabType = 'cut' | 'imageAlt' | 'content';
-
-export type TabInfo = {
-  id: string;
-  main: React.ReactNode;
-  type: TabType;
-};
 
 const tabData: TabInfo[] = [
   {
@@ -35,9 +37,13 @@ const tabData: TabInfo[] = [
   },
 ];
 
+// TODO: 관심사 분리 & 구조 재조정
+// TODO: 저장 버튼 액션 처리
+
 export default function Media() {
+  const { imagePreviews, seletedImage } = useMediaStateStore();
   const [tabType, setTabType] = useState<TabType>('cut');
-  const { imagePreviews } = usePostStateStore();
+  const [mediaNum, setMediaNum] = useState<number>(seletedImage);
 
   const handleChangeType = (type: TabType) => {
     setTabType(type);
@@ -47,7 +53,27 @@ export default function Media() {
     <Container>
       <Header
         mainText="미디어 자르기"
-        action={{ text: '저장', onClick: () => console.log('asdf') }}
+        action={{
+          node: (
+            <div>
+              <div
+                onClick={() => setMediaNum((prev) => (prev === 0 ? prev : prev - 1))}
+              >
+                <PreArrow />
+              </div>
+              <div
+                onClick={() => setMediaNum(
+                  (prev) => (prev === imagePreviews.length - 1 ? prev : prev + 1),
+                )}
+              >
+                <NextArrow />
+              </div>
+              <button type="button" onClick={() => console.log('d')}>
+                저장
+              </button>
+            </div>
+          ),
+        }}
       />
       <TabContainer>
         {tabData.map((tab) => (
@@ -62,7 +88,12 @@ export default function Media() {
       <MediaCutContainer>
         {imagePreviews.map((image, index) => (
           //   <Image key={key(image, index)} alt="d" src={image} width={450} height={450} />
-          <ZoomableImage key={key(image, index)} alt="imt" src={image} />
+          <ZoomableImage
+            key={key(image, index)}
+            alt="imt"
+            src={image}
+            isSelectedMedia={mediaNum === index}
+          />
         ))}
       </MediaCutContainer>
     </Container>
@@ -72,6 +103,7 @@ export default function Media() {
 const Container = styled.div`
   > div:first-child {
     border: none;
+    padding: 0;
 
     button {
       display: flex;

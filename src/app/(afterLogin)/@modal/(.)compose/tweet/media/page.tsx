@@ -44,5 +44,5 @@ const ModalContainer = styled.div`
   border-bottom-right-radius: 1.6em;
   border-top-left-radius: 1.6em;
   border-top-right-radius: 1.6em;
-  padding: 1.5em;
+  padding-inline: 1.5em;
 `;

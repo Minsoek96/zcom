@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 
 import Image from 'next/image';
 
-import usePostStateStore from '@/app/_store/usePostStateStore';
+import useMediaStateStore from '@/app/_store/useMediaStateStore';
 
 import key from '@/app/_utils/key';
 
@@ -14,7 +14,7 @@ import SliderActions from '../../../photo/SliderActions';
 
 export default function ImagePreview() {
   const router = useRouter();
-  const { imagePreviews, setRemoveImage } = usePostStateStore();
+  const { imagePreviews, setRemoveImage, setSeletedImage } = useMediaStateStore();
   const [activeIndex, setActiveIndex] = useState(0);
   const isShowArrow = imagePreviews.length > 1;
 
@@ -36,7 +36,8 @@ export default function ImagePreview() {
     setActiveIndex((prevIndex) => prevIndex - 1);
   };
 
-  const handleUpdateImage = () => {
+  const handleUpdateImage = (url: string) => {
+    setSeletedImage(url);
     router.push('/compose/tweet/media');
   };
 
@@ -52,7 +53,7 @@ export default function ImagePreview() {
               style={{ objectFit: 'cover' }}
               priority
             />
-            <UpdateWrrapper onClick={handleUpdateImage}>
+            <UpdateWrrapper onClick={() => handleUpdateImage(src)}>
               <span>수정</span>
             </UpdateWrrapper>
             <CloseWrrapper onClick={() => handleRemoveImage(src)}>

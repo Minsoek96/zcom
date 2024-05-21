@@ -2,7 +2,12 @@ import { RectangleIcon, SquareIcon, WideIcon } from '../../_constants/MenuIcons'
 
 export type ZoomType = 'origin' | 'wide' | 'square';
 
-type ZoomProps = {
+export type ZoomSize = {
+  width: number;
+  height: number;
+}
+
+export type ZoomProps = {
   id: string;
   type: ZoomType;
   width: number;
@@ -10,15 +15,24 @@ type ZoomProps = {
   icon: React.ReactNode;
 }
 
+export const ZoomInitalState: ZoomProps = {
+  id: '',
+  type: 'origin',
+  width: 50,
+  height: 35,
+  icon: <svg />,
+
+};
+
 const zoomTypeData:ZoomProps[] = [
   {
-    id: 'origin-01', type: 'origin', width: 0, height: 0, icon: <RectangleIcon />,
+    id: 'origin-01', type: 'origin', width: 50, height: 50, icon: <RectangleIcon />,
   },
   {
-    id: 'wide-02', type: 'wide', width: 0, height: 0, icon: <WideIcon />,
+    id: 'wide-02', type: 'wide', width: 50, height: 35, icon: <WideIcon />,
   },
   {
-    id: 'square-03', type: 'square', width: 0, height: 0, icon: <SquareIcon />,
+    id: 'square-03', type: 'square', width: 55, height: 55, icon: <SquareIcon />,
   },
 ];
 
