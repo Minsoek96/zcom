@@ -76,6 +76,7 @@ const ModalContainer = styled.div`
   border-top-left-radius: 1.6em;
   border-top-right-radius: 1.6em;
   padding: 1.5em;
+  z-index: 1000;
 
   > div:first-child {
     position: relative;

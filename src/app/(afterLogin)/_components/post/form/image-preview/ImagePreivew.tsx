@@ -85,7 +85,7 @@ const ImagePreviewContainer = styled.div`
   }
 
   svg {
-    z-index: 1000;
+    z-index: 10;
   }
 `;
 

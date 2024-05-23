@@ -27,8 +27,7 @@ export default function ZoomableImageViewer({
         ref={imageRef}
         src={src}
         alt={alt}
-        width={550}
-        height={500}
+        fill
         onLoadingComplete={(img) => {
           img.setAttribute(
             'style',
@@ -54,6 +53,8 @@ const ImageContainer = styled.div<{ $scale: number }>`
     left: 50%;
     transform: translate(-50%, -50%) scale(${(props) => props.$scale});
     transform-origin: center;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
   }
 `;

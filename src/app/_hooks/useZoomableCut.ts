@@ -36,19 +36,42 @@ const drawImageToCanvas = (
   scale: number,
   zoomType: ZoomProps,
 ) => {
+  const containerWidth = img.clientWidth;
+  const containerHeight = img.clientHeight;
+
   const zoomBoxWidth = zoomType.width * 10;
   const zoomBoxHeight = zoomType.height * 10;
-  const sx = img.width / 2 - zoomBoxWidth / 2 / scale;
-  const sy = img.height / 2 - zoomBoxHeight / 2 / scale;
-  const sWidth = zoomBoxWidth / scale;
-  const sHeight = zoomBoxHeight / scale;
-  const dWidth = zoomBoxWidth;
-  const dHeight = zoomBoxHeight;
+
+  // 원본 이미지 크기
+  const imgWidth = img.naturalWidth;
+  const imgHeight = img.naturalHeight;
+
+  // 이미지 비율 계산
+  const imgRatio = imgWidth / imgHeight;
+  const containerRatio = containerWidth / containerHeight;
+
+  let drawWidth;
+  let drawHeight;
+
+  // 컨테이너 크기에 맞춰 이미지 크기 조정
+  if (imgRatio > containerRatio) {
+    drawWidth = containerWidth;
+    drawHeight = containerWidth / imgRatio;
+  } else {
+    drawHeight = containerHeight;
+    drawWidth = containerHeight * imgRatio;
+  }
+
+  // 잘라낼 영역 계산 (비율에 맞게 조정된 크기 기준)
+  const sx = (imgWidth - (zoomBoxWidth / scale) * (imgWidth / drawWidth)) / 2;
+  const sy = (imgHeight - (zoomBoxHeight / scale) * (imgHeight / drawHeight)) / 2;
+  const sWidth = (zoomBoxWidth / scale) * (imgWidth / drawWidth);
+  const sHeight = (zoomBoxHeight / scale) * (imgHeight / drawHeight);
 
   ctx.canvas.width = zoomBoxWidth;
   ctx.canvas.height = zoomBoxHeight;
 
-  ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, dWidth, dHeight);
+  ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, zoomBoxWidth, zoomBoxHeight);
 };
 
 const saveCanvasToBlob = (
