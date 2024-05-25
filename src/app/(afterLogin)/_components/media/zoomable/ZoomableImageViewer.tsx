@@ -28,12 +28,7 @@ export default function ZoomableImageViewer({
         src={src}
         alt={alt}
         fill
-        onLoadingComplete={(img) => {
-          img.setAttribute(
-            'style',
-            `width: ${img.naturalWidth}px; height: ${img.naturalHeight}px;`,
-          );
-        }}
+
       />
       <CenterBox $zoomWidth={zoomTypeWidth} $zoomHeight={zoomTypeHeight} />
     </ImageContainer>
@@ -42,17 +37,16 @@ export default function ZoomableImageViewer({
 
 const ImageContainer = styled.div<{ $scale: number }>`
   display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+
   width: 60rem;
   height: 62rem;
   overflow: hidden;
 
   img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(${(props) => props.$scale});
-    transform-origin: center;
+    transform: scale(${(props) => props.$scale});
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
