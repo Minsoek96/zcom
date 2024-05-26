@@ -28,7 +28,6 @@ export default function ZoomableImageViewer({
         src={src}
         alt={alt}
         fill
-
       />
       <CenterBox $zoomWidth={zoomTypeWidth} $zoomHeight={zoomTypeHeight} />
     </ImageContainer>

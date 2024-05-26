@@ -20,3 +20,9 @@ export type ZoomProps = {
   height: number;
   icon: React.ReactNode;
 }
+
+export type TemporaryMedia = {
+  zoomSize: ZoomSize;
+  scale: number;
+  mediaSrc: string;
+};

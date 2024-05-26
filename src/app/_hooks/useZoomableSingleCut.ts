@@ -4,7 +4,7 @@ import useMediaStateStore from '@/app/_store/useMediaStateStore';
 
 import { ZoomProps } from '@/app/_types/MediaType';
 
-const useZoomableCut = (src: string, scale: number, zoomType: ZoomProps) => {
+const useZoomableSingleCut = (src: string, scale: number, zoomType: ZoomProps) => {
   const { setUpdateImage } = useMediaStateStore();
   const imageRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -50,6 +50,11 @@ const drawImageToCanvas = (
   const imgRatio = imgWidth / imgHeight;
   const containerRatio = containerWidth / containerHeight;
 
+  console.log(containerWidth, 'width');
+  console.log(containerHeight, 'height');
+  console.log(imgWidth, 'imgWidth');
+  console.log(imgHeight, 'imgHeight');
+
   let drawWidth;
   let drawHeight;
 
@@ -81,4 +86,4 @@ const saveCanvasToBlob = (
   canvas.toBlob(callback, 'image/png');
 };
 
-export default useZoomableCut;
+export default useZoomableSingleCut;
