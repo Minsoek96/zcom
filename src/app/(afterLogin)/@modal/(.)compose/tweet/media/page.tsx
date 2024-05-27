@@ -39,7 +39,7 @@ const ModalContainer = styled.div`
   background-color: ${(props) => props.theme.colors.themeColor};
   min-width: 60rem;
   max-height: calc(96rem);
-  height: 90vh;
+  height: 83rem;
   border-bottom-left-radius: 1.6em;
   border-bottom-right-radius: 1.6em;
   border-top-left-radius: 1.6em;

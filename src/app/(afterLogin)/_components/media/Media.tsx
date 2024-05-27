@@ -9,6 +9,8 @@ import key from '@/app/_utils/key';
 
 import { TabType } from '@/app/_types/MediaType';
 
+import { useRouter } from 'next/navigation';
+import useZoomableMultiCut from '@/app/_hooks/useZoomableMultiCut';
 import ZoomableImage from './zoomable/ZoomableImage';
 
 import TabItem from './tab-item/TabItem';
@@ -19,9 +21,11 @@ import MediaNaviagation from './MediaNavigation';
 // TODO: 저장 버튼 액션 처리
 
 export default function Media() {
+  const router = useRouter();
   const { imagePreviews, seletedImage } = useMediaStateStore();
   const [tabType, setTabType] = useState<TabType>('cut');
   const [mediaNum, setMediaNum] = useState<number>(seletedImage);
+  const { saveEditedMedia } = useZoomableMultiCut();
 
   const handleChangeType = (type: TabType) => {
     setTabType(type);
@@ -35,9 +39,10 @@ export default function Media() {
     setMediaNum((prev) => (prev === imagePreviews.length - 1 ? prev : prev + 1));
   }, [imagePreviews.length]);
 
-  const handleSaveClick = useCallback(() => {
-    console.log('저장');
-  }, []);
+  const handleSaveClick = () => {
+    saveEditedMedia();
+    router.back();
+  };
 
   return (
     <Container>
