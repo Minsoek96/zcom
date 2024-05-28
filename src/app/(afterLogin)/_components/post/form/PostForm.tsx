@@ -11,7 +11,7 @@ import useMediaStateStore from '@/app/_store/useMediaStateStore';
 import ImageLink from '../ImageLink';
 import PostActionButtons from './PostActionButtons';
 import ResizableTextarea from './ResizableTextarea';
-import ImagePreview from './image-preview/ImagePreivew';
+import ImagePreviewsViewer from './image-preview/ImagePreviewsViewer';
 
 function PostForm() {
   const { data: me } = useSession();
@@ -20,15 +20,17 @@ function PostForm() {
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
+    console.log(files);
     if (files) {
       const fileArray = Array.from(files);
 
       fileArray.forEach((file) => {
         const reader = new FileReader();
         reader.onload = (event) => {
+          console.log(file);
           const newFile = event.target?.result as string;
           if (event.target?.result) {
-            setImagePreviews([...imagePreviews, newFile]);
+            setImagePreviews((prevPreviews) => [...prevPreviews, newFile]);
           }
         };
 
@@ -60,7 +62,7 @@ function PostForm() {
           setText={setText}
           placeholder="무슨 일이 일어나고 있나요?"
         />
-        {!!imagePreviews.length && <ImagePreview />}
+        {!!imagePreviews.length && <ImagePreviewsViewer />}
         <PostActionButtons handleImageUpload={handleImageUpload} />
       </div>
     </Container>

@@ -9,7 +9,7 @@ type State = {
 type Action = {
   setImageFiles: (imageFiles: File[]) => void;
 
-  setImagePreviews: (imagePreviews: string[]) => void;
+  setImagePreviews: (updateFn: (prevPreviews: string[]) => string[]) => void;
 
   setRemoveImage: (imageFile: string) => void;
 
@@ -25,7 +25,9 @@ const useMediaStateStore = create<State & Action>((set) => ({
 
   setImageFiles: (imageFiles: File[]) => set(() => ({ imageFiles })),
 
-  setImagePreviews: (imagePreviews: string[]) => set(() => ({ imagePreviews })),
+  setImagePreviews: (updateFn) => set((state) => ({
+    imagePreviews: updateFn(state.imagePreviews),
+  })),
 
   setRemoveImage: (imageFile: string) => set((state) => {
     const newImage = state.imagePreviews.filter((item) => item !== imageFile);
