@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# X_Clone 프로젝트
 
-## Getting Started
+## **🌐 배포 주소**
 
-First, run the development server:
+배포 링크 :  https://zcom-tawny.vercel.app/home
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## **⚙ 실행 방법**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 프로젝트 설명
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+이 프로젝트는 `Next.js`에 대한 지식을 강화와 `tanstackQuery`에 대한 경험을 쌓기 위해 제로초님의 X 사이트 클론 강의를 시청하면서 시작되었습니다.  이전에 X 사이트의 디자인을 모티브로 인자강이라는 프로젝트를 진행한 경험이 있습니다. 당시에는 감탄했던 X사이트 핵심 디자인은 시도 조차 하지못했던 과거를 떠올리게 되어 그동안의 성장을 스스로 증명하고자 강의 코드가 아닌 대부분 저의 코드로 클론 코딩을 진행했습니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+ 강의 이전에 X사이트 디자인을 모티브로 클론코딩을 진행한 경험에서 스스로 아쉬운 부분을 많이 느껴, 그동안의 성장을 자가진단하기 위해 퀄리티를 높여 강의코드가 아닌 저의 코드로 클론 코딩을 결심하게되었습니다.
 
-## Learn More
+ ## 핵심 구현 사항 
 
-To learn more about Next.js, take a look at the following resources:
+- MSW 서비스워커 방식을 기반으로 API 활용
+- TanstackQuery를 이용한 무한 스크롤링 
+- URL이동 방식의 포토 슬라이드 모달구현(캐싱 적용)
+- 포스트 작성 파일업로드 이미지 미리보기
+- 파일업로드 이미지 미리보기 & 스케일링 다중 편집
+- 포스트 작성시 자동 높이 조절 
+- 자연스러운 비율의 화면 확대, 축소 
+- 3개의 테마 설정 ( 글꼴 크기, 색상, 배경 )
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 채택한 기술 스택
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Next.js 14
 
-## Deploy on Vercel
+- 강의 과정이 `Next14`와 `Next13` 선택할 수 있었는데, 이전에 인자강 프로젝트 에서 `Next.js13`을 사용한 경험이 있어 `Next.js 14`를 선택하였습니다.
+- 라우팅 방식은 이전 프로젝트에서 페이지 라우팅을 이용했으나, 페이지 이동 시마다 최적화를 했음에도 어쩔 수 없는 레이아웃의 불필요한 렌더링의 문제를 고려하여 `AppRouting` 방식을 선택하였습니다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Styled-Component
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- 강의에서는 `SSR`의 호환성 문제로 기본 CSS를 활용했지만, 다양한 환경에서 스타일 컴포넌트 기술 연마의 필요성을 느껴 `Styled-Compoents`를 선택하였습니다.
+- 컴포넌트의 다양한 활용 측면이나, X사이트의 동적 UI를 표현하는데 JSX 기반의 스타일링이 효율적이라 판단하였습니다.
+
+### Zustand
+
+- 이전 프로젝트에서 `Redux`를 활용하여 비동기 처리 상태, 클라이언트 상태 관리에 활용해봤으나,  보일러플레이트로 인한 문제 때문에 매번 비효율적이라 생각이들어 `Zustand`를 선택하였습니다.
+- `TanstackQuery`를 이용하는 점에서 스토어 관리에도 문제 없을 거라 판단 하였습니다.
+- 배포시 라이브러리 용량도 매우 낮아 자원 활용에 효율적이라 판단 하였습니다.
+
+### TanStack-query
+
+- X클론 강의를 수강한 계기라 선택사항은 없었습니다.
+- 이전에 캐싱을 직접 구현해본 경험이 있었는데 상당히 복잡했고 키관리도 힘들었던 경험이 있습니다.
+
+### eslint
+
+- 강의에는 별다른 언급이 없었지만,  개인적으로 `ESLint`는 선택이 아닌 필수라고 생각했습니다.
+- `ESLint` 룰 설정은 에어 비앤비의 기본 형태로 주로 사용하는 룰을 추가 하였습니다.
+
+## 개발 기간 및 작업 간략 설명
+
+### 전체 개발 기간 : 2022. 04. 14 ~ ing
+
+## 주요 구현 기능
+
+### 포스트 작성 높낮이 조절
+![height](https://github.com/Minsoek96/zcom/assets/125581005/3b758939-59cf-46a6-aeda-c4f7fdca61da)
+
+### URL 이동 방식의 포토 슬라이드 효과 모달
+
+- URL이 변하면서 이미지 슬라이드 효과
+- 페이지 변동시 데이터는 캐싱 상태에서 가져올것
+- 액션 버튼 특정 조건 활성
+  
+![photoModal](https://github.com/Minsoek96/zcom/assets/125581005/66c43489-84b4-47b2-80d2-535724dc9deb)
+
+### 3개의 테마설정 ( 글꼴크기, 색상 , 배경 ) 
+
+- 글꼴의 크기 변화 
+- 페이지 디자인 메인 색상 선택
+- 메인 테마 배경 색상 선택 ( 기본 , 어둡게 , 완전 어둡게 )
+
+![theme](https://github.com/Minsoek96/zcom/assets/125581005/8e85491d-81b0-4ad2-a079-97798a41f4e1)
+
+### 파일업로드 이미지 미리보기 슬라이드( 다중 지원 )
+
+- 멀티 이미지 업로드
+- 기본형 이미지 슬라이드
+- 단일 이미지, 다중 이미지 크기 조절
+
+![mediaCut](https://github.com/Minsoek96/zcom/assets/125581005/0a3dacfc-c089-4140-b0f4-e0ebeb79874d)
+
+### 업로드 이미지 스케일 설정, 다중 편집
+
+- 이미지 스케일 상태 조절바
+- 자연스러운 스케일링 효과 유지와 상태 저장은 최소화 (디바운스 활용)
+- 이미지 편집 상태 임시 저장 편집 일괄 적용
+
+![mediaCut](https://github.com/Minsoek96/zcom/assets/125581005/0a3dacfc-c089-4140-b0f4-e0ebeb79874d)
+
+### 자연스러운 비율의 화면 확대 축소 
+
+- 마우스 스크롤시 비율을 유지하면서 확대, 축소
+- 저시각자 사용성을 고려
+  
+![scroll](https://github.com/Minsoek96/zcom/assets/125581005/d8cdea61-9ef4-40b1-8bef-70b20e15833d)
+
+### 인피니티 스크롤링 
+
+![infinity](https://github.com/Minsoek96/zcom/assets/125581005/3bd42090-4dac-4013-9420-53f424b45ca3)
+
