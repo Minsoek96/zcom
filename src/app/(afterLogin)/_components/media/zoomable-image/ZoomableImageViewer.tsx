@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 
-import useZoomableSingleCut from '@/app/_hooks/useZoomableSingleCut';
-
 import { TemporaryMedia, ZoomProps } from '@/app/_types/MediaType';
 
+import useZoomableSingleCut from '@/app/_hooks/useZoomableSingleCut';
 import useDeBounce from '@/app/_hooks/useDebounce';
+
 import useTemporaryMediaStore from '@/app/_store/useTemporaryMediaStore';
+
 import { RectangleIcon } from '../../../_constants/MenuIcons';
-import ZoomableImageViewer from './ZoomableImageViewer';
+import ZoomableImage from './ZoomableImage';
 import ZoomableController from './ZoomableController';
 
 const ZoomInitalState: ZoomProps = {
@@ -26,7 +27,7 @@ type ZoomableImageProps = {
   isSelectedMedia: boolean;
 };
 
-function ZoomableImage({ src, alt, isSelectedMedia }: ZoomableImageProps) {
+function ZoomableImageViewer({ src, alt, isSelectedMedia }: ZoomableImageProps) {
   const [scale, setScale] = useState(1);
   const [zoomType, setZoomType] = useState<ZoomProps>(ZoomInitalState);
   const deBounceScale = useDeBounce({ value: scale, delay: 500 });
@@ -38,31 +39,32 @@ function ZoomableImage({ src, alt, isSelectedMedia }: ZoomableImageProps) {
     zoomType,
   );
 
-  const saveTemporaryMedia = () => {
-    const newMedia: TemporaryMedia = {
-      zoomSize: {
-        width: zoomType.width,
-        height: zoomType.height,
-      },
-      scale: deBounceScale,
-      mediaSrc: src,
+  useEffect(() => {
+    const saveTemporaryMedia = () => {
+      const newMedia: TemporaryMedia = {
+        zoomSize: {
+          width: zoomType.width,
+          height: zoomType.height,
+        },
+        scale: deBounceScale,
+        mediaSrc: src,
+      };
+      addTemporaryMedia(newMedia);
     };
 
-    console.log('새로운 미디어', newMedia);
-    addTemporaryMedia(newMedia);
-  };
+    if (deBounceScale === scale) {
+      saveTemporaryMedia();
+    }
+  }, [deBounceScale, scale, addTemporaryMedia, zoomType, src]);
 
   // TODO: 각 컴포넌트의 상태값을 임시 저장후, 저장 버튼이 눌리면 일괄 편집 처리 기능 구현
   const handleOnScaleChange = (changeScale: number) => {
-    if (scale === deBounceScale) {
-      saveTemporaryMedia();
-    }
     setScale(changeScale);
   };
 
   return (
     <Container $isSelected={isSelectedMedia}>
-      <ZoomableImageViewer
+      <ZoomableImage
         scale={scale}
         imageRef={imageRef}
         src={src}
@@ -82,7 +84,7 @@ function ZoomableImage({ src, alt, isSelectedMedia }: ZoomableImageProps) {
   );
 }
 
-export default ZoomableImage;
+export default ZoomableImageViewer;
 
 const Container = styled.div<{ $isSelected: boolean }>`
   display: ${(props) => (props.$isSelected ? 'display' : 'none')};

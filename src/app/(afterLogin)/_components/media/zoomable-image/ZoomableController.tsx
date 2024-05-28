@@ -1,6 +1,9 @@
 import { styled } from 'styled-components';
+
 import { ZoomProps, ZoomType } from '@/app/_types/MediaType';
+
 import { ZoomInIcon, ZoomOutIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
+
 import { zoomTypes } from '../data';
 
 type ControllerProps = {

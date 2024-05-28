@@ -13,7 +13,7 @@ type ImageViewerProps = {
   zoomTypeHeight: number;
 };
 
-export default function ZoomableImageViewer({
+export default function ZoomableImage({
   scale,
   imageRef,
   src,

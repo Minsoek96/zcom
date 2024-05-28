@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useState } from 'react';
 
 import { styled } from 'styled-components';
@@ -11,16 +13,13 @@ import { TabType } from '@/app/_types/MediaType';
 
 import { useRouter } from 'next/navigation';
 import useZoomableMultiCut from '@/app/_hooks/useZoomableMultiCut';
-import ZoomableImage from './zoomable/ZoomableImage';
+import ZoomableImageViewer from './zoomable-image/ZoomableImageViewer';
 
 import TabItem from './tab-item/TabItem';
 import { mediaTabs } from './data';
 import MediaNaviagation from './MediaNavigation';
 
-// TODO: 관심사 분리 & 구조 재조정
-// TODO: 저장 버튼 액션 처리
-
-export default function Media() {
+export default function MediaContent() {
   const router = useRouter();
   const { imagePreviews, seletedImage } = useMediaStateStore();
   const [tabType, setTabType] = useState<TabType>('cut');
@@ -59,7 +58,7 @@ export default function Media() {
           ),
         }}
       />
-      <TabContainer>
+      <MediaTabContainer>
         {mediaTabs.map((tab) => (
           <TabItem
             key={tab.id}
@@ -68,10 +67,10 @@ export default function Media() {
             onClick={handleChangeType}
           />
         ))}
-      </TabContainer>
+      </MediaTabContainer>
       <MediaCutContainer>
         {imagePreviews.map((image, index) => (
-          <ZoomableImage
+          <ZoomableImageViewer
             key={key(image, index)}
             alt="imt"
             src={image}
@@ -102,7 +101,7 @@ const Container = styled.div`
   }
 `;
 
-const TabContainer = styled.div`
+const MediaTabContainer = styled.div`
   display: flex;
   height: 5.3rem;
   border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};

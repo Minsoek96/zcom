@@ -17,7 +17,6 @@ const useTemporaryMediaStore = create<State & Action>((set) => ({
     const mediaExists = state.temporaryMedias.some(
       (img) => img.mediaSrc === media.mediaSrc,
     );
-    console.log(mediaExists, state.temporaryMedias, 'mediaExist');
     const newMediaList = mediaExists
       ? state.temporaryMedias.map(
         (existingMedia) => (existingMedia.mediaSrc === media.mediaSrc ? media : existingMedia),
