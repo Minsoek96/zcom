@@ -1,17 +1,30 @@
 import styled from 'styled-components';
+import { CheckIcon } from '@/app/(afterLogin)/_constants/MenuIcons';
 
 const Container = styled.div`
-  margin-block: 0.5rem;
+  position: relative;
+  display: inline-block;
 
-  label,
   input {
-    vertical-align: middle;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
   }
 
-  label {
-    display: inline-block;
-    padding-right: 0.5rem;
-    text-align: right;
+  input:checked + svg {
+    display: block;
+  }
+
+  svg {
+    width: 4rem;
+    height: 4rem;
+    display: none;
+    position: absolute;
+    fill: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 `;
 
@@ -32,6 +45,7 @@ export default function RadioCheck({
     <Container>
       <label htmlFor={id}>{label || null}</label>
       <input id={id} type="radio" checked={checked} onChange={onChange} />
+      <CheckIcon />
     </Container>
   );
 }
