@@ -53,10 +53,10 @@ const drawImageToCanvas = (
   const imgWidth = img.naturalWidth;
   const imgHeight = img.naturalHeight;
 
-  console.log(containerWidth, 'width');
-  console.log(containerHeight, 'height');
-  console.log(imgWidth, 'imgWidth');
-  console.log(imgHeight, 'imgHeight');
+  // console.log(containerWidth, 'width');
+  // console.log(containerHeight, 'height');
+  // console.log(imgWidth, 'imgWidth');
+  // console.log(imgHeight, 'imgHeight');
 
   // 이미지 비율 계산
   const imgRatio = imgWidth / imgHeight;

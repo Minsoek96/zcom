@@ -50,11 +50,6 @@ const drawImageToCanvas = (
   const imgRatio = imgWidth / imgHeight;
   const containerRatio = containerWidth / containerHeight;
 
-  console.log(containerWidth, 'width');
-  console.log(containerHeight, 'height');
-  console.log(imgWidth, 'imgWidth');
-  console.log(imgHeight, 'imgHeight');
-
   let drawWidth;
   let drawHeight;
 

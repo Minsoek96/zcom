@@ -28,6 +28,7 @@ function PostActionButtons({
           type="file"
           ref={fileInputRef}
           onChange={handleImageUpload}
+          accept="image/*"
           multiple
           hidden
         />

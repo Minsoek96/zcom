@@ -20,14 +20,12 @@ function PostForm() {
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
-    console.log(files);
     if (files) {
       const fileArray = Array.from(files);
 
       fileArray.forEach((file) => {
         const reader = new FileReader();
         reader.onload = (event) => {
-          console.log(file);
           const newFile = event.target?.result as string;
           if (event.target?.result) {
             setImagePreviews((prevPreviews) => [...prevPreviews, newFile]);
