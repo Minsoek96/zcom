@@ -1,9 +1,10 @@
-import { Post } from '@/app/_types/Post';
-
-import Image from 'next/image';
 import Link from 'next/link';
 
 import styled, { css } from 'styled-components';
+
+import TemporaryImage from '@/app/_components/ui/TemporaryImage';
+
+import { Post } from '@/app/_types/Post';
 
 type PostImagesProps = {
   post: Post;
@@ -24,19 +25,21 @@ export default function PostImages({ post }: PostImagesProps) {
             href={`/${User.id}/status/${postId}/photo/${image.imageId}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={image.link}
-              alt={`${User.id}'s image`}
-              fill
-              style={{ objectFit: 'cover' }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-            />
+            <TemporaryImage src={image.link} alt={`${User.id}'s image`} />
           </StyleLink>
         </StyledImageWrapper>
       ))}
     </Container>
   );
 }
+
+// Vercel 402 Payment 처방
+// <Image
+//     src={image.link}
+//     alt={`${User.id}'s image`}
+//     fill
+//     style={{ objectFit: 'cover' }}
+//   />
 
 const OneImage = css`
   display: flex;
@@ -80,7 +83,7 @@ const ThreeImage = css`
   grid-template-areas:
     "a a b b"
     "a a c c";
-  gap: .4rem;
+  gap: 0.4rem;
 
   > div:nth-child(1) {
     grid-area: a;

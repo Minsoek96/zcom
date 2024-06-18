@@ -1,6 +1,7 @@
-import { PostImage } from '@/app/_types/PostImage';
-import Image from 'next/image';
 import styled from 'styled-components';
+
+import TemporaryImage from '@/app/_components/ui/TemporaryImage';
+import { PostImage } from '@/app/_types/PostImage';
 
 type PhotoItemProps = {
   image: PostImage;
@@ -12,18 +13,24 @@ export default function PhotoItem({ image, idx }: PhotoItemProps) {
   return (
     isSelect && (
       <Container>
-        <Image
+        <TemporaryImage
           src={link}
           alt={link}
-          fill
-          style={{ objectFit: 'cover' }}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-          priority
         />
       </Container>
     )
   );
 }
+
+// Vercel Payment 402 방지
+// ㅇ<Image
+// src={link}
+// alt={link}
+// fill
+// style={{ objectFit: 'cover' }}
+// sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+// priority
+// />
 
 const Container = styled.div`
   position: relative;

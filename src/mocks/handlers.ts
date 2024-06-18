@@ -41,10 +41,6 @@ const handlers = [
         'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/;Max-Age=0',
       },
     }),
-    // console.log('회원가입');
-    // return HttpResponse.text(JSON.stringify('user_exists'), {
-    //   status: 403,
-    // });
   ),
 
   http.get(`${ServerBaseURL}/api/postRecommends`, async ({ request }) => {
