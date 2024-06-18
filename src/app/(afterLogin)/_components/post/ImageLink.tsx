@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import TemporaryImage from '@/app/_components/ui/TemporaryImage';
+
 import Link from 'next/link';
 
 type ImageType = {
@@ -16,15 +17,24 @@ function ImageLink({
 
   return (
     <Link href={id}>
-      <Image
+      <TemporaryImage
         src={src}
         alt={id}
-        width={width}
-        height={height}
-        style={{ borderRadius: '9999px' }}
+        imageWidth={`${width}px`}
+        imageHeight={`${height}px`}
+        imageStyle={{ borderRadius: '9999px' }}
       />
     </Link>
   );
 }
 
 export default ImageLink;
+
+// Vercel 402 payment
+// d<Image
+// src={src}
+// alt={id}
+// width={width}
+// height={height}
+// style={{ borderRadius: '9999px' }}
+// />

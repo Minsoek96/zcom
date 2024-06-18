@@ -33,7 +33,7 @@ function ZoomableImageViewer({ src, alt, isSelectedMedia }: ZoomableImageProps) 
   const deBounceScale = useDeBounce({ value: scale, delay: 500 });
   const { addTemporaryMedia } = useTemporaryMediaStore();
 
-  const { imageRef, canvasRef, handleSave } = useZoomableSingleCut(
+  const { imageRef, canvasRef } = useZoomableSingleCut(
     src,
     deBounceScale,
     zoomType,
@@ -73,7 +73,6 @@ function ZoomableImageViewer({ src, alt, isSelectedMedia }: ZoomableImageProps) 
         zoomTypeHeight={zoomType.height}
       />
       <canvas ref={canvasRef} style={{ display: 'none' }} />
-      <Button onClick={handleSave}>이미지 저장</Button>
       <ZoomableController
         scale={scale}
         type={zoomType.type}
@@ -90,8 +89,4 @@ const Container = styled.div<{ $isSelected: boolean }>`
   display: ${(props) => (props.$isSelected ? 'display' : 'none')};
   flex-direction: column;
   align-items: center;
-`;
-
-const Button = styled.button`
-  margin-top: 10px;
 `;

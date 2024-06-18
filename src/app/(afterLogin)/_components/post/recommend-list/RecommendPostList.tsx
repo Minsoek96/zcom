@@ -18,7 +18,7 @@ export default function RecommendPostList() {
     if (!isFetching && hasNextPage) {
       fetchNextPage();
     }
-  }, []);
+  }, [fetchNextPage, isFetching, hasNextPage]);
 
   const { ref } = useObserver({ callback: handleCallback, threshold: 0.9 });
 
