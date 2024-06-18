@@ -4,7 +4,7 @@ import {
   dehydrate,
 } from '@tanstack/react-query';
 
-import getPostRecommends from '@/app/_lib/getFollowRec';
+import getPostRecommends from '@/app/_lib/getPostRecommends';
 
 import PostFeedTabSwitcher from './PostFeedTabSwitcher';
 
