@@ -63,12 +63,19 @@ const RightSectionWrraper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   flex-grow: 1;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 const RightSectionInner = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100rem;
+
+  @media screen and (max-width: 1350px) {
+    width: 100%;
+  }
 `;
 
 // TODO:: 자식의 정적인 크기
@@ -76,8 +83,8 @@ const MainWrraper = styled.main`
   width: 60rem;
   border: 1px solid ${(props) => props.theme.colors.borderColor};
 
-  @media screen and (max-width: 650px) {
-    display: flex;
+  @media screen and (max-width: 700px) {
+    width: 100%;
   }
 `;
 
@@ -86,4 +93,8 @@ const RightSection = styled.section`
   flex-direction: column;
   width: 35rem;
   height: 100dvh;
+
+  @media screen and (max-width: 1050px) {
+    display: none;
+  }
 `;

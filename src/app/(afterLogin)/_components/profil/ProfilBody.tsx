@@ -10,9 +10,9 @@ import ProfilActionBtns from './ProfilActionBtns';
 import NotUser from './NotUser';
 
 type ProfilBodyProps = {
-  username: string
-}
-function ProfilBody({ username }:ProfilBodyProps) {
+  username: string;
+};
+function ProfilBody({ username }: ProfilBodyProps) {
   const { user, error } = useFetchUser({ username });
 
   // TODO: 중복 스타일 제거 (배너, 이미지링크 처리)
@@ -54,9 +54,17 @@ const Container = styled.div`
 
   > a:nth-child(2) {
     position: absolute;
-    top: calc(50% - 10px);
+    top: calc(50%);
     left: 15%;
     transform: translate(-50%, -50%);
+
+    @media screen and (max-width: 650px) {
+      img {
+        width: 10rem;
+        height: 10rem;
+        left: 20%;
+      }
+    }
   }
 
   > div:last-child {

@@ -40,7 +40,7 @@ function PostActionButtons({
         />
       </div>
       <div>
-        <PostBtn name={btnText} onClick={() => console.log('게시하기')} />
+        <PostBtn name={btnText} onClick={() => {}} />
       </div>
     </Container>
   );

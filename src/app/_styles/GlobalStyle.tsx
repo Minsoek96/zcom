@@ -3,10 +3,19 @@
 import { createGlobalStyle } from 'styled-components';
 
 type GlobalProps = {
-    $font: number;
-}
+  $font: number;
+};
 
 const GlobalStyle = createGlobalStyle<GlobalProps>`
+
+    @font-face {
+    font-family: 'TwitterChirp';
+    src: url('/fonts/twitterchirp.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    }
+
     html {
         box-sizing: border-box;
         font-size: ${(props) => props.$font}%;
@@ -28,6 +37,7 @@ const GlobalStyle = createGlobalStyle<GlobalProps>`
         font-size: 1.6rem;
         background-color: ${(props) => props.theme.colors.themeColor};
         color: ${(props) => props.theme.colors.mainFont};
+        font-family: 'TwitterChirp';
     }
 
     :lang(ko) {

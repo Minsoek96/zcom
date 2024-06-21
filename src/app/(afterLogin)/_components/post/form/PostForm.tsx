@@ -31,12 +31,6 @@ function PostForm() {
             setImagePreviews((prevPreviews) => [...prevPreviews, newFile]);
           }
         };
-
-        // reader.onerror = (e) => {
-        //   console.error(
-        //     `File could not be read! Code ${e.target?.error?.code}`,
-        //   );
-        // };// 에러처리
         reader.readAsDataURL(file);
       });
     }

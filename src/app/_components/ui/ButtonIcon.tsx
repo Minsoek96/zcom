@@ -13,10 +13,11 @@ export default function ButtonIcon({
   icon: Icon,
   hoverColor,
   isClick = false,
-  onClick = () => (console.log('')),
+  onClick = () => {},
   number = 0,
   fill = 'white',
 }: ButtonIconProps) {
+  const displayNumber = number !== 0 ? number : null;
   return (
     <Container $hoverColor={hoverColor}>
       <Button
@@ -27,7 +28,7 @@ export default function ButtonIcon({
       >
         {Icon}
       </Button>
-      <span>{number === 0 ? null : number}</span>
+      {displayNumber && <span>{displayNumber}</span>}
     </Container>
   );
 }
@@ -43,16 +44,22 @@ const Container = styled.div<ActionProps>`
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 14px;
+  font-size: 1.4rem;
   color: ${(props) => props.$hoverColor[1]};
+
+  &:hover {
+    svg {
+      fill: ${(props) => props.$hoverColor[1]};
+    }
+  }
 `;
 
 const Button = styled.button.attrs({
   type: 'button', role: 'button',
 })<ActionProps>`
   cursor: pointer;
-  width: 34px;
-  height: 34px;
+  width: 3.4rem;
+  height: 3.4rem;
   border: none;
   border-radius: 9999px;
   background-color: inherit;
@@ -63,9 +70,6 @@ const Button = styled.button.attrs({
 
   &:hover {
     background-color: ${(props) => props.$hoverColor[0]};
-    svg {
-      fill: ${(props) => props.$hoverColor[1]};
-    }
     transition: background-color 0.2s ease;
   }
 `;

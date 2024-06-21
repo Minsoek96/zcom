@@ -27,7 +27,7 @@ const Container = styled.div`
   border: 1px solid ${(props) => props.theme.colors.borderColor};
   margin-block: 1.5rem;
 
-  > div span {
+  > div:first-child span {
     font-weight: 800;
     font-size: 2rem;
   }

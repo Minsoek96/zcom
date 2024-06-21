@@ -22,14 +22,14 @@ function PostItem({ post, isPhoto = true }: PostItemProps) {
   const { id, nickname } = post.User;
   return (
     <PostArticle post={post}>
-      <Container>
+      <Container onClick={(e) => e.stopPropagation()}>
         <PostWrapper>
           <div>
             <ImageLink src={post.User.image} id="img" width={40} height={40} />
           </div>
           <div>
             <UserInfoContainer>
-              <Link href={`${id}`} onClick={(e) => e.stopPropagation()}>
+              <Link href={`${id}`}>
                 <span>{nickname}</span>
               </Link>
               {' '}
@@ -41,8 +41,8 @@ function PostItem({ post, isPhoto = true }: PostItemProps) {
               <span>{formatTimeFromNow({ createdAt: post.createdAt })}</span>
             </UserInfoContainer>
             <div>
-              {isPhoto && post.Images && <PostImages post={post} />}
               {post.content}
+              {isPhoto && post.Images && <PostImages post={post} />}
             </div>
             <UserActionButtons />
           </div>

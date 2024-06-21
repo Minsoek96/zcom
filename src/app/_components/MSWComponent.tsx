@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+// Back으로 활용할시
 // export default function MSWComponent() {
 //   useEffect(() => {
 //     if (typeof window !== 'undefined') {

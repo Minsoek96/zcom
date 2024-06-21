@@ -30,20 +30,16 @@ const TabContainer = styled.div`
 `;
 
 const FixedContainer = styled.div`
-  width: 59.7rem;
+  width: 100%;
   vertical-align: 1px;
   display: flex;
-  position: fixed;
+  position: sticky;
   font-size: 1.4rem;
   line-height: 1.35em;
   text-align: center;
   backdrop-filter: blur(12px);
   color: ${(props) => props.theme.colors.secondFont};
   z-index: 10;
-
-  @media screen and (max-width: 650px) {
-    width: 44rem;
-  }
 `;
 
 const TabBase = styled.div<{ $currentTab: string }>`
