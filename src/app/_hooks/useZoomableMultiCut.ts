@@ -9,8 +9,8 @@ const useZoomableMultiCut = () => {
   const { temporaryMedias, clearTemporaryMedias } = useTemporaryMediaStore();
 
   const saveEditedMedia = useCallback(() => {
-    console.log(temporaryMedias);
     if (temporaryMedias.length < 0) return;
+
     temporaryMedias.forEach(({ mediaSrc, scale, zoomSize }) => {
       const img = new Image();
       img.src = mediaSrc;
@@ -28,6 +28,7 @@ const useZoomableMultiCut = () => {
         }
       };
     });
+
     clearTemporaryMedias();
   }, [setUpdateImage, temporaryMedias, clearTemporaryMedias]);
 

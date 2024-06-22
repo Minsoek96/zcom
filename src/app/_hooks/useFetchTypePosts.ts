@@ -12,7 +12,7 @@ export default function useFetchTypePosts({ type }: TypeProps) {
   const typeQueryKey: [_1: string, _2: string] = type === 'recommends' ? ['posts', 'recommends'] : ['posts', 'followings'];
 
   const {
-    data, fetchNextPage, hasNextPage, isFetching,
+    data, fetchNextPage, hasNextPage, isFetching, isLoading,
   } = useInfiniteQuery<
     Post[],
     Error,
@@ -32,5 +32,6 @@ export default function useFetchTypePosts({ type }: TypeProps) {
     fetchNextPage,
     hasNextPage,
     isFetching,
+    isLoading,
   };
 }

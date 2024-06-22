@@ -4,15 +4,19 @@ import { Fragment, useCallback } from 'react';
 
 import useFetchTypePosts from '@/app/_hooks/useFetchTypePosts';
 import useObserver from '@/app/_hooks/useObserver';
+import Spinner from '@/app/_components/ui/Spinner';
 import PostItem from '../post-item/PostItem';
 
 // TODO : 포스트 불러오는 훅에 대해서 생각하기
 // getPost(type)???
 
-export default function RecommendPostList() {
+type PostListProps = {
+  postType: 'recommends' | 'follow';
+};
+export default function TypePostList({ postType }: PostListProps) {
   const {
-    infinitePosts, isFetching, hasNextPage, fetchNextPage,
-  } = useFetchTypePosts({ type: 'recommends' });
+    infinitePosts, isFetching, hasNextPage, fetchNextPage, isLoading,
+  } = useFetchTypePosts({ type: postType });
 
   const handleCallback = useCallback(() => {
     if (!isFetching && hasNextPage) {
@@ -21,6 +25,10 @@ export default function RecommendPostList() {
   }, [fetchNextPage, isFetching, hasNextPage]);
 
   const { ref } = useObserver({ callback: handleCallback, threshold: 0.9 });
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>

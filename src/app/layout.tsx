@@ -4,8 +4,10 @@ import type { Metadata } from 'next';
 
 import Providers from '@/lib/Providers';
 import GlobalProvider from '@/lib/GlobalProvider';
+import { Suspense } from 'react';
 import MSWComponent from './_components/MSWComponent';
 import AuthSession from './_components/AuthSession';
+import Spinner from './_components/ui/Spinner';
 
 export const metadata: Metadata = {
   title: 'X_Clone',
@@ -23,7 +25,9 @@ export default function RootLayout({
         <Providers>
           <GlobalProvider />
           <MSWComponent />
-          <AuthSession>{children}</AuthSession>
+          <AuthSession>
+            <Suspense fallback={<Spinner />}>{children}</Suspense>
+          </AuthSession>
         </Providers>
       </body>
     </html>

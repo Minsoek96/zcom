@@ -2,13 +2,11 @@
 
 import { useTabStore } from '@/app/_store/useTabStore';
 
-import RecommendPostList from './recommend-list/RecommendPostList';
-
-import FollowingPostList from './following-list/FollowingPostList';
+import TypePostList from './typepost-list/TypePostList';
 
 export default function PostFeedTabSwitcher() {
   const { tab } = useTabStore();
   const isSeletorRec = tab === 'recommend';
 
-  return isSeletorRec ? <RecommendPostList /> : <FollowingPostList />;
+  return <TypePostList postType={isSeletorRec ? 'recommends' : 'follow'} />;
 }

@@ -21,7 +21,7 @@ const SpinnerWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 1.2rem;
 `;
 
 const spin = keyframes`
@@ -34,10 +34,10 @@ const spin = keyframes`
 `;
 
 const SpinnerImg = styled.div`
-  border: 6px solid rgba(0, 0, 0, 0.1);
+  border: 0.6rem solid ${(props) => props.theme.colors.subColor};
   border-radius: 50%;
-  border-top: 6px solid ${(props) => props.theme.colors.mainColor};
-  width: 50px;
-  height: 50px;
+  border-top: 0.6rem solid ${(props) => props.theme.colors.mainColor};
+  width: 5rem;
+  height: 5rem;
   animation: ${spin} 1.2s linear infinite;
 `;
