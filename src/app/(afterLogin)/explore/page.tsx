@@ -27,7 +27,7 @@ const Container = styled.div`
     font-size: 1rem;
     padding-inline: 1.5em;
     padding-block: 1.5em;
-    width: 57rem;
+    width: 100%;
     padding-bottom: 0;
   }
 `;

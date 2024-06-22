@@ -24,7 +24,6 @@ const Container = styled.div`
   padding-inline: 1.1em;
   padding-block: 1.4em;
   border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
-  width: 100%;
   > h2 {
     font-size: 1.8em;
     font-weight: 700;
@@ -35,17 +34,19 @@ const SettingWrrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: inherit;
+  width: 100%;
+  height: 100%;
   padding: 1.4em;
 
   > p:last-child {
     font-size: 1.5rem;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    width: 100%;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
   }
 `;

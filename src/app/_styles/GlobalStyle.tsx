@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle<GlobalProps>`
         background-color: ${(props) => props.theme.colors.themeColor};
         color: ${(props) => props.theme.colors.mainFont};
         font-family: 'TwitterChirp';
+        overflow: hidden;
     }
 
     :lang(ko) {

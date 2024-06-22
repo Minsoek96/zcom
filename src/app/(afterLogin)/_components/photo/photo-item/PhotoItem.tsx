@@ -34,6 +34,6 @@ export default function PhotoItem({ image, idx }: PhotoItemProps) {
 
 const Container = styled.div`
   position: relative;
-  width: 87.3rem;
-  height: 87.3rem;
+  width: 100%;
+  height: 100%;
 `;

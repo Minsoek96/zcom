@@ -12,7 +12,6 @@ import getPostDetail from '@/app/_lib/getPostDetail';
 import getComments from '@/app/_lib/getComments';
 import CommentList from '@/app/(afterLogin)/_components/comment/comment-list/CommentList';
 
-// TODO: 아래 commentList로 분리하기 모형 비슷하고 데이터만 변경
 type PostDetailPageProps = {
   params: { id: string };
 };

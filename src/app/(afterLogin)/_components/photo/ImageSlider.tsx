@@ -75,15 +75,18 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   width: 100%;
   height: 95%;
 
   > div:last-child {
     position: fixed;
     bottom: 1.2rem;
+    padding-inline: 0.8em;
     display: flex;
-    width: 87.3rem;
+    width: 67rem;
+    @media screen and (max-width: 1030px) {
+      width: 100%;
+    }
   }
 `;
 
@@ -97,10 +100,18 @@ const Wrrapper = styled.div<WrrapperProps>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 67rem;
+  height: 87rem;
   transform: ${(props) => (props.$type === 'pre'
     ? `translateX(${props.$currentIndex * 100}%)`
     : `translateX(-${props.$currentIndex * 100}%)`)};
   transition: transform 0.5s ease;
+
+  @media screen and (max-width: 1030px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 70rem) {
+    height: 80%;
+  }
 `;

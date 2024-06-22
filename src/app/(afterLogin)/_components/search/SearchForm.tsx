@@ -34,7 +34,7 @@ const SearchContainer = styled.div`
 const SearchFormWrapper = styled.form`
   display: flex;
   align-items: center;
-  position: fixed;
+  position: sticky;
   width: inherit;
   height: 4.2rem;
   border-radius: 2.1rem;

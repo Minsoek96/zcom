@@ -40,6 +40,8 @@ export default AfterLoginLayout;
 
 const Container = styled.div`
   display: flex;
+  height: 100dvh;
+  overflow: auto;
 `;
 
 const SideWrraper = styled.div`
@@ -81,7 +83,10 @@ const RightSectionInner = styled.div`
 // TODO:: 자식의 정적인 크기
 const MainWrraper = styled.main`
   width: 60rem;
-  border: 1px solid ${(props) => props.theme.colors.borderColor};
+  height: 100dvh;
+  border-top: 1px solid ${(props) => props.theme.colors.borderColor};
+  border-left: 1px solid ${(props) => props.theme.colors.borderColor};
+  border-right: 1px solid ${(props) => props.theme.colors.borderColor};
 
   @media screen and (max-width: 700px) {
     width: 100%;
