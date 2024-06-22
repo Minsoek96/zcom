@@ -2,17 +2,22 @@ import { styled } from 'styled-components';
 
 import useFetchFollowRecommends from '@/app/_hooks/useFetchFollowRecommends';
 
+import Spinner from '@/app/_components/ui/Spinner';
 import FollowRecItem from './FollowRecItem';
 
 function FollowRecList() {
-  const { recommends } = useFetchFollowRecommends();
+  const { recommends, isLoading } = useFetchFollowRecommends();
 
   return (
     <Container>
-      <div><span>팔로우 추천</span></div>
-      {recommends?.map((user) => (
-        <FollowRecItem key={user.id} user={user} />
-      ))}
+      <div>
+        <span>팔로우 추천</span>
+      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        recommends?.map((user) => <FollowRecItem key={user.id} user={user} />)
+      )}
     </Container>
   );
 }

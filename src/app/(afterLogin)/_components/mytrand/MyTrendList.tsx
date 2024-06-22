@@ -2,19 +2,22 @@ import { styled } from 'styled-components';
 
 import useFetchTrends from '@/app/_hooks/useFetchTrends';
 
+import Spinner from '@/app/_components/ui/Spinner';
 import MyTrend from './MyTrend';
 
 function MyTrendList() {
-  const { trends } = useFetchTrends();
+  const { trends, isLoading } = useFetchTrends();
 
   return (
     <Container>
       <div>
         <span>나를 위한 트렌드</span>
       </div>
-      {trends?.map((trend) => (
-        <MyTrend trend={trend} key={trend.tagId} />
-      ))}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        trends?.map((trend) => <MyTrend trend={trend} key={trend.tagId} />)
+      )}
     </Container>
   );
 }

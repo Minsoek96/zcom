@@ -9,7 +9,7 @@ type Props = {
 export default function useFetchComments({ id }:Props) {
   const queryClient = useQueryClient();
   const isPost = queryClient.getQueryData(['posts', id]);
-  const { data } = useQuery<
+  const { data, isLoading } = useQuery<
       Post[],
       Error,
       Post[],
@@ -24,5 +24,6 @@ export default function useFetchComments({ id }:Props) {
   return {
     comments: data,
     isPost,
+    isLoading,
   };
 }

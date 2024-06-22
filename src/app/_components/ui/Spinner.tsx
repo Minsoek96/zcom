@@ -36,8 +36,8 @@ const spin = keyframes`
 const SpinnerImg = styled.div`
   border: 6px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  border-top: 6px solid #506274;
+  border-top: 6px solid ${(props) => props.theme.colors.mainColor};
   width: 50px;
   height: 50px;
-  animation: ${spin} 2s linear infinite;
+  animation: ${spin} 1.2s linear infinite;
 `;

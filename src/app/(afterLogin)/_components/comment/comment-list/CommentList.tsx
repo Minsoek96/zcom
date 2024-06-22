@@ -2,6 +2,7 @@
 
 import useFetchComments from '@/app/_hooks/useFetchComments';
 
+import Spinner from '@/app/_components/ui/Spinner';
 import PostItem from '../../post/post-item/PostItem';
 
 type CommentListProps = {
@@ -14,5 +15,5 @@ export default function CommentList({ id }: CommentListProps) {
     return comments?.map((post) => <PostItem key={post.postId} post={post} />);
   }
 
-  return null;
+  return <Spinner />;
 }

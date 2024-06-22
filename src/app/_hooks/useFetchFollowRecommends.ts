@@ -5,7 +5,7 @@ import getFollowRec from '../_lib/getFollowRec';
 import { User } from '../_types/User';
 
 export default function useFetchFollowRecommends() {
-  const { data } = useQuery<User[]>({
+  const { data, isLoading } = useQuery<User[]>({
     queryKey: ['users', 'followRecommends'],
     queryFn: getFollowRec,
     staleTime: 60 * 1000,
@@ -15,5 +15,6 @@ export default function useFetchFollowRecommends() {
 
   return {
     recommends: data,
+    isLoading,
   };
 }

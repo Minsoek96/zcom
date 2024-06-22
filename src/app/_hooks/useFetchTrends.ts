@@ -4,7 +4,7 @@ import getTrends from '../_lib/getTrends';
 import { Hashtag } from '../_types/Hashtag';
 
 export default function useFetchTrends() {
-  const { data } = useQuery<Hashtag[]>({
+  const { data, isLoading } = useQuery<Hashtag[]>({
     queryKey: ['trends'],
     queryFn: getTrends,
     staleTime: 60 * 1000,
@@ -14,5 +14,6 @@ export default function useFetchTrends() {
 
   return {
     trends: data,
+    isLoading,
   };
 }

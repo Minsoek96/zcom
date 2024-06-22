@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 
 import useFetchUser from '@/app/_hooks/useFetchUser';
 
+import Spinner from '@/app/_components/ui/Spinner';
 import Banner from './Banner';
 import ImageLink from '../post/ImageLink';
 import ProfilActionBtns from './ProfilActionBtns';
@@ -21,7 +22,7 @@ function ProfilBody({ username }: ProfilBodyProps) {
   }
 
   if (!user) {
-    return null;
+    return <Spinner />;
   }
 
   return (
