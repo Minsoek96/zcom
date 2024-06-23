@@ -75,6 +75,8 @@ const Container = styled.div`
 
   > div:last-child {
     width: 100%;
+    padding-block: 11px;
+    padding-inline: 15px;
 
     > div:last-child {
       margin-top: 3rem;

@@ -50,6 +50,10 @@ const ImageContainer = styled.div<{ $scale: number }>`
     max-height: 100%;
     object-fit: contain;
   }
+
+  @media screen and (max-width : 700px){
+    width: 100%;
+  }
 `;
 
 type ZoomSize = {

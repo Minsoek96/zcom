@@ -11,14 +11,16 @@ const useZoomableMultiCut = () => {
   const saveEditedMedia = useCallback(() => {
     if (temporaryMedias.length < 0) return;
 
-    temporaryMedias.forEach(({ mediaSrc, scale, zoomSize }) => {
+    temporaryMedias.forEach(({
+      mediaSrc, scale, zoomSize, imageSize,
+    }) => {
       const img = new Image();
       img.src = mediaSrc;
       img.onload = () => {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         if (ctx) {
-          drawImageToCanvas(ctx, img, scale, zoomSize);
+          drawImageToCanvas(ctx, img, scale, zoomSize, imageSize);
           saveCanvasToBlob(canvas, (blob) => {
             if (blob) {
               const fileUrl = URL.createObjectURL(blob);
@@ -43,9 +45,13 @@ const drawImageToCanvas = (
     width: number;
     height: number;
   },
+  imageSize: {
+    imgWidth: number;
+    imgHeight: number;
+  },
 ) => {
-  const containerWidth = 600;
-  const containerHeight = 620;
+  const containerWidth = imageSize.imgWidth;
+  const containerHeight = imageSize.imgHeight;
 
   const zoomBoxWidth = zoomSize.width * 10;
   const zoomBoxHeight = zoomSize.height * 10;

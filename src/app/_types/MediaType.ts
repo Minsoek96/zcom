@@ -13,6 +13,11 @@ export type ZoomSize = {
   height: number;
 }
 
+export type ImageSize = {
+  imgWidth: number;
+  imgHeight: number;
+}
+
 export type ZoomProps = {
   id: string;
   type: ZoomType;
@@ -25,4 +30,5 @@ export type TemporaryMedia = {
   zoomSize: ZoomSize;
   scale: number;
   mediaSrc: string;
+  imageSize: ImageSize;
 };
